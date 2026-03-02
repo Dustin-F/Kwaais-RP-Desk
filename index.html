@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">
+  <title>KWAAI's RP DESK</title>
+  <link rel="icon" type="image/png" href="icon.png">
+  <link rel="stylesheet" href="renderer.css">
+</head>
+<body class="theme-dark">
+  <div class="profile-picker-overlay" id="profilePickerOverlay">
+    <div class="profile-picker">
+      <h2 class="profile-picker-title">Select your role</h2>
+      <div class="profile-picker-buttons">
+        <button type="button" class="profile-picker-btn" data-department="PD">
+          <span class="profile-picker-btn-label">PD</span>
+          <span class="profile-picker-btn-desc">Police Department</span>
+        </button>
+        <button type="button" class="profile-picker-btn" data-department="SD">
+          <span class="profile-picker-btn-label">SD</span>
+          <span class="profile-picker-btn-desc">Sheriff's Department</span>
+        </button>
+        <button type="button" class="profile-picker-btn" data-department="Mechanic">
+          <span class="profile-picker-btn-label">Mechanic</span>
+          <span class="profile-picker-btn-desc">Car repair RP</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="app">
+    <header class="header">
+      <div class="header-top">
+        <span class="title" id="appTitle">KWAAI's RP DESK</span>
+      </div>
+      <div class="header-bar">
+        <div class="department-switcher">
+          <button type="button" class="department-badge" id="departmentBadge" title="Click to switch identity">PD</button>
+          <div class="department-dropdown hidden" id="departmentDropdown">
+            <button type="button" class="department-option" data-department="PD">PD — Police</button>
+            <button type="button" class="department-option" data-department="SD">SD — Sheriff</button>
+            <button type="button" class="department-option" data-department="Mechanic">Mechanic</button>
+          </div>
+        </div>
+        <div class="unit-switcher" id="unitSwitcher">
+          <button type="button" class="current-unit-btn" id="currentUnit" title="Click to change unit"></button>
+          <div class="unit-dropdown hidden" id="unitDropdown">
+            <button type="button" class="unit-option" data-action="JoinUnit">Join unit</button>
+            <button type="button" class="unit-option" data-action="RenameUnit">Change unit</button>
+          </div>
+        </div>
+        <span class="dev-badge hidden" id="devBadge" title="Development mode – actions show preview instead of sending">DEV</span>
+        <span class="game-status" id="gameStatus" title="Game process">—</span>
+        <button type="button" class="btn-icon" id="btnAbout" title="About">ℹ</button>
+        <button type="button" class="btn-icon" id="btnSettings" title="Settings">⚙</button>
+        <button type="button" class="btn-icon btn-quit" id="btnQuit" title="Quit (Ctrl+Shift+Q)">✕</button>
+      </div>
+    </header>
+    <div class="quick-bar" id="quickBar"></div>
+    <div class="search-wrap">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search menu..." autocomplete="off">
+    </div>
+    <nav class="nav" role="navigation">
+      <div class="nav-top">
+        <button type="button" class="btn-back" id="btnBack" title="Back (Ctrl+Left)">← Back</button>
+        <div class="breadcrumb" id="breadcrumb"></div>
+      </div>
+      <ul class="menu-list" id="menuList" role="listbox"></ul>
+      <div class="action-log-wrap" id="actionLogWrap">
+        <button type="button" class="action-log-toggle" id="actionLogToggle">Action log</button>
+        <ul class="action-log-list" id="actionLogList"></ul>
+      </div>
+    </nav>
+  </div>
+  <div class="toast-container" id="toastContainer"></div>
+
+  <div class="modal-overlay hidden" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Modal</h2>
+        <button type="button" class="btn-close" id="modalClose">×</button>
+      </div>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <script src="menuStructure.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>

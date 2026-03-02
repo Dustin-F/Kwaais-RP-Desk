@@ -1,0 +1,5854 @@
+VEHICULAR CITATIONS
+
+
+
+
+
+VC01 - Speeding 1st Degree
+
+Operating a vehicle at speeds exceeding speed limits by 1 - 20 km/h on public roads.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+VC02 - Speeding 2nd Degree
+
+Operating a vehicle at speeds exceeding speed limits by 21 - 40 km/h on public roads.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$2,000
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC03 - Speeding 3rd Degree
+
+Operating a vehicle at speeds exceeding speed limits by 41 - 80 km/h on public roads.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$3,500
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC04 - Illegal Parking
+
+A person commits the offense of Illegal Parking if the person parks or leaves standing a vehicle in a place where parking is prohibited, including:
+
+In a space where parking meters are enforced, without paying for parking.
+
+At any place a 'No Parking' sign is posted.
+
+Wherever the curb is painted red or on a safety zone, where the roadway is painted with stripes.
+
+In any intersection or on a crosswalk or sidewalk, except on the curb itself.
+
+In front of/blocking a public or private road, driveway, or alley.
+
+On a freeway, except in an emergency.
+
+In a tunnel or on a bridge, except where permitted by signs.
+
+Within 10 feet of a fire hydrant, fire station driveway, or railroad track.
+
+Facing the wrong direction, against the flow of traffic.
+
+At any other place where parking will obstruct the free flow of traffic.
+
+Exemptions to this violation include:
+
+Vehicles standing or parked when an on-duty law enforcement officer lawfully orders a stop.
+
+Vehicles standing or parked momentarily for the purpose of and while actually engaged in loading or unloading of property or passengers.
+
+Vehicles owned or operated by the state or city when standing or parking is necessary to: perform maintenance or repair work on the roadway; or collect solid waste, recyclable material, or yard debris.
+
+Commercial or government-owned vehicles with an 'SA EXEMPT' license plate, indicating an exemption to minor parking infractions.
+
+Vehicles, owned by state and city employees, standing or parked at properties owned by the State of San Andreas.
+
+Law enforcement officers may move, require to be moved, or impound a vehicle that is standing or parked in violation of this section.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+VC05 - Improper Traffic Maneuvers
+
+Improper traffic and road usage can include any of the following.
+
+Illegal U-turn by performing a U-turn that crosses lanes of traffic in a reckless manner, without yielding prior to performing the turn, or in an area where U-turns are prohibited.
+
+On a divided highway by crossing a dividing section, curb, strip of land, or two sets of double yellow lines.
+
+Where a “No U-turn” sign is posted.
+
+When other vehicles may hit you.
+
+On a one-way street.
+
+Where you cannot see clearly 60 meters in each direction because of a curve, hill, rain, fog, or other reason.
+
+Failing to maintain a lane while commencing with the normal flow of traffic.
+
+Tailing or closely following another vehicle in which could result in an accident or injury.
+
+Failure to Yield for appropriate Traffic Control Devices defined as any sign, marking or device intended to direct road usage, such as but not limited to: stop signs, yield signs, speed limit signs, signs directing traffic flow, no passing signs, one-way signs, no parking signs, traffic lights, etc.
+
+San Andreas defines yielding as slowing down before a traffic control device and making sure that the intersection is clear. The first vehicle at an intersection has right of way.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC06 - Following or Impeding Emergency Response
+
+Failure to yield and pull off to the side in order to make way for emergency vehicles with flashing lights and or sirens, following or impeding them without valid and legal justification.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,000
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC07 - Operating a Vehicle Without A License On Your Person
+
+Driving a motor vehicle without the proper licensing on your person.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC08 - Negligent Operation of a Road or Marine Vehicle
+
+Failing to use reasonable care while operating a vehicle, which could lead to personal injuries and damages to one or more vehicles.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,500
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC09 - Blocking Intersection
+
+Blocking an intersection by stopping, parking or otherwise obstructing the area.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC10 - Unroadworthy Vehicle
+
+Vehicles are defined as unroadworthy when they fail to meet Minimum Safety Requirements. At the discretion of the handling officer, if your vehicle is deemed unsafe it might be towed to an impound.A vehicle operating on public roads must meet following criteria:
+
+Must have WHITE or YELLOW color on lamps and reflectors, to be visible for those in front of the vehicle. *
+
+Indicators, lamps, side & rear view mirrors, and seatbelts must be present and undamaged.
+
+The vehicle must be registered with the State of San Andreas.
+
+The vehicle must not cause damage to road surface or structures.
+
+* The colors that emit from your lamps and reflectors may be in a different color if the vehicle is due to attend a vehicle-related event. The vehicle may then only travel from its home destination to the event, and back. Proof of attendance should be presented to officers upon request.Utility vehicle operators are expected to be conscious about road accessibility and to operate with as little harm to traffic flow by keeping to the right most lane possible, driving within safe speeds, and waving traffic around them in the event they are causing a disturbance. Utility vehicles causing traffic issues may face fines for misuse. Utility Vehicles are defined as Money Transporters, Delivery Services, Waste Transports, Tractors, etc.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC11 - Failure to Pay a Toll
+
+It is unlawful for a vehicle to go through a toll without paying the toll or other charges on any vehicular crossing or toll highway. Drivers may not drive through a toll on another driver's cost. Its is the responsibility of the occupants of the vehicle (I.E. the driver or passengers) to pay the toll on each crossing. Vehicles with a special permit from the San Andreas State Government may cross a toll without paying, but must present the permit to the toll booth operator.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$3,000
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC12 - Operating an Unregistered Vehicle
+
+No person shall drive, move, or leave standing upon a city road, county road, highway, or in an off-street publicly or privately owned parking facility unless the vehicle is registered. An unregistered vehicle is defined as a vehicle that has not been legally purchased from a dealership vendor or third person party, and which is not registered with the State of San Andreas.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,000
+
+3rd Demerit
+
+
+
+6 Hours
+
+3rd Demerit
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC13 - Disruptive Impeding or Blocking Travel
+
+No person shall drive a motor vehicle at such a slow speed as to impede or block the normal and reasonable movement of traffic except when reduced speed is necessary for safe operation or in compliance with law or except when the vehicle is temporarily unable to maintain a greater speed due to a combination of the weight of the vehicle and the grade of the highway.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$2,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VC14 - Operation of a Vehicle without a License Plate
+
+1. Operating a vehicle without a valid state-issued license plate.2. If the offense is committed in parallel with the commission of another criminal act, the individual will be charged with VM09 instead of VC14.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+(Del Perro Pier: 50km/h - City Speed Limit: 80 km/h - County Roads: 120 km/h - Highway Speed Limit: 145 km/h)
+
+GENERAL CITATIONS
+
+
+
+GC01 - Loitering
+
+Standing or hanging around an area or building after being asked to leave by building or area management or by a Government Employee.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$750
+
+Intact
+
+
+
+N/A
+
+Intact
+
+
+
+N/A
+
+Intact
+
+Intact
+
+GC02 - Traffic Endangerment
+
+Creating hazardous travel or endangering drivers, self, or pedestrians on roadways. This can include, but is not limited to, creating or leaving hazards and/or obstructions in the roadway, not properly securing a load, or crossing the street as a pedestrian at a place that is not designated as a crosswalk or intersection.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+Intact
+
+
+
+N/A
+
+Intact
+
+
+
+N/A
+
+Intact
+
+Intact
+
+GC03 - Disorderly Conduct
+
+A person is engaging in disorderly conduct if within public property, they are found to have performed at least one of the following:
+
+shouted, screeched or otherwise made noise beyond normal conversation;
+
+ran, jumped, climbed or otherwise sat on top of motor vehicles, stationary or otherwise;
+
+while running around or near other individuals tripped, or intentionally tackled another person;
+
+without a clear danger of traffic collision, or while stationary make use of the horn of their motor vehicle;
+
+together with other individuals placed themselves in close proximity around a single individual so as to restrict their movement.
+
+Individuals who have been cited for Disorderly Conduct in the past 3 days are liable for prosecution under "NM10 - Disturbing the Peace" at the discretion of the handling law enforcement officer.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$5,000
+
+Intact
+
+
+
+N/A
+
+Intact
+
+
+
+N/A
+
+Intact
+
+Intact
+
+GC04 - Face Concealment
+
+An individual may not be present on foot and wear facial concealment in public or on the property of San Andreas. Exemptions apply when facial concealment is worn during masquerades and other entertainment events that are deemed appropriate by the city (such as Halloween), or where there's reasonable cause e.g. motorcycle protection or medical reasons (with documentation from a registered medical practitioner).
+
+Private Property owners have the right to refuse and/or allow attendants who wear facial concealment within the boundaries of their property.
+
+Individuals who defy a lawful request to remove and/or keep their facial concealment off or fail to identify themselves after removing the face covering are liable for GM-10 and a subsequent upgrade of GC-04 to GM-19.
+
+GM-19 will apply instead of GC-04 for individuals who wear facial concealment in relation to other criminal acts.
+
+Individuals who have been cited and/or arrested for facial concealment in the past 7 days are liable for prosecution under GM-10 at the discretion of the handling law enforcement officer.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$500
+
+Intact
+
+
+
+N/A
+
+Intact
+
+
+
+N/A
+
+Intact
+
+Intact
+
+GC05 - Misuse of Government Public Safety Radio Frequencies or Hotlines
+
+Any person who disrupts, impedes, or otherwise interferes with transmission over a public safety radio frequency, or improperly uses a government hotline that is intended for emergency assistance, for non-emergency-related situations.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,000
+
+Intact
+
+
+
+N/A
+
+Intact
+
+
+
+N/A
+
+Intact
+
+Intact
+
+GC06 - Possession of Cannabis
+
+Possessing, without a valid medical prescription or medical license, any amount of cannabis up to and including, of each:
+
+0.25 oz (7 g) Processed Marijuana
+
+10 Marijuana Plants
+
+Any amount of Marijuana Seeds
+
+Individuals who exceed any of the limits listed above are liable for prosecution under DM03 - Possession of a Schedule III Controlled Substance.* FOOTNOTE: Despite state law, currently no programs exist to support the existence of a valid medical prescription. Individuals with a medical license obtained from a BLS class are not given an implicit medical license to be in possession of Cannabis. LSEMS is unable to supply individuals with a medical Cannabis prescription. This footnote is printed for convenience by the Law Review Committee Statue Office, and in it of itself does should not be confused to be part of the original law itself. *
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$1,000
+
+Intact
+
+
+
+N/A
+
+Intact
+
+
+
+N/A
+
+Intact
+
+Intact
+
+(Del Perro Pier: 50km/h - City Speed Limit: 80 km/h - County Roads: 120 km/h - Highway Speed Limit: 145 km/h)
+
+GENERAL MISDEMEANORS
+
+
+
+
+
+GM01 - Assault
+
+The threat of bodily harm with the intention of attainment including the acts of spitting, slapping, or unlawful groping.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GM02 - Battery
+
+Willful and unlawful use of force or violence upon the person of another.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GM03 - Possession of a Blade
+
+Carrying or possessing a fixed blade or assisted opening blade that is over 3 inches and has the ability to inflict serious bodily injury.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GM04 - Resisting Arrest
+
+Resisting arrest in any physical manner or by running on foot.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM05 - Receiving Stolen Property
+
+Buying, receiving, concealing, selling stolen property.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM06 - Petty Theft
+
+Taking another person's property without consent of a value less than $5,000.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM07 - Criminal Fraud
+
+The intentional deception of a victim by means including but not limited to a false display of information, identity, or documents with the intent of personal or financial gain causing greater than or equal to $5,000 in damages.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$1,500
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+Intact
+
+GM08 - Vandalism
+
+Every person who maliciously commits any of the following acts with respect to any real or personal property not his or her own is guilty of vandalism:
+
+Defaces with graffiti or other inscribed material.
+
+Damages.
+
+Destroys.
+
+Damages/Destroys with intent to commit further crime.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+GM09 - Vigilantism
+
+A non law enforcement official attempting of fulfilling the enforcement of laws.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 Months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+Intact
+
+GM10 - Failure to Comply / Identify
+
+Failure to comply with a lawful command by a law enforcement officer, including when he requests you to identify who you are during the course of an investigation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+GM11 - Predatory Lending
+
+To loan money under unfair or fraudulent pretenses, often with the the outcome of violence should the contract not be fulfilled.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM12 - Giving False Information to a Police Officer
+
+Giving fake information, answers, driver's licenses, car registration or other documents to a police officer.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+GM13 - Criminal Threats
+
+Knowingly and willingly threatening the life of or bodily harm onto another person, their family, relatives or loved ones.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+Intact
+
+GM14 - Obstruction of Justice
+
+If any person interferes, delays, obstructs, lies or deliberately conceals information from law enforcement officers or any other government official that is conducting a lawful investigation and/or questioning then they are to be regarded as obstructing justice.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+If Used
+
+
+
+Revoked
+
+GM15 - Animal Cruelty
+
+Causing severe harm or neglect of any animal. It does not include the legal hunting of wild game animals.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$1,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+Intact
+
+GM16 - Failure to Pay a Fine
+
+Failure to Pay a Fine for longer than the allowed time of 7 Days.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM17 - Bribery
+
+The offering, giving, soliciting, or receiving of any value as a means of influencing actions of any obligations required of them.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM18 - Looting of a Dead Human Body
+
+A person is guilty of looting a dead human body if the person intentionally and unlawfully:
+
+Removes any item, object or otherwise belonging from the Dead Human Body or its vicinity (including clothing on the body)
+
+Adds any item, object or otherwise belonging to the Dead Human Body or its vicinity (including clothing on the body)
+
+If the human body has itself or any part of it removed, concealed, or destroyed, as well as moved from one location to another, this charge is replaced by "GF-19 Abuse or Desecration of a Dead Human Body"
+
+"Dead human body" includes any part of a human body in any stage of decomposition.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$1,750
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GM19 - Face Concealment (b)
+
+(a) No person or persons, while wearing any mask, hood, or device whereby any portion of the face is hidden, concealed, or covered as to conceal the identity of the wearer, shall:(1) With the intent to intimidate, threaten, abuse, or harass any other person;(2) With the intent to cause another person to fear for his or her personal safety, or, where it is probable that reasonable persons will be put in fear for their personal safety by the defendant’s actions, with reckless disregard for that probability; or(3) While engaged in conduct prohibited by law, with the intent of avoiding identification.(b) Any person or persons violating GC - 04 - Face Concealment while committing a crime will be held to the misdemeanor criminal charge of Face Concealment.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$500
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM20 - Minor Sales Tax Evasion
+
+Any person who, with or without intent to evade taxes, fails to report and pay sales tax at the time of sale, and instead of remitting it to the government, pockets it. The current sales tax in San Andreas is 5%. If the total value of the tax exceeds $49,999 this escalates to Grand Sales Tax Evasion. (( Selling a car at one of the car markets or house by the script will automatically deduct 5% of the sale. ))
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$5,000 & Unpaid Tax + 10%
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM21 - False Imprisonment
+
+The unlawful violation of the personal liberty of another. No person may restrain, detain, or confined another person without his/her consent unless such action is in relation to legal detainment done by a civilian (citizen's arrest), police, or certified medical personnel. The crime can be committed with or without force or violence.If a person is restrained, detained, or confined with or without force to avoid an impending arrest, this will be upgraded to SF-09.Cannot be charged alongside Kidnapping and vice verse in the same instance - Kidnapping and False Imprisonment are exclusive charges to one another
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GM22 - Contempt of Court
+
+Minor willful disobedience to, or disregard of, a court order or any misconduct in the presence of a court, including but not limited to:
+
+Any act of disrespect, disobedience, defiance, or interference by any person during a legal proceeding.
+
+Willfully failing to preform a specific act in accordance with a valid court order.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,500
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM23 - Parole Violation
+
+Any violation of parole conditions agreed upon prior to release which includes, but are not limited to, committing of misdemeanors, felonies, failure to adhere to parole protocols, damage or removal of tracking equipment, failure to attend meetings, giving false information.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$10,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+
+
+N/A
+
+Intact
+
+GM24 - Contempt of Congress
+
+Persons may be charged with the offense of "Contempt of Congress" if they meet any of the following conditions:
+
+Displaying disrespect, disobedience, defiance, or interference with Congress or a congressional committee while the House is in order or if a congressional committee is actively in session.
+
+Intentionally interferes with a Congressional Action.
+
+Fails to comply with a valid congressional writ, including but not limited to a warrant or subpoena signed by the Speaker of the House or Speaker Pro Tempore.
+
+Disturbs an active sitting of Congress or a congressional disturbance.
+
+Failure to respond to questions, provide relevant documents, or give testimony with the intent to obstruct a congressional inquiry or investigation will be considered a violation. Non-compliance in these matters within the bounds set forth by the Constitution may result in legal consequences.
+
+Intentionally misleading Congress in any official matter, including but not limited to candidacy applications.
+
+Further points as set out in a passed House Resolution.
+
+This charge may only be placed when authorization is given by the Speaker of the House, Chairperson of Congress, Sergeant-at-Arms, or the Prosecutor's Office.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$10,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM25 - Possession/Unlawful use of Government Equipment
+
+Possessing, being within immediate control of, or using unlawfully obtained Government Equipment, including but not limited to: Stingers, Tazers, Radio Jammers, GPS Jammers, Radios tuned to a Government Encrypted Frequency, and Police Megaphones.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM26 - Possession of Illegal Information Gathering Devices
+
+Possessing or being within immediate control of Equipment that can be used to infiltrate Government radio frequencies and/or GPS systems.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+GM27 - Incitement of Violence against a Peace Officer
+
+Any person who advocates the willful and unlawful killing or injuring of a peace officer, with the specific intent to cause the willful and unlawful killing or injuring of a peace officer, and such advocacy is done at a time, place, and under circumstances in which the advocacy is likely to cause the imminent willful and unlawful killing or injuring of a peace officer.
+
+If such advocacy causes the unlawful and willful killing or injuring of a peace officer then the crime is upgraded to "GF27 - Incitement of Violence against a Peace Officer"
+
+"advocacy" means the direct incitement of others to cause the imminent willful and unlawful killing or injuring of a peace officer, and not the mere abstract teaching of a doctrine."peace officer" means any government employee tasked by their employer with the duty of carrying out law enforcement, correctional, or government-sanctioned security duties in the state.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 Months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+If Used
+
+
+
+Revoked
+
+Intact
+
+((Months = Minutes))
+
+NUISANCE MISDEMEANORS
+
+
+
+
+
+NM01 - Inciting a Riot
+
+The attempt or fulfillment of causing a riot.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$2,500
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+NM02 - Participating in a Riot
+
+The crime of “rioting” or “participating in a riot” occurs when two (2) or more people acting together do any of the following without authority of law: use force of violence, disturb the public peace, and threaten to use force or violence with immediate power to execute such actions.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+NM03 - Unlawful Assembly
+
+Two or more people, gathering together to do something illegal or who are disobedient to law enforcement instruction.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+NM04 - Stalking
+
+Section A:Knowingly making someone else feel unsafe through repeated and unwanted contact or communications such to a degree as to make oneself fear for the safety of their persons.Section A, Subsection 1:
+
+“contact or communications” for the purposes of section A shall be defined as:* Following an individual through use of automobiles, aircraft, boats, on foot, or other such similar methods.* Using Email, Telephone, SMS, Mail, Notes, or in person communication.* Watching one's home, workplace, or any location where the individual being followed may be.
+
+Section B:Notwithstanding the provisions of section A of the charge, the charge shall not be misconstrued as to prevent the legitimate and lawful following of persons for the purposes of reporting a crime, private detective work by a licensed body, legitimate law enforcement activities, or other such activities a reasonable person would not otherwise consider to be a violation of section A
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,500
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+Revoked
+
+NM05 - Public Intoxication
+
+Being intoxicated in public where you are unable to care for your own safety and or are a nuisance.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+-
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+NM06 - Trespassing
+
+Every person who commits any of the following acts is guilty of Trespassing:
+
+Entering and/or remaining on private property without permission from the property owner or a licensed manager.
+
+Entering and/or remaining on government property designed for public services* after receiving a verbal or written notice of trespass**.
+
+Entering and/or remaining on government property without lawful permission.
+
+Definition: "Government property designed for public services"
+
+
+
+
+
+
+
+
+
+
+
+
+
+*The public services area is defined as the space where the public is required to be present to receive services. If management, high command, or law enforcement officers (LEOs) reasonably request an individual to leave due to threatening behavior, causing a nuisance, or disrupting services, and the individual refuses to leave or returns to the area, they are guilty of trespassing.- - - -**Verbal/Written Notice of Trespass:** LEOs may issue a trespassing notice if deemed necessary. If this notice is disregarded (by remaining on or returning to the property), the individual is guilty of trespassing.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+NM07 - Prostitution, Pimping or Pandering
+
+The practice or occupation of engaging in sex with someone for payment.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+NM08 - Abuse of Government Public Safety Radio Frequencies or Hotlines
+
+Any person who knowingly misuses, abuses, disrupts, impedes, or otherwise interferes with and obstructs a transmission over a public safety radio frequency, or uses a government hotline that is intended for emergency assistance with a purpose or intention that is not contacting the government with a legitimate concern or ushering for immediate assistance.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 Months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Intact
+
+If Used
+
+
+
+3 Days
+
+NM09 - Harassment
+
+Section A:Willfully and knowingly performing repeat unwelcome actions against a single individual or group that are intended or designed to scare, annoy, seriously alarm, cause substantial emotional distress to, or create a generally unpleasant situation, without any legitimate or lawful purpose.Section A, Subsection 1:
+
+For the purposes of Section A, “emotional distress” shall be defined as to cause Anxiety, Sorrow, or Emotional Pain
+
+Section B:Harassment, as defined in section A of this charge, shall also be unlawful when done through the use of SMS messaging or social media, such as LifeInvader.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$2,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+NM10 - Disturbing the Peace
+
+A person is disturbing the peace if within public property, they are found to have performed at least two of the following:
+
+shouted, screeched or otherwise made noise beyond normal conversation;
+
+ran, jumped, climbed or otherwise sat on top of motor vehicles, stationary or otherwise;
+
+while running around or near other individuals tripped, or intentionally tackled another person;
+
+without a clear danger of traffic collision, or while stationary make use of the horn of their motor vehicle;
+
+together with other individuals placed themselves in close proximity around a single individual so as to restrict their movement.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 Months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+((Months = Minutes))
+
+VEHICULAR CHARGES
+
+
+
+
+
+VM01 - Operating a Vehicle without a Valid License
+
+Operating a vehicle without possessing the proper driver's license; or trucker's license for vehicles 5,000 kg and over. Anyone operating a rental CityBee shall be exempt from requiring a drivers license while traveling on public roadways.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$2,000
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VM02 - Operating a Vehicle with a Suspended License
+
+Operating a vehicle when driving privileges have been revoked/suspended.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$1,500
+
+Suspend
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VM03 - Reckless Operation of a Road or Marine Vehicle
+
+Intentional disregard for life and/or property through the operation of a road or marine vehicle.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$3,000
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VM05 - Drunk, Impaired, or Distracted Driving
+
+Operating any type of vehicle when intoxicated with a blood alcohol percentage above 0.08%, under the influence any substance that impairs judgement and/or reaction time, or engaging in an activity which distracts the driver from driving safely.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,000
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VM06 - Street Competition
+
+Planned, organized and otherwise premeditated illegal street contests. These include races, drift contests, etc.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,000
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VM07 - Hit and Run
+
+Causing an accident that resulted in property damage, then failing to attempt exchanging identifying details with the involved parties by fleeing from it.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$2,500
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Suspended
+
+
+
+Pending Investigation
+
+VM08 - Vehicle Registration Fraud
+
+Operating, possessing, or selling a vehicle with counterfeit license plates, or license plates belonging to another vehicle.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$2,000
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VM09 - Operation of a Vehicle without a License Plate
+
+Operating a vehicle without a valid state-issued license plate during the commission of another criminal act.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$1,750
+
+Suspend
+
+
+
+6 Hours
+
+Suspend
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+VF01 - Evading an Officer
+
+Any person who, while operating a standard road vehicle, off-road vehicle, or bicycle, willfully flees or otherwise attempts to elude a pursuing law enforcement officer, is guilty of Evading an Officer.All occupants of a vehicle are liable to be charged with VF01 if they willfully partake in the act.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+Suspend
+
+
+
+12 Hours
+
+Suspend
+
+
+
+12 Hours
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+VF02 - Felony Hit and Run
+
+Causing an accident that resulted in bodily injury or death, then any of:
+
+(a) Failing to remain on-scene with the victim and rendering aid where possible.(b) Failing to notify both law enforcement and medical emergency services(c) Failing to remain for questioning by a law enforcement officer unless one fails to respond within 20 minutes
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+75 months
+
+
+
+$3,000
+
+Suspend
+
+
+
+12 Hours
+
+Suspend
+
+
+
+12 Hours
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+VF03 - Operating a Chop Shop
+
+Owning or operating a 'Chop Shop' which profits off of illegal modification sales.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$4,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Intact
+
+VF04 - Felony Public Endangerment
+
+Placing the public in acute danger and or putting a major risk to public safety through unsafe operation of a motor vehicle, firearm, etc.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+Suspend
+
+
+
+12 Hours
+
+Suspend
+
+
+
+12 Hours
+
+Revoked
+
+If Used
+
+
+
+14 Days
+
+((Months = Minutes))
+
+DRUG CHARGES
+
+
+
+DM01 - Possession of a Schedule I Controlled Substance
+
+Possessing any Schedule I controlled substance, which is a drug or other substance that has a high potential for abuse and no currently accepted medical use, including and limited to:
+
+Heroin
+
+Methamphetamine (Meth)
+
+Cocaine
+
+Crack-Cocaine
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$2,500
+
+Intact
+
+Intact
+
+Intact
+
+If Used
+
+
+
+Revoked
+
+DM02 - Possession of a Schedule II Controlled Substance
+
+Possessing any Schedule II controlled substance, which is a drug or other substance that has a moderate potential for abuse and no currently accepted medical use, including and limited to:
+
+Lysergic Acid Diethylamide (LSD)
+
+MDMA (Ecstasy)
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Intact
+
+If Used
+
+
+
+Revoked
+
+DM03 - Possession of a Schedule III Controlled Substance
+
+Possessing, without a valid medical prescription or medical license, any Schedule III controlled substance, which is a drug or other substance that has a low potential for abuse and some currently accepted medical use, including and limited to:
+
+Cannabis (Marijuana)
+
+Anabolic Steroids
+
+Psilocybin
+
+Methadone
+
+Possession of Cannabis in small amounts is applicable to GC06 - Possession of Cannabis.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Intact
+
+If Used
+
+
+
+Revoked
+
+DM04 - Possession of a Controlled Substance while Armed
+
+Possessing any controlled substance, without a valid medical prescription or medical license, whilst armed with any type of firearm.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$3,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+DM05 - Possession of Drug Paraphernalia
+
+Possessing any equipment, product, or material of any kind which is primarily intended or designed for use in manufacturing, compounding, converting, concealing, producing, processing, preparing, injecting, ingesting, inhaling, or otherwise introducing into the human body a controlled substance without the appropriate licensing. This includes, but is not limited to, controlled drug precursors, such as:
+
+Lysergic Acid
+
+Hydrochloric Acid (Muriatic Acid)
+
+Toluene
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+DM06 - Cultivation of a Controlled Substance
+
+Cultivating a controlled substance is defined as the gathering, growing, production, or possession of plants and/or other naturally occurring elements with the purpose of being used in the creation of controlled substances without the appropriate licensing.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$3,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Suspended
+
+
+
+Pending Investigation
+
+DF01 - Possession of a Controlled Substance with Intent of Sales
+
+Possessing any controlled substance with an amount greater than 1 oz (28 g), or equal to 1 oz (28 g) or less in a way that would indicate use for sale and delivery, without the appropriate licensing.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+DF02 - Sale of a Controlled Substance
+
+Selling, exchanging, bartering, giving away, distributing, or delivering a controlled substance to another person without the appropriate licensing.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+DF03 - Sale of Drug Paraphernalia
+
+Selling, exchanging, bartering, giving away, distributing, or delivering any equipment, product, or material of any kind which is primarily intended or designed for use in manufacturing, compounding, converting, concealing, producing, processing, preparing, injecting, ingesting, inhaling, or otherwise introducing into the human body a controlled substance without the appropriate licensing. This includes, but is not limited to, controlled drug precursors, such as:
+
+Lysergic Acid
+
+Hydrochloric Acid (Muriatic Acid)
+
+Toluene
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$2,500
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Intact
+
+DF04 - Trafficking a Controlled Substance
+
+Possessing any controlled substance of an amount greater than 3 oz (84 g) without the appropriate licensing.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+DF05 - Manufacturing a Controlled Substance
+
+Manufacturing a controlled substance is defined as the production, preparation, conversion, processing, or possession of chemicals with the purpose of being used in the creation of controlled substances without the appropriate licensing.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$5,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+DF06 - Unlawful Administering of Drugs
+
+Every person who:
+
+Willfully mingles any poison or harmful substance with any food, drink, medicine, or pharmaceutical product or who willfully places any poison or harmful substance in any spring, well, reservoir, or public water supply, where the person knows or should have known that the same would be taken by any human being to their injury.
+
+Administers any controlled substance, anesthetic, or intoxicating agent, against the wishes of the receiving party.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 Months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+((1 gram = 1 inventory item))
+
+((Months = Minutes))
+
+WEAPON CHARGES
+
+
+
+
+
+WM01 - Unlawful Brandishing of a Firearm or Weapon
+
+Drawing, exhibiting, brandishing or using a firearm or weapon without a lawful reason.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+15 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+1 Day Suspension
+
+Intact
+
+WM02 - Possession of a Class 1 Firearm
+
+Unlicensed or illegally possessing any type of CLASS 1 firearm, its parts, or its ammunition as defined by the State of Los Santos.- A Class 1 firearm is any type of semi-automatic handgun
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+30 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+WM03 - Criminal Use of Weapon Modifications
+
+This charge shall apply to all weapon modifications including but not limited to: Extended Magazines, Modified Magazines, Modified Barrels, Gun-Mounted Flashlights, Compensators, Weapon-Mounted Sights, Weapon-Mounted Scopes, and Suppressors.When such modifications are either:
+
+Used in the commission of a crime
+
+Not eligible to be purchased through legal retailers in the State
+
+If modifications are in their possession at the time one receives "WM02 - Possession of a Class 1 Firearm" or any Weapons Felony as defined by the penal code as "WFXX"
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+WM04 - Possession of Illegal Body Armor
+
+Possessing illegal body armor not purchased or obtained through legal traders. Armor being kevlar, plates, steel, or even make-shift items intended to slow down or stop knives or bullets.Additional Exemptions
+
+Exemptions to this are made for anybody who is employed and on duty with a government-funded agency when the use of the armor is legitimate and not being used in a crime or to aid the commission of a crime.Exemptions are also to be made if someone has received written authorization to carry body armor off duty for the reason of personal protection, and the body armor is not being used in the commission of a crime or to aid the commission of the crime.The San Andreas State Government shall reserve the right to issue said authorization, or to delegate authorization as required.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 months
+
+
+
+$2,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+WM05 - Possession of Body Armor as a Felon
+
+Possessing any authentic worn item which has the primary intended purpose of providing bodily protection from any form of weaponry whilst either being a convicted felon or committing any felony.Additional Exemptions
+
+Exemptions to this are made for anybody who is employed and on duty with a government-funded agency when the use of the armor is legitimate and not being used in a crime or to aid the commission of a crime.Exemptions are also to be made if someone has received written authorization to carry body armor off duty for the reason of personal protection, and the body armor is not being used in the commission of a crime or to aid the commission of the crime.The San Andreas State Government shall reserve the right to issue said authorization, or to delegate authorization as required.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 months
+
+
+
+$2,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+Intact
+
+WF01 - Assault with a Deadly Weapon
+
+Assaulting another person with a so-called "deadly weapon" which could include a gun, melee weapon, or a vehicle.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+WF02 - Shooting from a Vehicle (Drive-By)
+
+Discharging any type of firearm or weapon from a motorized or nonmotorized vehicle or aircraft.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOTS LICENSE SUSPENSION
+
+80 months
+
+
+
+$3,000
+
+Suspend
+
+
+
+12 Hours
+
+Suspend
+
+
+
+12 Hours
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+WF03 - Possession of a Class 2 Firearm
+
+Unlicensed or illegally possessing any type of CLASS 2 firearm, its parts, or its ammunition as defined by the State of Los Santos.- A Class 2 firearm is defined as any type of automatic, lever action, or pump action firearm.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+WF04 - Possession of a Class 3 Firearm
+
+Unlicensed or illegally possessing any type of CLASS 3 firearm, its parts, or its ammunition as defined by the State of Los Santos.- A Class 3 firearm is defined as any type of sniper rifle, designated marksman rifle, light machine gun, or handheld rocket/grenade propelled launcher
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 months
+
+
+
+$10,000
+
+Intact
+
+Intact
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+WF05 - Possession of a Class 4 Firearm
+
+Unlicensed or illegally possessing any type of CLASS 4 firearm, its parts, or its ammunition as defined by the State of Los Santos.- A Class 4 firearm is defined as any vehicle-mounted weapon, whether automatic or semi-automatic in nature. Including but not limited to; vehicle-mounted weapons, miniguns, rockets
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+120 months
+
+
+
+$20,000
+
+Intact
+
+Intact
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+WF06 - Unlicensed transfer of firearms, ammunition and body armor
+
+The sale, transfer, lending, giving or buying of registered and unregistered firearms, ammunition or body armor without authorization from the Firearms and Licensing Division of the Los Santos Police Department.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 Months
+
+
+
+$5,000
+
+Intact
+
+Intact
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+WF07 - Firearms Trafficking
+
+A single individual in possession of 5 or more illegal or unlicensed firearms at one time exceeding personal use.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$4,500
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+((Months = Minutes))
+
+GENERAL FELONIES
+
+
+
+
+
+GF01 - Child Endangerment
+
+An act or omission that renders a child to psychological, emotional or physical abuse.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$4,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Intact
+
+GF02 - Robbery
+
+Taking the property of another person off of them without uncoerced consent.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+50 months
+
+
+
+$2,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+GF03 - Armed Robbery
+
+Taking the property of another person off of them without uncoerced consent through use of a firearm or deadly weapon.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$4,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+GF04 - Sexual Assault
+
+Any touching of a sexual nature without consent of the victim.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF05 - Extortion
+
+Obtaining property from another person through force or intimidation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF06 - Blackmail
+
+Using force or threats to compel another person to perform an act.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF07 - Felony Fraud
+
+The intentional deception of a victim by means including but not limited to a false display of information, identity, or documents with the intent of personal or financial gain causing greater than $5,000 in damages.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+GF08 - Illegal Gambling
+
+Dealing, playing, or conducting, games of faro, monte, roulette, lansquenet, rouge et noir, rondo, tan, fantan, seven-and-a-half, twenty-one, hokey pokey, or any banking or percentage game played with cards or dice," Razzle dazzle," card, dice games prohibited if played for money, credit, check, or anything of value. Establishments and their dealers/game hosts must possess a legal gambling license.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF09 - Embezzlement
+
+The fraudulent appropriation of funds or property owned by someone else.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF10 - Grand Theft
+
+Taking the property of another person without consent of a value over $5,000.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$4,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+GF11 - Grand Theft Auto
+
+Taking someone else's vehicle without consent.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$7,500
+
+Suspend
+
+
+
+12 Hours
+
+Suspend
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+GF12 - Forgery or Counterfeiting
+
+Making, altering or copying seals, documents, currency with the intent to deceive or for personal gain.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+GF13 - Arson
+
+The criminal act of deliberately setting fire to property.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$1,500
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+GF14 - False Impersonation
+
+Impersonating another person in order to harm that person or gain a benefit.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+If Used
+
+
+
+Revoked
+
+GF15 - Burglary
+
+Illegally entering a building, vehicle, or other areas with the intent to commit a crime.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$1,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+GF16 - Tampering with Evidence
+
+An act in which a person alters, conceals, falsifies, or destroys evidence with the intent to interfere with an investigation (usually) by a law-enforcement, governmental, or regulatory authority.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 months
+
+
+
+$3,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Intact
+
+
+
+N/A
+
+GF17 - Rape
+
+Intercourse by violence, force, fear, threat and those who are incapable of giving consent.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+75 months
+
+
+
+$6,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF18 - Racketeering
+
+A person who has committed ""at least two acts of racketeering activity"" drawn from any felony charge of the State of San Andreas —within a 1-year period can be charged with racketeering if such acts are related in one of four specified ways to an ""enterprise"".
+
+”Enterprise” refers to any coordinated, cooperative or collaborative activity undertaken by two or more persons associated by fact, but not necessarily through a legal entity, with the intention of achieving financial or other material gain for the affiliated persons.
+
+“Racketeering” refers to acquiring, establishing, operating an enterprise through illegal acts or with illegally derived income.
+
+“Racketeering Activity” refers to the commitment or attempted commitment, a conspiracy to commit, or to intentionally aid, solicit, order, coerce or intimidate another person to commit any unlawful activities defined within the San Andreas Penal Code.
+
+”Conspiracy” refers to an agreement between two or more persons to engage in an unlawful or criminal act, or an act that is innocent in itself but becomes unlawful when done by the combination of actors, at some point in the future.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF19 - Abuse or Desecration of Dead Human Body
+
+A person is guilty of abuse or desecration of a dead human body if the person intentionally and unlawfully:
+
+removes, conceals, or destroys a dead human body or any part of it or Moves it from one location to another
+
+disinters a buried or otherwise interred dead human body, without authority of a government order.
+
+Interring a dead human body without the qualification of gravedigging and a death certificate copy.
+
+dismembers a dead human body to any extent, or damages or detaches any part or portion of a dead human body.
+
+perform any form of practice with a dead human body without being a licensed medical practitioner.
+
+"Dead human body" includes any part of a human body in any stage of decomposition.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+70 months
+
+
+
+$3,500
+
+Suspended
+
+
+
+12 Hours
+
+Suspended
+
+
+
+12 Hours
+
+Revoked
+
+
+
+N/A
+
+If Used
+
+
+
+Revoked
+
+GF20 - Possession of Human Body Tissue
+
+"Human body tissue" makes up organs and other body parts.it is illegal to be in possession of any human tissue unless authorized by a government institution licensed to manage, storing and/or using human tissue.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF21 - Prison Break
+
+(a) Every individual arrested and booked for, charged with, or convicted of a misdemeanor or felony criminal charge who is confined in any county or city jail, prison, who attempts to break in or out, is guilty of GF-21 Prison Break.(b) Every person or persons who attempt to or successfully breaks into any form of containment facilities, such as county jail, city jail or prison, is guilty of GF-21 Prison Break.(c) If subsection (a)-(b) is committed with any type of force, the person or persons will be guilty of aggravated Prison Break, and any subsequent criminal charges.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$5,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+GF22 - Breach of Trust
+
+The offense of Breach of Trust occurs when a trustee exercises control over information gained during employment with a government agency in a manner that exceeds their authorized role.
+
+It shall be unlawful for any trustee to disclose, transfer, or utilize entrusted information for personal gain or any purpose other than that for which it was entrusted.
+
+Trustees shall not convert their limited control over entrusted information into full ownership while the information remains under their stewardship.
+
+Definitions
+
+Trustee: Any individual or entity entrusted with confidential information.
+
+Trustor: The entity or person conferring confidential information to a trustee.
+
+Government Agency: Shall be defined by the executive branch, with a changing list of organizations that evolves with time.
+
+Exercising Control Over Information: Actions by a trustee that involve making decisions about the use, distribution, or modification of the confidential information that go beyond the scope of their authorized role. This includes, but is not limited to, unauthorized copying, altering, or retaining the information for purposes not sanctioned by the trustor.
+
+Utilize Entrusted Information: The act of using confidential information for any purpose other than that for which it was entrusted. This includes, but is not limited to, using the information for personal gain, sharing it with unauthorized parties, or leveraging it for competitive advantage.
+
+Government Agency List
+
+San Andreas State Government
+
+San Andreas Judicial Branch
+
+Los Santos Police Department
+
+Los Santos Sheriff Department
+
+San Andreas Department of Correction
+
+Los Santos Emergency Medical Service
+
+Whistleblower Protections
+
+Individuals who disclose sensitive information in good faith with the intent to uncover corruption or malfeasance by public officials shall not be immediately prosecuted or imprisoned.
+
+Such individuals shall be subject to an on-the-record charge and trial to determine whether the disclosure was made in good faith and aligned with the intent to expose wrongdoing.
+
+On-the-Record Charge: A formal accusation documented in public records, specifying the nature of the alleged offense and the circumstances of the disclosure.
+
+Trial Process:
+
+The accused whistleblower shall have the right to a fair and public hearing by an impartial tribunal.
+
+Evidence shall be presented by both the prosecution and defense, with the opportunity for cross-examination.
+
+The court shall consider the intent behind the disclosure, the relevance to uncovering corruption or malfeasance, and whether the disclosure was made in good faith.
+
+The burden of proof lies with the prosecution to establish that the disclosure was not made in good faith and was not intended to expose wrongdoing.
+
+If the court finds the disclosure was made in good faith and intended to uncover corruption or malfeasance, the individual shall not be convicted of breach of trust.
+
+If the court determines that the individual was not trying to expose wrongdoing, they may be prosecuted for breach of trust.
+
+Examples of disclosures that would not be considered exposing wrongdoing include, but are not limited to:
+
+Disclosing confidential information for personal gain, such as selling information to a third party.
+
+Sharing information with competitors or other unauthorized parties to gain a competitive advantage.
+
+Leaking information out of spite or revenge against the trustor or another individual.
+
+Disclosing information that is irrelevant to public interest or does not reveal any corruption or malfeasance.
+
+Enforcement
+
+Law enforcement agencies shall be empowered to investigate allegations of breach of trust. However they will not be empowered to apply this charge to individuals.
+
+The burden of proof shall lie with the prosecution to establish the guilt of the accused beyond a reasonable doubt.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$10,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF23 - Grand Sales Tax Evasion
+
+Any person who, with or without intent to evade taxes, fails to report and pay sales tax at the time of sale, and instead of remitting it to the government, pockets it. The current sales tax in San Andreas is 5%. The total value of the tax has to be $50,000 or more for this charge to apply. (( Selling a car at one of the car markets or house by the script will automatically deduct 5% of the sale. ))
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+40 months
+
+
+
+$10,000 & Unpaid Tax + 10%
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF24 - Perjury
+
+Saying or writing something that is not true with intent to mislead during an official proceeding, trial, sitting of a Congressional Committee, or while the House is in order and participating in a Congressional sitting, while under oath.A person can only be guilty of perjury if they do any of the following while under oath.
+
+Knowingly and willfully provides false statements or information to mislead a judge and/or jury in official proceedings for or during a trial.
+
+Knowingly and willfully provides several inconsistent statements to mislead a judge and/or jury in official proceedings for or during a trial.
+
+Knowingly and willfully signs an affidavit under oath with statements that meet the criteria for (a) or (b).
+
+Knowingly and willfully provides a false statement or information to mislead Congress or a congressional committee.
+
+Knowingly and willfully signs an affidavit under oath with statements that meet the criteria for all of the above.
+
+For Section A, B, and C, a person can only be charged for perjury if the false statement provided is in direct relation to the trial and has the potential of affecting the outcome of the trial.
+
+For Section D and E, a person can only be charged at the order of the Speaker of the House, the Chairperson of Congress, or the Prosecutor's Office.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$3,000
+
+Intact
+
+Intact
+
+Revoked
+
+
+
+N/A
+
+If Used
+
+
+
+Revoked
+
+GF25 - Felony Contempt of Court
+
+Egregious or repeated willful disobedience to, or disregard of, a court order or any misconduct in the presence of a court, including but not limited to:
+
+Any act of disrespect, disobedience, defiance, or interference by any person during a legal proceeding.
+
+Willfully failing to preform a specific act in accordance with a valid court order.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 months
+
+
+
+$5,000
+
+Intact
+
+Intact
+
+Revoked
+
+Intact
+
+GF26 - Organized Assault on Government or Law Enforcement Operations
+
+Every person who, in a group of two or more, willfully gathers with the goal of carrying out an armed assault intended to intercept police, medical, or government work and resist, delay, obstruct, injure, or carry out the killing of any public officer, peace officer, or emergency medical technician in the discharge or attempt to discharge any duty of his or her office or employment.
+
+The statute may stand if the goal of carrying out an armed assault was successfully orchestrated or not. An attempt to carry out an assault would constitute willfully gathering with the goal of carrying out the assault, meaning there can be no "attempted" modifier on this crime.
+
+Every person who operates as an accessory to the assault or attempted assault as outlined in the statute would be considered to be willfully gathering with co-conspirators, meaning there can be no "accessory" modifier on this crime.
+
+As the charge is already considered to be targeting government officials, there can be no "of a Government Employee" modifier on this crime.
+
+As this charge is defined as a group congregating to commit a subsequent crime, there can be no "Aggravated" modifier on this crime.
+
+A person must not be in physical proximity to co-conspirators to be considered willfully gathering with them, they merely need to be coordinating to carry out the same assault.
+
+A person may be considered a participant if they have taken part in or been audience to written, verbal, visual, or electronic communication used to organize the assault.
+
+A person may be considered a willful participant if they have not faced any undue impediment to remove themselves from the situation and contact law enforcement.
+
+"peace officer" means any government employee tasked by their employer with the duty of carrying out law enforcement, correctional, or government-sanctioned security duties in the state.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 Months
+
+
+
+$4,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+Revoked
+
+Suspended
+
+
+
+Pending Investigation
+
+GF27 - Incitement of Violence against a Peace Officer
+
+Any person who advocates the willful and unlawful killing or injuring of a peace officer, with the specific intent to cause the willful and unlawful killing or injuring of a peace officer, and such advocacy is done at a time, place, and under circumstances in which the advocacy is likely to cause the imminent willful and unlawful killing or injuring of a peace officer.
+
+If such advocacy does not cause the unlawful and willful killing or injuring of a peace officer then the crime is downgraded to "GM27 - Incitement of Violence against a Peace Officer"
+
+"advocacy" means the direct incitement of others to cause the imminent willful and unlawful killing or injuring of a peace officer, and not the mere abstract teaching of a doctrine."peace officer" means any government employee tasked by their employer with the duty of carrying out law enforcement, correctional, or government-sanctioned security duties in the state.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 Months
+
+
+
+$4,000
+
+Intact
+
+Intact
+
+If Used
+
+
+
+Revoked
+
+Intact
+
+((Months = Minutes))
+
+SERIOUS FELONIES
+
+
+
+
+
+SF01 - Domestic Terrorism
+
+Extreme violent activities that (A) appear to be intended (i) to intimidate or coerce a civilian population; (ii) to influence the policy of a government by intimidation or coercion; or (iii) to affect the conduct of a government by mass destruction, assassination, or kidnapping.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+120 months
+
+
+
+$15,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF02 - Murder
+
+The premeditated or non-premeditated killing of another person.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 months
+
+
+
+$9,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF03 - Involuntary or Vehicular Manslaughter
+
+The killing of another person without intent but in a negligent manner using any type of techniques, objects, weapons, instrument, or by a vehicle or aircraft while contravening any other law or road/air safety legislation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+80 months
+
+
+
+$5,500
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF04 - Kidnapping
+
+The imprisonment or forcible acquisition of another person against their will and moving them within the county, state, or country.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+70 months
+
+
+
+$10,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF05 - Torture
+
+Inflicting cruel and unusual bodily harm upon another person.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 months
+
+
+
+$12,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF06 - Possessing Destructive Devices or Explosives
+
+Destructive devices and explosives are bombs, incendiary devices or any other home-made explosive or device intended for mass killing within an area.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+75 months
+
+
+
+$7,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF07 - Bank Robbery
+
+Entering or attempting to enter a bank with the intent to deprive it of any item with monetary value, with or without force. Attempted modifier does not apply to this charge.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+70 months
+
+
+
+$10,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF08 - Human Trafficking
+
+Deprivation or violation of the personal liberty of another with the intent to obtain forced labor or services.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+75 months
+
+
+
+$7,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+SF09 - False Imprisonment of a Hostage
+
+Every person who commits the offense of false imprisonment, as defined in GM-20, against a person for purposes of protection from arrest, which substantially increases the risk of harm to the victim, or for purposes of using the person as a shield.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+70 months
+
+
+
+$10,000
+
+If Used
+
+
+
+12 Hours
+
+If Used
+
+
+
+12 Hours
+
+Revoked
+
+Revoked
+
+((Months = Minutes))
+
+AVIATION CHARGES
+
+
+
+
+
+AM01 - Negligent Operation of an Aircraft
+
+Failing to use reasonable care while operating an aircraft, which could lead to personal injuries and damages to property.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+35 Months
+
+
+
+$4,000
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+7 Days
+
+AM02 - Operating an Unregistered Aircraft
+
+No person shall operate an aircraft on a property under the authority of the San Andreas Aviation Administration unless the aircraft is registered. An unregistered aircraft is defined as a vehicle that has not been legally purchased from a dealership vendor or third person party, and which is not registered with the San Andreas Aviation Administration.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 Months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+3 Days
+
+AM03 - Operating an Aircraft without a License on your Person
+
+Operating an aircraft without the proper licensing on your person.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 Months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+7 Days
+
+AM04 - Disrupting Airport/Aircraft Operations
+
+Any person(s), with the exception of emergency response personnel or aircraft calling an emergency, disrupting the functional operations of an airport or air facilities, including access or operation of:
+
+San Andreas Aviation Administration registered aircraft, mechanics, or pilots.
+
+San Andreas Aviation Administration air traffic controllers, personnel, or registered vehicles.
+
+Airport facilities, including but not limited to: parking, terminals, fueling, and mechanical areas, as well as taxiways, helipads, runways, or towers.
+
+Other registered facilities for aircraft operation, such as helipads, designated by the San Andreas Aviation Administration.
+
+Emergency, San Andreas State Government, or Military facilities.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 Months
+
+
+
+$5,000
+
+If Used
+
+
+
+6 Hours
+
+If Used
+
+
+
+6 Hours
+
+Intact
+
+If Used
+
+
+
+7 Days
+
+AM05 - Operating an Aircraft without Proper Equipment
+
+Aircraft are operating without proper equipment and thus defined as unflightworthy when they fail to meet Minimum Safety Requirements. At the discretion of the handling officer, if your aircraft is deemed unsafe, it's registration may be suspended pending inspection by a certified official authorized by the San Andreas Aviation Administration.
+
+An aircraft operating in San Andreas airspace must meet following criteria:
+
+Aircraft must be equipped with front and rear white colored lights
+
+Aircraft must be equipped with red port-side lights
+
+Aircraft must be equipped with green starboard-side lights
+
+Aircraft must be equipped with emergency equipment including flares and parachutes
+
+Aircraft must have properly functioning instrumentation for fuel levels, altimeter, and air speed
+
+Aircraft must not cause damage to the tarmac
+
+Aircraft must have up-to-date inspection and mechanic logs as outlined by the San Andreas Aviation Administration.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+10 Months
+
+
+
+$1,000
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+3 Days
+
+AM06 - Failure to Make Way for Emergency, State Government, or Military Aircraft
+
+Failure to yield and give proper distance in order to make way for Emergency or San Andreas State Governmental aircraft that has alerted you to their presence, or following and/or impeding them without valid and legal justification.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+25 Months
+
+
+
+$2,500
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+3 Days
+
+AM07 - Operating an Aircraft in Controlled Airspace without Clearance
+
+Operating an aircraft in any class of controlled airspace without clearance from the relevant Air Traffic Controller, including for takeoff, landing, and flying through.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+20 Months
+
+
+
+$2,500
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+7 Days
+
+AM08 - Violating a Restricted Airspace Order or Temporary Flight Restriction
+
+Intentionally entering or remaining in restricted airspace or within the area of a temporary flight restriction, as designated by the San Andreas Aviation Administration, without authorization.Emergency, San Andreas State Government, and Military aircraft are exempt from Restricted Airspace Orders and Temporary Flight Restrictions.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+35 Months
+
+
+
+$4,000
+
+Intact
+
+Intact
+
+Intact
+
+Suspended
+
+
+
+7 Days
+
+AF01 - Reckless Operation of an Aircraft
+
+Intentional disregard for life and/or property through the operation of an aircraft.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 Months
+
+
+
+$10,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF02 - Committing a Crime Aboard an Aircraft in Flight
+
+Committing any crime, with the exception of the AM/AF designation, enumerated in the Penal Code while aboard any type of aircraft in flight.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 Months
+
+
+
+$2,500
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF03 - Operating an Aircraft without an Active License
+
+Operating an aircraft without possessing an active pilot's license.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 Months
+
+
+
+$7,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF04 - Failure to Obey Intercepting Military or Law Enforcement Aircraft/ATC Orders
+
+Failure to do any of the following while being intercepted by a military or law enforcement aircraft or within the communication radius of an air traffic controller:
+
+Adhering to all instructions relayed through the use of visual devices, visual signals, and radio communications from the intercepting aircraft or air traffic controller.
+
+Attempting to establish radio communications with the intercepting aircraft or with the appropriate air traffic controller.
+
+Continuing to comply and maintaining communication with intercepting aircraft or air traffic controller signals and instructions until positively released.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+70 Months
+
+
+
+$4,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF05 - Violating a Prohibited Airspace Order
+
+Intentionally entering or remaining in Prohibited Airspace as designated by the San Andreas Aviation Administration.Emergency or San Andreas State Government aircraft are exempt from Prohibited Airspace Orders unless specified otherwise by the San Andreas Aviation Administration. Military aircraft do not require any clearance to enter Prohibited Airspace.Aircraft responding to emergency situations may violate Prohibited Airspace Orders, but must make every effort to inform the relevant Air Traffic Controller.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+60 Months
+
+
+
+$3,500
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF06 - Transporting Dangerous Cargo
+
+No person may carry dangerous cargo on an aircraft without written authorization by the San Andreas Aviation Administration. Dangerous cargo is defined as any cargo that can combust, explode, implode, is regarded as a bio hazard risk, is radioactive, or cargo that could otherwise put the public at greater risk of serious injury or death if improperly handled.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+45 Months
+
+
+
+$2,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF07 - Drunk, Impaired, or Distracted Flying
+
+Operating any type of aircraft when intoxicated with a blood alcohol percentage above 0.08%, under the influence any substance that impairs judgement and/or reaction time, or engaging in an activity which distracts the captain from flying safely.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 Months
+
+
+
+$8,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF08 - Aircraft Piracy
+
+Seizing or exercising control of an aircraft by force, violence, threat of force or violence, or any form of intimidation, and with wrongful intent.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+120 Months
+
+
+
+$15,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF09 - Destruction of an Aircraft or Aircraft Facilities
+
+Willfully damaging, destroying, disabling, wrecking, or setting fire to any type of aircraft or aircraft facilities.
+
+Willfully tampering with, or removing aircraft components, when not in due course of maintenance by a mechanic or inspector certified by the San Andreas Aviation Administration.
+
+Willfully placing destructive devices or substances in, upon, or in proximity of any type of aircraft or aircraft facilities, if such placing is likely to endanger the safety or any such aircraft or aircraft facilities.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 Months
+
+
+
+$10,000 + Cost of all damages sustained
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+AF10 - Disobeying a Grounding Order
+
+Piloting any aircraft while an individual is placed under an active grounding order.
+
+A grounding order shall be defined as an order specifically given by the San Andreas Aviation Administration (SAAA) that prevents a pilot from operating specific or all aircraft. Grounding orders may either be permanent, or set to expire after a set date.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+90 Months
+
+
+
+$15,000
+
+Intact
+
+Intact
+
+Revoked
+
+Revoked
+
+((Months = Minutes))
+
+
+
+BUSINESS LICENSING BUREAUFINES & CRIMINAL CHARGES
+
+
+
+All charges within this section shall ONLY be issued by authorized members of the Business Licensing Bureau, the Attorney General as directed by the Business Licensing Bureau, or by the head of the Executive Government.
+
+When required or called upon to execute the authority of the laws in question, Law Enforcement agencies may interact with the charged individual only for the purposes of detainment (Including the procedures required for detainment) or legal questioning.
+
+
+
+
+
+BLB01 - Breach of Minor Licensing Conditions
+
+Any business operating in breach of a minor licensing condition as defined by the Business Licensing Bureau.This charge shall be classified as a regulatory citation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$25,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+BLB02 - Breach of Moderate Licensing Conditions
+
+Any business operating in breach of a moderate licensing condition as defined by the Business Licensing Bureau.This charge shall be classified as a regulatory citation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$50,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+BLB03 - Breach of Major Licensing Conditions
+
+Any business operating in breach of a major licensing condition as defined by the Business Licensing Bureau.This charge shall be classified as a regulatory citation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$100,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+BLB04 - Operating Without Valid Documents 1st Degree
+
+Any business operating in either of the two following ways:
+
+Without a Valid Registration Issued by the Business & Licensing Bureau of the Executive Government
+
+Without the Correct or Valid Business License Issued by the Business & Licensing Bureau of the Executive Government
+
+This charge shall be classified as a regulatory citation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$40,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+BLB05 - Operating Without Valid Documents 2nd Degree
+
+Any business operating in either of the two following ways after being cited with "BLB04 - Operating Without Valid Documents 1st Degree" and after being given 14 Days:
+
+Without a Valid Registration Issued by the Business & Licensing Bureau of the Executive Government
+
+Without the Correct or Valid Business License Issued by the Business & Licensing Bureau of the Executive Government
+
+This charge shall be classified as a regulatory citation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$80,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+BLB06 - Operating Without Valid Documents 3rd Degree
+
+Any business operating in either of the two following ways after being cited with "BLB05 - Operating Without Valid Documents 2nd Degree" and after being given 7 Days:
+
+Without a Valid Registration Issued by the Business & Licensing Bureau of the Executive Government
+
+Without the Correct or Valid Business License Issued by the Business & Licensing Bureau of the Executive Government
+
+This charge shall be classified as a regulatory citation.
+
+
+
+SENTENCE & FINE
+
+DRIVER LICENSE SUSPENSION
+
+TRUCKER LICENSE SUSPENSION
+
+WEAPON LICENSE SUSPENSION
+
+PILOT LICENSE SUSPENSION
+
+N/A
+
+
+
+$120,000
+
+Intact
+
+Intact
+
+Intact
+
+Intact
+
+((Months = Minutes))((Days = Minutes))
+
+
+
