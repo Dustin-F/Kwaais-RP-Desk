@@ -82,6 +82,22 @@ const ANIM_INTERACTION = [
   'ThumbsUp2',
 ];
 
+function applySubMenuOrders(items, subMenuOrders) {
+  if (!subMenuOrders || !items || !items.length) return items;
+  return items.map((item) => {
+    if (!item.children || !item.children.length) return item;
+    const order = subMenuOrders[item.id];
+    let children = item.children;
+    if (order && order.length) {
+      const byId = Object.fromEntries(children.map((c) => [c.id, c]));
+      const ordered = order.filter((id) => byId[id]).map((id) => byId[id]);
+      const rest = children.filter((c) => !order.includes(c.id));
+      children = [...ordered, ...rest];
+    }
+    return { ...item, children: applySubMenuOrders(children, subMenuOrders) };
+  });
+}
+
 function buildMenu(settings) {
   const dept = settings.department || 'PD';
 
@@ -371,6 +387,22 @@ function buildMenu(settings) {
     children: customRpChildren,
   };
 
+  const usefulLinksList = settings.usefulLinks || [];
+  const usefulLinksChildren = [
+    { id: 'manage-links', label: 'Manage Links', actionId: 'OpenManageLinks' },
+    ...usefulLinksList.map((e) => ({
+      id: e.id,
+      label: e.title,
+      actionId: 'Link',
+      linkUrl: e.url,
+    })),
+  ];
+  const usefulLinksCategory = {
+    id: 'useful-links',
+    label: 'Useful Links',
+    children: usefulLinksChildren,
+  };
+
   const bbcodeTemplatesList = settings.bbcodeTemplates || [];
   const bbcodeChildren = [
     {
@@ -549,6 +581,62 @@ function buildMenu(settings) {
     needsInput: true,
   };
 
+  const adminNewPlayer = {
+    id: 'admin-new-player',
+    label: 'New Player',
+    children: [
+      {
+        id: 'AdminWelcome',
+        label: 'Welcome',
+        actionId: 'CustomRP',
+        rpText: '/rm Welcome to ECRP, We glad to have you here, if there is anything I can help you with before you start please let me know',
+      },
+      {
+        id: 'AdminHowToRespond',
+        label: 'How to Respond',
+        actionId: 'CustomRP',
+        rpText: '/rm To respond to me press T and type /rm followed by your message',
+      },
+      {
+        id: 'AdminClosingNewPlayer',
+        label: 'Closing Message',
+        actionId: 'CustomRP',
+        rpText: '/rm If you need anything please hit T and type /report and a member of staff will help you. Welcome to ECRP',
+      },
+    ],
+  };
+
+  const adminGeneral = {
+    id: 'admin-general',
+    label: 'General',
+    children: [
+      {
+        id: 'AdminGreeting',
+        label: 'Greeting',
+        actionId: 'CustomRP',
+        rpText: '/rm Good day, you are now in the hands of KwaaiNaai and Ill do my best to solve your issue',
+      },
+      {
+        id: 'AdminRulesQuery',
+        label: 'Rules Query',
+        actionId: 'CustomRP',
+        rpText: '/rm Unfortunately we are not able to tell you whether a specific action is allowed or not. Please read the server rules and use your best judgement',
+      },
+      {
+        id: 'AdminClosing',
+        label: 'Closing',
+        actionId: 'CustomRP',
+        rpText: '/rm I hope you have the most amazing day and remeber dont be a Naai be Kwaai',
+      },
+    ],
+  };
+
+  const adminReports = {
+    id: 'admin-reports',
+    label: 'Reports',
+    children: [adminGeneral, adminNewPlayer],
+  };
+
   const rootItems =
     dept === 'Mechanic'
       ? [
@@ -557,6 +645,15 @@ function buildMenu(settings) {
           mechanicMods,
           mechanicTow,
           customRpCategory,
+          usefulLinksCategory,
+        ]
+      : dept === 'Admin'
+      ? [
+          adminReports,
+          customRpCategory,
+          bbcodeTemplatesCategory,
+          usefulLinksCategory,
+          utility,
         ]
       : [
           duty,
@@ -567,6 +664,7 @@ function buildMenu(settings) {
           radio,
           pursuit,
           animations,
+          usefulLinksCategory,
           utility,
         ];
   const order =
@@ -577,12 +675,15 @@ function buildMenu(settings) {
           'mechanic-mods',
           'mechanic-tow',
           'custom-rp',
+          'useful-links',
         ]
+      : dept === 'Admin'
+      ? settings.adminMenuOrder || ['admin-reports', 'custom-rp', 'bbcode-templates', 'useful-links', 'utility']
       : settings.menuOrder || rootItems.map((x) => x.id);
   const byId = Object.fromEntries(rootItems.map((x) => [x.id, x]));
   const ordered = order.filter((id) => byId[id]).map((id) => byId[id]);
   const rest = rootItems.filter((x) => !order.includes(x.id));
-  return [...ordered, ...rest];
+  return applySubMenuOrders([...ordered, ...rest], settings.subMenuOrders);
 }
 
 /**

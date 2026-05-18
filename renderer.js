@@ -16,9 +16,13 @@
   const modalBody = document.getElementById('modalBody');
   const modalClose = document.getElementById('modalClose');
   const btnBack = document.getElementById('btnBack');
+  const mechanicRpDelayWrap = document.getElementById('mechanicRpDelayWrap');
+  const mechanicDelaySlider = document.getElementById('mechanicDelaySlider');
+  const mechanicDelayValue = document.getElementById('mechanicDelayValue');
 
   let settings = {};
   let stack = [];
+  let currentParentId = null;
   let currentItems = [];
   let selectedIndex = 0;
   let pendingAction = null;
@@ -31,7 +35,7 @@
     const unitSwitcher = document.getElementById('unitSwitcher');
     if (!currentUnitEl || !unitSwitcher) return;
     const dept = settings.department || 'PD';
-    if (dept === 'Mechanic') {
+    if (dept === 'Mechanic' || dept === 'Admin') {
       unitSwitcher.style.display = 'none';
       currentUnitEl.textContent = '';
       return;
@@ -114,6 +118,8 @@
     CustomRP: 'Sends custom /me or /do phrase',
     OpenManageBBCODE: 'Add or edit BBCODE templates for reports/emails',
     CopyBBCODE: 'Copy template to clipboard (paste on website manually)',
+    OpenManageLinks: 'Add or manage useful links',
+    Link: 'Copy or open this link',
     OpenPenalCode: 'View San Andreas Penal Code',
     MechOffer: 'Send /mechoffer command then RP typing and sending invoice',
     RadioPDtoDOC: 'Department radio: to DOC',
@@ -136,6 +142,20 @@
           (item.bbcodeContent.length > 60 ? '…' : ''))
       );
     return item.label || '';
+  }
+
+  function dispatchAction(item) {
+    if (item.actionId === 'OpenManageRp') openManageRpModal();
+    else if (item.actionId === 'OpenManageBBCODE') openManageBBCODEModal();
+    else if (item.actionId === 'OpenManageLinks') openManageLinksModal();
+    else if (item.actionId === 'OpenPenalCode') openPenalCodeModal();
+    else if (item.actionId === 'CopyBBCODE') copyBBCODEToClipboard(item);
+    else if (item.actionId === 'Link') copyLinkToClipboard(item);
+    else if (item.needsInput) openInputModal(item);
+    else {
+      const params = item.rpText != null ? { text: item.rpText } : {};
+      runAction(item.actionId, params, item.label);
+    }
   }
 
   function getFlattenedItems() {
@@ -168,9 +188,10 @@
     return window.buildMenu(settings);
   }
 
-  function setLevel(items, breadcrumbLabel) {
-    stack.push({ items: currentItems, breadcrumbLabel });
+  function setLevel(items, breadcrumbLabel, parentId = null) {
+    stack.push({ items: currentItems, breadcrumbLabel, parentId: currentParentId });
     currentItems = items;
+    currentParentId = parentId;
     selectedIndex = 0;
     render();
   }
@@ -179,13 +200,13 @@
     if (stack.length === 0) return;
     const level = stack.pop();
     currentItems = level.items;
+    currentParentId = level.parentId;
     selectedIndex = 0;
     render();
   }
 
   const DRAG_THRESHOLD = 8;
-  const canReorder = () =>
-    stack.length === 0 && !searchQuery.trim();
+  const canReorder = () => !searchQuery.trim();
 
   function render() {
     const items = getItems();
@@ -197,6 +218,29 @@
       : 'Main';
     breadcrumbEl.style.display = breadcrumbParts.length ? 'block' : 'none';
     if (btnBack) btnBack.style.display = stack.length > 0 ? 'block' : 'none';
+
+    const inMechanicRpMenu =
+      !searchQuery.trim() &&
+      stack.length === 1 &&
+      (stack[0].breadcrumbLabel === 'Repairs' ||
+        stack[0].breadcrumbLabel === 'Mods');
+    if (mechanicRpDelayWrap) {
+      if (inMechanicRpMenu) {
+        mechanicRpDelayWrap.classList.remove('hidden');
+        const delay = Math.min(
+          30,
+          Math.max(1, settings.mechanicRPDelaySeconds ?? 5),
+        );
+        if (mechanicDelaySlider) {
+          mechanicDelaySlider.value = String(delay);
+          mechanicDelaySlider.min = '1';
+          mechanicDelaySlider.max = '30';
+        }
+        if (mechanicDelayValue) mechanicDelayValue.textContent = String(delay);
+      } else {
+        mechanicRpDelayWrap.classList.add('hidden');
+      }
+    }
 
     menuListEl.innerHTML = '';
     const reorderEnabled = canReorder();
@@ -216,6 +260,7 @@
       if (item.actionId) {
         const params = item.rpText != null ? { text: item.rpText } : {};
         const cacheKey = item.actionId + '|' + JSON.stringify(params);
+        li.dataset.actionCacheKey = cacheKey;
         const dur = durationCache.get(cacheKey);
         if (dur != null && dur > 0) {
           const durSpan = document.createElement('span');
@@ -228,7 +273,19 @@
           window.api.getActionDuration(item.actionId, params).then((ms) => {
             durationFetchInFlight.delete(cacheKey);
             durationCache.set(cacheKey, ms);
-            render();
+            if (ms > 0) {
+              const targetLi = menuListEl.querySelector(`[data-action-cache-key="${CSS.escape(cacheKey)}"]`);
+              if (targetLi) {
+                const lw = targetLi.querySelector('.label-wrap');
+                if (lw && !lw.querySelector('.menu-item-duration')) {
+                  const durSpan = document.createElement('span');
+                  durSpan.className = 'menu-item-duration';
+                  durSpan.textContent = (ms / 1000).toFixed(1) + 's';
+                  durSpan.title = 'Total duration';
+                  lw.appendChild(durSpan);
+                }
+              }
+            }
           }).catch(() => durationFetchInFlight.delete(cacheKey));
         }
       }
@@ -251,23 +308,40 @@
         arrow.setAttribute('aria-hidden', 'true');
         li.appendChild(arrow);
       }
+      if (item.linkUrl) {
+        const linkActions = document.createElement('div');
+        linkActions.className = 'link-item-actions';
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'btn btn-small link-copy-btn';
+        copyBtn.textContent = 'Copy';
+        copyBtn.title = 'Copy link to clipboard';
+        copyBtn.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          copyLinkToClipboard(item);
+        });
+        const openBtn = document.createElement('button');
+        openBtn.type = 'button';
+        openBtn.className = 'btn btn-small link-open-btn';
+        openBtn.textContent = 'Open';
+        openBtn.title = 'Open in browser';
+        openBtn.addEventListener('mousedown', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          openLinkInBrowser(item);
+        });
+        linkActions.appendChild(copyBtn);
+        linkActions.appendChild(openBtn);
+        li.appendChild(linkActions);
+      }
       function handleItemActivate() {
         selectedIndex = i;
         render();
         if (item.children && item.children.length) {
-          setLevel(item.children, item.label);
+          setLevel(item.children, item.label, item.id);
         } else if (item.actionId) {
-          if (item.actionId === 'OpenManageRp') openManageRpModal();
-          else if (item.actionId === 'OpenManageBBCODE')
-            openManageBBCODEModal();
-          else if (item.actionId === 'OpenPenalCode') openPenalCodeModal();
-          else if (item.actionId === 'CopyBBCODE')
-            copyBBCODEToClipboard(item);
-          else if (item.needsInput) openInputModal(item);
-          else {
-            const params = item.rpText != null ? { text: item.rpText } : {};
-            runAction(item.actionId, params, item.label);
-          }
+          dispatchAction(item);
         }
       }
       if (reorderEnabled) {
@@ -309,13 +383,26 @@
                 const reordered = [...currentIds];
                 reordered.splice(fromIdx, 1);
                 reordered.splice(toIdx, 0, item.id);
-                settings = { ...settings, menuOrder: reordered };
+                const isRoot = stack.length === 0;
+                const snapParentId = currentParentId;
+                if (isRoot) {
+                  const orderKey = settings.department === 'Admin' ? 'adminMenuOrder' : 'menuOrder';
+                  settings = { ...settings, [orderKey]: reordered };
+                } else {
+                  const subMenuOrders = { ...(settings.subMenuOrders || {}), [snapParentId]: reordered };
+                  settings = { ...settings, subMenuOrders };
+                }
+                const byId = Object.fromEntries(items.map((it) => [it.id, it]));
                 window.api.saveSettings(settings).then((updated) => {
                   settings = updated;
-                  currentItems = buildRootItems();
+                  if (isRoot) {
+                    currentItems = buildRootItems();
+                  } else {
+                    currentItems = reordered.filter((id) => byId[id]).map((id) => byId[id]);
+                  }
                   render();
                   renderQuickBar();
-                  showToast('Category order updated');
+                  showToast('Order updated');
                 });
               }
             }
@@ -353,22 +440,9 @@
     selectedIndex = index;
     render();
     if (item.children && item.children.length) {
-      setLevel(item.children, item.label);
+      setLevel(item.children, item.label, item.id);
     } else if (item.actionId) {
-      if (item.actionId === 'OpenManageRp') {
-        openManageRpModal();
-      } else if (item.actionId === 'OpenManageBBCODE') {
-        openManageBBCODEModal();
-      } else if (item.actionId === 'OpenPenalCode') {
-        openPenalCodeModal();
-      } else if (item.actionId === 'CopyBBCODE') {
-        copyBBCODEToClipboard(item);
-      } else if (item.needsInput) {
-        openInputModal(item);
-      } else {
-        const params = item.rpText != null ? { text: item.rpText } : {};
-        runAction(item.actionId, params, item.label);
-      }
+      dispatchAction(item);
     }
   }
 
@@ -384,22 +458,9 @@
     const item = items[selectedIndex];
     if (!item) return;
     if (item.children && item.children.length) {
-      setLevel(item.children, item.label);
+      setLevel(item.children, item.label, item.id);
     } else if (item.actionId) {
-      if (item.actionId === 'OpenManageRp') {
-        openManageRpModal();
-      } else if (item.actionId === 'OpenManageBBCODE') {
-        openManageBBCODEModal();
-      } else if (item.actionId === 'OpenPenalCode') {
-        openPenalCodeModal();
-      } else if (item.actionId === 'CopyBBCODE') {
-        copyBBCODEToClipboard(item);
-      } else if (item.needsInput) {
-        openInputModal(item);
-      } else {
-        const params = item.rpText != null ? { text: item.rpText } : {};
-        runAction(item.actionId, params, item.label);
-      }
+      dispatchAction(item);
     }
   }
 
@@ -417,6 +478,61 @@
     } catch {
       return safe;
     }
+  }
+
+  function renderOffenseCard(off, categoryName, q) {
+    const card = document.createElement('div');
+    card.className = 'penal-code-offense-card';
+    const p = off.penalties || {};
+    const lic = p.license_suspensions || {};
+    const driver = lic.driver_license_suspension || {};
+    const trucker = lic.trucker_license_suspension || {};
+    const weapon = lic.weapon_license_suspension || {};
+    const pilot = lic.pilot_license_suspension || {};
+    const fmtLic = (l) => {
+      const s = l.status || '—';
+      const d = l.duration || l.extra;
+      return d ? `${escapeHtml(s)} (${escapeHtml(d)})` : escapeHtml(s);
+    };
+    const sentenceStr =
+      p.sentence_raw != null
+        ? p.sentence_raw
+        : p.sentence != null
+          ? p.sentence + ' months'
+          : 'N/A';
+    const fineStr =
+      p.fine != null
+        ? typeof p.fine === 'number'
+          ? '$' + p.fine.toLocaleString()
+          : String(p.fine)
+        : 'N/A';
+    const licTable = `
+      <table class="penal-code-licenses">
+        <tr><th>Driver</th><td>${fmtLic(driver)}</td></tr>
+        <tr><th>Trucker</th><td>${fmtLic(trucker)}</td></tr>
+        <tr><th>Weapon</th><td>${fmtLic(weapon)}</td></tr>
+        <tr><th>Pilot</th><td>${fmtLic(pilot)}</td></tr>
+      </table>
+    `;
+    const hl = (text) => (q ? highlightMatch(text, q) : escapeHtml(text || ''));
+    const descLines = (off.description || '')
+      .split('\n')
+      .map((line) => hl(line))
+      .join('<br>');
+    const categoryHtml = categoryName
+      ? `<div class="penal-code-offense-category">${escapeHtml(categoryName)}</div>`
+      : '';
+    card.innerHTML = `
+      ${categoryHtml}
+      <div class="penal-code-offense-header">${hl(off.code || '')} — ${hl(off.title || '')}</div>
+      <div class="penal-code-offense-desc">${descLines}</div>
+      <div class="penal-code-offense-penalties">
+        <span class="penal-code-penalty"><strong>Sentence:</strong> ${escapeHtml(sentenceStr)}</span>
+        <span class="penal-code-penalty"><strong>Fine:</strong> ${escapeHtml(fineStr)}</span>
+        ${licTable}
+      </div>
+    `;
+    return card;
   }
 
   async function openPenalCodeModal() {
@@ -517,58 +633,7 @@
             return;
           }
           matches.forEach(({ offense: off, categoryName }) => {
-            const card = document.createElement('div');
-            card.className = 'penal-code-offense-card';
-            const p = off.penalties || {};
-            const lic = p.license_suspensions || {};
-            const driver = lic.driver_license_suspension || {};
-            const trucker = lic.trucker_license_suspension || {};
-            const weapon = lic.weapon_license_suspension || {};
-            const pilot = lic.pilot_license_suspension || {};
-            const fmtLic = (l) => {
-              const s = l.status || '—';
-              const d = l.duration || l.extra;
-              return d ? `${escapeHtml(s)} (${escapeHtml(d)})` : escapeHtml(s);
-            };
-            const sentenceStr =
-              p.sentence_raw != null
-                ? p.sentence_raw
-                : p.sentence != null
-                  ? p.sentence + ' months'
-                  : 'N/A';
-            const fineStr =
-              p.fine != null
-                ? typeof p.fine === 'number'
-                  ? '$' + p.fine.toLocaleString()
-                  : String(p.fine)
-                : 'N/A';
-            const licTable = `
-              <table class="penal-code-licenses">
-                <tr><th>Driver</th><td>${fmtLic(driver)}</td></tr>
-                <tr><th>Trucker</th><td>${fmtLic(trucker)}</td></tr>
-                <tr><th>Weapon</th><td>${fmtLic(weapon)}</td></tr>
-                <tr><th>Pilot</th><td>${fmtLic(pilot)}</td></tr>
-              </table>
-            `;
-            const codeHeader =
-              highlightMatch(off.code, q) +
-              ' — ' +
-              highlightMatch(off.title, q);
-            const descLines = (off.description || '')
-              .split('\n')
-              .map((line) => highlightMatch(line, q))
-              .join('<br>');
-            card.innerHTML = `
-              <div class="penal-code-offense-category">${escapeHtml(categoryName)}</div>
-              <div class="penal-code-offense-header">${codeHeader}</div>
-              <div class="penal-code-offense-desc">${descLines}</div>
-              <div class="penal-code-offense-penalties">
-                <span class="penal-code-penalty"><strong>Sentence:</strong> ${escapeHtml(sentenceStr)}</span>
-                <span class="penal-code-penalty"><strong>Fine:</strong> ${escapeHtml(fineStr)}</span>
-                ${licTable}
-              </div>
-            `;
-            listWrap.appendChild(card);
+            listWrap.appendChild(renderOffenseCard(off, categoryName, q));
           });
         } else if (idx === -1) {
           const allOffenses = [];
@@ -583,54 +648,7 @@
             return;
           }
           allOffenses.forEach(({ offense: off, categoryName }) => {
-            const card = document.createElement('div');
-            card.className = 'penal-code-offense-card';
-            const p = off.penalties || {};
-            const lic = p.license_suspensions || {};
-            const driver = lic.driver_license_suspension || {};
-            const trucker = lic.trucker_license_suspension || {};
-            const weapon = lic.weapon_license_suspension || {};
-            const pilot = lic.pilot_license_suspension || {};
-            const fmtLic = (l) => {
-              const s = l.status || '—';
-              const d = l.duration || l.extra;
-              return d ? `${escapeHtml(s)} (${escapeHtml(d)})` : escapeHtml(s);
-            };
-            const sentenceStr =
-              p.sentence_raw != null
-                ? p.sentence_raw
-                : p.sentence != null
-                  ? p.sentence + ' months'
-                  : 'N/A';
-            const fineStr =
-              p.fine != null
-                ? typeof p.fine === 'number'
-                  ? '$' + p.fine.toLocaleString()
-                  : String(p.fine)
-                : 'N/A';
-            const licTable = `
-              <table class="penal-code-licenses">
-                <tr><th>Driver</th><td>${fmtLic(driver)}</td></tr>
-                <tr><th>Trucker</th><td>${fmtLic(trucker)}</td></tr>
-                <tr><th>Weapon</th><td>${fmtLic(weapon)}</td></tr>
-                <tr><th>Pilot</th><td>${fmtLic(pilot)}</td></tr>
-              </table>
-            `;
-            const descEscaped = (off.description || '')
-              .split('\n')
-              .map((line) => escapeHtml(line))
-              .join('<br>');
-            card.innerHTML = `
-              <div class="penal-code-offense-category">${escapeHtml(categoryName)}</div>
-              <div class="penal-code-offense-header">${escapeHtml(off.code)} — ${escapeHtml(off.title)}</div>
-              <div class="penal-code-offense-desc">${descEscaped}</div>
-              <div class="penal-code-offense-penalties">
-                <span class="penal-code-penalty"><strong>Sentence:</strong> ${escapeHtml(sentenceStr)}</span>
-                <span class="penal-code-penalty"><strong>Fine:</strong> ${escapeHtml(fineStr)}</span>
-                ${licTable}
-              </div>
-            `;
-            listWrap.appendChild(card);
+            listWrap.appendChild(renderOffenseCard(off, categoryName, null));
           });
         } else {
           const cat = (fullData.categories || [])[idx];
@@ -643,53 +661,7 @@
             return;
           }
           section.offenses.forEach((off) => {
-            const card = document.createElement('div');
-            card.className = 'penal-code-offense-card';
-            const p = off.penalties || {};
-            const lic = p.license_suspensions || {};
-            const driver = lic.driver_license_suspension || {};
-            const trucker = lic.trucker_license_suspension || {};
-            const weapon = lic.weapon_license_suspension || {};
-            const pilot = lic.pilot_license_suspension || {};
-            const fmtLic = (l) => {
-              const s = l.status || '—';
-              const d = l.duration || l.extra;
-              return d ? `${escapeHtml(s)} (${escapeHtml(d)})` : escapeHtml(s);
-            };
-            const sentenceStr =
-              p.sentence_raw != null
-                ? p.sentence_raw
-                : p.sentence != null
-                  ? p.sentence + ' months'
-                  : 'N/A';
-            const fineStr =
-              p.fine != null
-                ? typeof p.fine === 'number'
-                  ? '$' + p.fine.toLocaleString()
-                  : String(p.fine)
-                : 'N/A';
-            const licTable = `
-              <table class="penal-code-licenses">
-                <tr><th>Driver</th><td>${fmtLic(driver)}</td></tr>
-                <tr><th>Trucker</th><td>${fmtLic(trucker)}</td></tr>
-                <tr><th>Weapon</th><td>${fmtLic(weapon)}</td></tr>
-                <tr><th>Pilot</th><td>${fmtLic(pilot)}</td></tr>
-              </table>
-            `;
-            const descEscaped = (off.description || '')
-              .split('\n')
-              .map((line) => escapeHtml(line))
-              .join('<br>');
-            card.innerHTML = `
-              <div class="penal-code-offense-header">${escapeHtml(off.code)} — ${escapeHtml(off.title)}</div>
-              <div class="penal-code-offense-desc">${descEscaped}</div>
-              <div class="penal-code-offense-penalties">
-                <span class="penal-code-penalty"><strong>Sentence:</strong> ${escapeHtml(sentenceStr)}</span>
-                <span class="penal-code-penalty"><strong>Fine:</strong> ${escapeHtml(fineStr)}</span>
-                ${licTable}
-              </div>
-            `;
-            listWrap.appendChild(card);
+            listWrap.appendChild(renderOffenseCard(off, null, null));
           });
         }
       }
@@ -717,6 +689,153 @@
       if (settings.soundOnAction) playActionSound();
     } catch (e) {
       showToast(e.message || 'Copy failed', 'error');
+    }
+  }
+
+  async function copyLinkToClipboard(item) {
+    const url = item.linkUrl != null ? String(item.linkUrl) : '';
+    if (!url) { showToast('No URL on this link', 'error'); return; }
+    try {
+      await window.api.writeClipboard(url);
+      showToast('Link copied to clipboard');
+      if (settings.soundOnAction) playActionSound();
+    } catch (e) {
+      showToast(e.message || 'Copy failed', 'error');
+    }
+  }
+
+  function openLinkInBrowser(item) {
+    const url = item.linkUrl != null ? String(item.linkUrl) : '';
+    if (!url) { showToast('No URL on this link', 'error'); return; }
+    window.api.openExternal(url);
+  }
+
+  function openManageLinksModal() {
+    window.api.focusApp();
+    window.api.setIgnoreMouseEvents(false);
+    modalTitle.textContent = 'Manage Useful Links';
+    renderManageLinksList();
+    window.api.setModalOpen(true);
+    modalOverlay.classList.remove('hidden');
+  }
+
+  function renderManageLinksList() {
+    modalBody.innerHTML = '';
+    const list = settings.usefulLinks || [];
+    const listEl = document.createElement('div');
+    listEl.className = 'manage-rp-list';
+    listEl.innerHTML = '<p class="manage-rp-hint">Save links you use often. From the menu you can copy a link to clipboard or open it directly in your browser.</p>';
+    const addBtn = document.createElement('button');
+    addBtn.type = 'button';
+    addBtn.className = 'btn';
+    addBtn.textContent = 'Add link';
+    addBtn.onclick = () => showManageLinksForm();
+    listEl.appendChild(addBtn);
+    const ul = document.createElement('ul');
+    ul.className = 'manage-rp-entries';
+    list.forEach((entry) => {
+      const li = document.createElement('li');
+      li.className = 'manage-rp-entry manage-bbcode-entry';
+      const preview = entry.url.length > 55 ? entry.url.slice(0, 55) + '…' : entry.url;
+      li.innerHTML = `
+        <span class="manage-rp-entry-title">${escapeHtml(entry.title)}</span>
+        <span class="manage-rp-entry-text bbcode-preview" title="${escapeHtml(entry.url)}">${escapeHtml(preview)}</span>
+        <div class="manage-rp-actions">
+          <button type="button" class="btn btn-small edit-rp" data-id="${escapeHtml(entry.id)}">Edit</button>
+          <button type="button" class="btn btn-small btn-secondary delete-rp" data-id="${escapeHtml(entry.id)}">Delete</button>
+        </div>
+      `;
+      li.querySelector('.edit-rp').onclick = () => showManageLinksForm(entry);
+      li.querySelector('.delete-rp').onclick = () => deleteLinkEntry(entry.id);
+      ul.appendChild(li);
+    });
+    listEl.appendChild(ul);
+    if (list.length === 0) {
+      const empty = document.createElement('p');
+      empty.className = 'manage-rp-empty';
+      empty.textContent = 'No links yet. Click Add link to create one.';
+      listEl.appendChild(empty);
+    }
+    const doneBtn = document.createElement('button');
+    doneBtn.type = 'button';
+    doneBtn.className = 'btn btn-secondary';
+    doneBtn.textContent = 'Done';
+    doneBtn.onclick = closeModal;
+    listEl.appendChild(doneBtn);
+    modalBody.appendChild(listEl);
+  }
+
+  function showManageLinksForm(entry = null) {
+    const isEdit = !!entry;
+    const titleVal = entry ? entry.title : '';
+    const urlVal = entry ? entry.url : '';
+    modalBody.innerHTML = `
+      <div class="form-group">
+        <label>Title (shown in menu)</label>
+        <input type="text" id="linkFormTitle" placeholder="e.g. ECRP Rules" value="${escapeHtml(titleVal)}">
+      </div>
+      <div class="form-group">
+        <label>URL</label>
+        <input type="url" id="linkFormUrl" placeholder="https://..." value="${escapeHtml(urlVal)}">
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="linkFormSave">${isEdit ? 'Save' : 'Add'}</button>
+        <button type="button" class="btn btn-secondary" id="linkFormCancel">Cancel</button>
+      </div>
+    `;
+    document.getElementById('linkFormSave').onclick = () => saveLinkEntry(entry ? entry.id : null);
+    document.getElementById('linkFormCancel').onclick = () => renderManageLinksList();
+    setTimeout(() => document.getElementById('linkFormTitle').focus(), 50);
+  }
+
+  function saveLinkEntry(id) {
+    const title = document.getElementById('linkFormTitle').value.trim();
+    const url = document.getElementById('linkFormUrl').value.trim();
+    if (!title || !url) return;
+    if (!url.startsWith('https://') && !url.startsWith('http://')) {
+      showToast('URL must start with https:// or http://', 'error');
+      return;
+    }
+    const list = [...(settings.usefulLinks || [])];
+    const newEntry = {
+      id: id || 'link-' + Date.now() + '-' + Math.random().toString(36).slice(2),
+      title,
+      url,
+    };
+    if (id) {
+      const idx = list.findIndex((e) => e.id === id);
+      if (idx >= 0) list[idx] = newEntry;
+    } else {
+      list.push(newEntry);
+    }
+    settings = { ...settings, usefulLinks: list };
+    window.api.saveSettings(settings).then((s) => {
+      settings = s;
+      renderManageLinksList();
+      refreshCurrentLevelAfterLinksChange();
+      render();
+    });
+  }
+
+  function deleteLinkEntry(id) {
+    const list = (settings.usefulLinks || []).filter((e) => e.id !== id);
+    settings = { ...settings, usefulLinks: list };
+    window.api.saveSettings(settings).then((s) => {
+      settings = s;
+      renderManageLinksList();
+      refreshCurrentLevelAfterLinksChange();
+      render();
+    });
+  }
+
+  function refreshCurrentLevelAfterLinksChange() {
+    const root = window.buildMenu(settings);
+    const cat = root.find((x) => x.id === 'useful-links');
+    const inLinksMenu = stack.length === 1 && stack[0].breadcrumbLabel === 'Useful Links';
+    if (inLinksMenu && cat) {
+      currentItems = cat.children;
+    } else if (stack.length === 0) {
+      currentItems = buildRootItems();
     }
   }
 
@@ -1675,6 +1794,9 @@
           <option value="Mechanic" ${
             settings.department === 'Mechanic' ? 'selected' : ''
           }>Mechanic (Car repair RP only)</option>
+          <option value="Admin" ${
+            settings.department === 'Admin' ? 'selected' : ''
+          }>Admin (Admin shortcuts &amp; report replies)</option>
         </select>
       </div>
       <div class="form-group">
@@ -2296,6 +2418,19 @@
   btnQuit.addEventListener('click', () => window.api.quitApp());
   btnSettings.addEventListener('click', openSettings);
 
+  if (mechanicDelaySlider) {
+    mechanicDelaySlider.addEventListener('input', () => {
+      const v = parseInt(mechanicDelaySlider.value, 10);
+      if (!Number.isNaN(v) && v >= 1 && v <= 30) {
+        if (mechanicDelayValue) mechanicDelayValue.textContent = String(v);
+        settings = { ...settings, mechanicRPDelaySeconds: v };
+        window.api.saveSettings(settings).then((updated) => {
+          settings = updated;
+        });
+      }
+    });
+  }
+
   const headerTop = document.querySelector('.header-top');
   if (headerTop && typeof window.api?.windowDragStart === 'function') {
     let dragging = false;
@@ -2372,12 +2507,38 @@
     const v = await window.api.getAppVersion().then((x) => x || '1.0.0');
     modalTitle.textContent = 'About';
     modalBody.innerHTML = `
-      <p><strong>KWAAI's RP DESK</strong></p>
-      <p>PD, SD &amp; Mechanic RP overlay for FiveM / GTA V. Duty commands, penal code, quick actions, mechanic repairs &amp; more.</p>
-      <p class="about-version">Version ${String(v).replace(/</g, '&lt;')}</p>
-      <p class="about-version">Created by KWAAI</p>
+      <div class="settings-tabs">
+        <div class="settings-tab-bar">
+          <button type="button" class="settings-tab active" data-tab="about">About</button>
+          <button type="button" class="settings-tab" data-tab="changelog">Changelog</button>
+        </div>
+        <div class="settings-tab-panels">
+          <div class="settings-tab-panel active" id="about-panel-about">
+            <p><strong>KWAAI's RP DESK</strong></p>
+            <p>PD, SD &amp; Mechanic RP overlay for FiveM / GTA V. Duty commands, penal code, quick actions, mechanic repairs &amp; more.</p>
+            <p class="about-version">Version ${String(v).replace(/</g, '&lt;')}</p>
+            <p class="about-version">Created by KWAAI</p>
+            <p class="about-contact">Contact: Discord <strong>dirtyddawg</strong> — suggestions &amp; bug reports</p>
+          </div>
+          <div class="settings-tab-panel" id="about-panel-changelog">
+            <div class="changelog-entry">
+              <h4 class="changelog-version">v1.0.0</h4>
+              <p class="changelog-desc">Initial release. PD, SD &amp; Mechanic duty overlay with Ctrl+Arrow navigation, radio commands, citations, pursuits, penal code, animations, quick bar, and mechanic RP.</p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="modal-actions"><button type="button" class="btn" id="aboutDone">Done</button></div>
     `;
+    modalBody.querySelectorAll('.settings-tab').forEach((tab) => {
+      tab.addEventListener('click', () => {
+        modalBody.querySelectorAll('.settings-tab').forEach((t) => t.classList.remove('active'));
+        modalBody.querySelectorAll('.settings-tab-panel').forEach((p) => p.classList.remove('active'));
+        tab.classList.add('active');
+        const panel = modalBody.querySelector('#about-panel-' + tab.getAttribute('data-tab'));
+        if (panel) panel.classList.add('active');
+      });
+    });
     document.getElementById('aboutDone').onclick = closeModal;
     window.api.setModalOpen(true);
     modalOverlay.classList.remove('hidden');

@@ -16,6 +16,32 @@ PD, SD & Mechanic duty overlay for law enforcement RP in GTA V (Eclipse/RAGE). S
 - Node.js 16+
 - Windows (focus and send keys via PowerShell + System.Windows.Forms.SendKeys)
 
+## Quick Start
+
+1. **Clone & install**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/PD-AHK-Duty-Menu.git
+   cd PD-AHK-Duty-Menu/New-RP-Menu
+   npm install
+   ```
+
+2. **Run the app**
+   ```bash
+   npm start
+   ```
+
+3. **First-time setup**: Open **Settings** (⚙), set your department (PD/SD/Mechanic), badge, callsign, and target exe (`GTA5.exe` by default).
+
+4. **In-game**: Start GTA V or FiveM. Focus the game window; the app sends commands there. Use **Ctrl+Arrow keys** to navigate the menu.
+
+5. **Pull updates**:
+   ```bash
+   git pull
+   npm install
+   ```
+
+---
+
 ## Install & run
 
 ```bash

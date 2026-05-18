@@ -25,6 +25,10 @@
           <span class="profile-picker-btn-label">Mechanic</span>
           <span class="profile-picker-btn-desc">Car repair RP</span>
         </button>
+        <button type="button" class="profile-picker-btn" data-department="Admin">
+          <span class="profile-picker-btn-label">Admin</span>
+          <span class="profile-picker-btn-desc">Admin shortcuts &amp; report replies</span>
+        </button>
       </div>
     </div>
   </div>
@@ -40,6 +44,7 @@
             <button type="button" class="department-option" data-department="PD">PD — Police</button>
             <button type="button" class="department-option" data-department="SD">SD — Sheriff</button>
             <button type="button" class="department-option" data-department="Mechanic">Mechanic</button>
+            <button type="button" class="department-option" data-department="Admin">Admin</button>
           </div>
         </div>
         <div class="unit-switcher" id="unitSwitcher">
@@ -64,6 +69,10 @@
       <div class="nav-top">
         <button type="button" class="btn-back" id="btnBack" title="Back (Ctrl+Left)">← Back</button>
         <div class="breadcrumb" id="breadcrumb"></div>
+      </div>
+      <div class="mechanic-rp-delay-wrap hidden" id="mechanicRpDelayWrap">
+        <label class="mechanic-delay-label">RP delay: <span id="mechanicDelayValue">5</span>s per step</label>
+        <input type="range" class="mechanic-delay-slider" id="mechanicDelaySlider" min="1" max="30" value="5" step="1">
       </div>
       <ul class="menu-list" id="menuList" role="listbox"></ul>
       <div class="action-log-wrap" id="actionLogWrap">

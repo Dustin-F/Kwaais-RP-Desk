@@ -2,6 +2,7 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
   getSettings: () => ipcRenderer.invoke('getSettings'),
+  getAppVersion: () => ipcRenderer.invoke('getAppVersion'),
   getPenalCodeCategories: () => ipcRenderer.invoke('getPenalCodeCategories'),
   getPenalCodeSection: (categoryId) => ipcRenderer.invoke('getPenalCodeSection', categoryId),
   getPenalCodeFull: () => ipcRenderer.invoke('getPenalCodeFull'),
@@ -38,6 +39,7 @@ contextBridge.exposeInMainWorld('api', {
   },
   requestExpand: () => ipcRenderer.invoke('requestExpand'),
   requestCollapse: () => ipcRenderer.invoke('requestCollapse'),
+  openExternal: (url) => ipcRenderer.invoke('openExternal', url),
   windowDragStart: (screenX, screenY) =>
     ipcRenderer.send('window-drag-start', screenX, screenY),
   windowDragMove: (screenX, screenY) =>

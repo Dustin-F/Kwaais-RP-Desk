@@ -7,7 +7,7 @@ const {
   shell,
 } = require('electron');
 const path = require('path');
-const { execSync } = require('child_process');
+const { execFileSync } = require('child_process');
 const Store = require('electron-store');
 const defaultSettings = require('./lib/defaultSettings');
 const { runAction: runActionRunner } = require('./lib/actionRunner');
@@ -253,6 +253,10 @@ ipcMain.handle('getSettings', () => {
   return store.store;
 });
 
+ipcMain.handle('getAppVersion', () => {
+  return app.getVersion();
+});
+
 let penalCodeData = null;
 function loadPenalCode() {
   if (penalCodeData) return penalCodeData;
@@ -425,7 +429,7 @@ ipcMain.handle('quitApp', () => {
 
 ipcMain.handle('setIgnoreMouseEvents', (_e, ignore) => {
   if (!mainWindow || mainWindow.isDestroyed()) return;
-  mainWindow.setIgnoreMouseEvents(false);
+  mainWindow.setIgnoreMouseEvents(!!ignore);
 });
 
 ipcMain.handle('setModalOpen', (_e, open) => {
@@ -461,7 +465,7 @@ function getGameStatus() {
   const exe = (store.store.targetExe || 'GTA5.exe').trim();
   if (!exe) return { running: false };
   try {
-    const out = execSync(`tasklist /FI "IMAGENAME eq ${exe}"`, {
+    const out = execFileSync('tasklist', ['/FI', `IMAGENAME eq ${exe}`], {
       encoding: 'utf8',
       timeout: 2000,
       windowsHide: true,
@@ -474,6 +478,13 @@ function getGameStatus() {
 
 ipcMain.handle('getGameStatus', () => getGameStatus());
 
+ipcMain.handle('openExternal', (_e, url) => {
+  if (typeof url !== 'string') return;
+  const safe = url.trim();
+  if (!safe.startsWith('https://') && !safe.startsWith('http://')) return;
+  shell.openExternal(safe);
+});
+
 ipcMain.handle('exportSettings', () => {
   return JSON.stringify(store.store, null, 2);
 });
@@ -485,8 +496,20 @@ ipcMain.handle('importSettings', (_e, jsonString) => {
   } catch (err) {
     throw new Error('Invalid JSON');
   }
-  if (data == null || typeof data !== 'object') {
+  if (data == null || typeof data !== 'object' || Array.isArray(data)) {
     throw new Error('Invalid settings');
+  }
+  const NUMERIC_FIELDS = ['windowWidth', 'windowHeight', 'windowOpacity', 'sidebarCollapseSeconds', 'actionLogMax', 'mechanicRPDelaySeconds'];
+  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled'];
+  for (const key of NUMERIC_FIELDS) {
+    if (key in data && (typeof data[key] !== 'number' || !isFinite(data[key]))) {
+      throw new Error(`Invalid value for setting: ${key}`);
+    }
+  }
+  for (const key of BOOL_FIELDS) {
+    if (key in data && typeof data[key] !== 'boolean') {
+      throw new Error(`Invalid value for setting: ${key}`);
+    }
   }
   const merged = deepMerge(store.store, data);
   store.set(merged);
