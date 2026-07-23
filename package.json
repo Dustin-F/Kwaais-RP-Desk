@@ -38,6 +38,11 @@
       "createStartMenuShortcut": true,
       "installerIcon": "build/icon.ico",
       "uninstallerIcon": "build/icon.ico"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Dustin-F",
+      "repo": "Kwaais-RP-Desk"
     }
   }
 }

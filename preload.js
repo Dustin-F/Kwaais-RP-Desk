@@ -27,6 +27,10 @@ contextBridge.exposeInMainWorld('api', {
   onOpenSettings: (callback) => {
     ipcRenderer.on('openSettings', () => callback());
   },
+  onPromptAdminUnlock: (callback) => {
+    ipcRenderer.on('promptAdminUnlock', () => callback());
+  },
+  unlockAdmin: (password) => ipcRenderer.invoke('unlockAdmin', password),
   setModalOpen: (open) => ipcRenderer.invoke('setModalOpen', open),
   onExpanded: (callback) => {
     ipcRenderer.on('expanded', () => callback());

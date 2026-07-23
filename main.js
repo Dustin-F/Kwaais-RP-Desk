@@ -213,6 +213,13 @@ function registerGlobalShortcuts() {
       mainWindow.webContents.send('openSettings');
     }
   });
+  globalShortcut.register('Control+Shift+A', () => {
+    if (mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.focus();
+      mainWindow.setIgnoreMouseEvents(false);
+      mainWindow.webContents.send('promptAdminUnlock');
+    }
+  });
 
   if (opts.quickBarHotkeysEnabled !== false) {
     const rawKeys = opts.quickBarKeys || [];
@@ -251,6 +258,14 @@ app.on('will-quit', () => {
 
 ipcMain.handle('getSettings', () => {
   return store.store;
+});
+
+ipcMain.handle('unlockAdmin', (_e, password) => {
+  if (String(password || '') === '88888888') {
+    store.set('adminUnlocked', true);
+    return { ok: true, settings: store.store };
+  }
+  return { ok: false };
 });
 
 ipcMain.handle('getAppVersion', () => {
@@ -500,7 +515,7 @@ ipcMain.handle('importSettings', (_e, jsonString) => {
     throw new Error('Invalid settings');
   }
   const NUMERIC_FIELDS = ['windowWidth', 'windowHeight', 'windowOpacity', 'sidebarCollapseSeconds', 'actionLogMax', 'mechanicRPDelaySeconds'];
-  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled'];
+  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled', 'adminUnlocked'];
   for (const key of NUMERIC_FIELDS) {
     if (key in data && (typeof data[key] !== 'number' || !isFinite(data[key]))) {
       throw new Error(`Invalid value for setting: ${key}`);

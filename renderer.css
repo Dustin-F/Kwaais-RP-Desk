@@ -877,6 +877,30 @@ body.theme-light {
   color: var(--text-dim);
   margin: 0 0 calc(8px * var(--ui-scale)) 0;
 }
+.macro-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 8px;
+}
+.macro-step-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.macro-step-key {
+  flex: 1;
+  min-width: 0;
+}
+.macro-step-count {
+  width: 64px;
+  flex-shrink: 0;
+}
+.macro-step-remove {
+  flex-shrink: 0;
+  padding: 2px 8px;
+  min-width: 28px;
+}
 .menu-order-list {
   border: 1px solid var(--border);
   border-radius: calc(6px * var(--ui-scale));

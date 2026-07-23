@@ -129,10 +129,29 @@ function buildMenu(settings) {
     ],
   };
 
+  const uniformEquipment = {
+    id: 'uniform-equipment',
+    label: 'Uniform/Equipment Macros',
+    children: [
+      { id: 'Uniform', label: 'Uniform', actionId: 'Uniform' },
+      { id: 'Weapons', label: 'Weapons', actionId: 'Weapons' },
+      {
+        id: 'UniformAndWeapons',
+        label: 'Uniform + Weapons',
+        actionId: 'UniformAndWeapons',
+      },
+      {
+        id: 'UniformWeaponsStartWatch',
+        label: 'Uniform + Weapons + Start Watch',
+        actionId: 'UniformWeaponsStartWatch',
+      },
+    ],
+  };
+
   const duty = {
     id: 'duty',
     label: 'Duty',
-    children: [watch, unit],
+    children: dept === 'SD' ? [watch, unit, uniformEquipment] : [watch, unit],
   };
 
   const trafficStop = {

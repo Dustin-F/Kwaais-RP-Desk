@@ -100,6 +100,12 @@
     EndWatch: 'End watch and disband unit',
     JoinUnit: 'Join a unit (custom input)',
     RenameUnit: 'Rename current unit (custom input)',
+    Uniform: 'Uniform key macro (editable in Settings → RP)',
+    Weapons: 'Weapons key macro (editable in Settings → RP)',
+    UniformAndWeapons:
+      'Runs Uniform, Backspace×2, then Weapons (SD Uniform/Equipment)',
+    UniformWeaponsStartWatch:
+      'Uniform + Weapons, Backspace×3, then Start Watch RP',
     ViewLicense: 'View license',
     IssueCitation: 'Issue citation (opens form)',
     HandCitation: 'Hand citation',
@@ -1396,6 +1402,75 @@
     setTimeout(() => el.remove(), 2800);
   }
 
+  function applyAdminVisibility() {
+    const unlocked = settings.adminUnlocked === true;
+    document.querySelectorAll('.admin-gated').forEach((el) => {
+      el.classList.toggle('hidden', !unlocked);
+    });
+    if (!unlocked && settings.department === 'Admin') {
+      settings = { ...settings, department: 'PD' };
+      window.api.saveSettings(settings).then((updated) => {
+        settings = updated;
+        refreshMenu();
+      });
+    }
+  }
+
+  function openAdminUnlockPrompt() {
+    if (settings.adminUnlocked === true) {
+      showToast('Admin already unlocked');
+      return;
+    }
+    window.api.focusApp();
+    window.api.setIgnoreMouseEvents(false);
+    modalTitle.textContent = 'Unlock';
+    modalBody.innerHTML = `
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="adminUnlockPassword" autocomplete="off" autofocus>
+      </div>
+      <p class="form-hint" id="adminUnlockError" style="color:#f66;display:none;">Incorrect password</p>
+      <div class="modal-actions">
+        <button type="button" class="btn" id="adminUnlockSubmit">Unlock</button>
+        <button type="button" class="btn btn-secondary" id="adminUnlockCancel">Cancel</button>
+      </div>
+    `;
+    const input = document.getElementById('adminUnlockPassword');
+    const errEl = document.getElementById('adminUnlockError');
+    const submit = async () => {
+      const result = await window.api.unlockAdmin(input.value);
+      if (result && result.ok) {
+        settings = result.settings || { ...settings, adminUnlocked: true };
+        applyAdminVisibility();
+        closeModal();
+        showToast('Admin unlocked');
+        return;
+      }
+      if (errEl) errEl.style.display = '';
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+    };
+    document.getElementById('adminUnlockSubmit').onclick = submit;
+    document.getElementById('adminUnlockCancel').onclick = closeModal;
+    if (input) {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          submit();
+        }
+      });
+    }
+    window.api.setModalOpen(true);
+    modalOverlay.classList.remove('hidden');
+    setTimeout(() => input && input.focus(), 50);
+  }
+
+  if (window.api.onPromptAdminUnlock) {
+    window.api.onPromptAdminUnlock(() => openAdminUnlockPrompt());
+  }
+
   function pushActionLog(label, actionId) {
     const max = Math.max(10, Math.min(50, settings.actionLogMax || 20));
     actionLog.unshift({ time: Date.now(), label, actionId });
@@ -1794,9 +1869,13 @@
           <option value="Mechanic" ${
             settings.department === 'Mechanic' ? 'selected' : ''
           }>Mechanic (Car repair RP only)</option>
-          <option value="Admin" ${
-            settings.department === 'Admin' ? 'selected' : ''
-          }>Admin (Admin shortcuts &amp; report replies)</option>
+          ${
+            settings.adminUnlocked
+              ? `<option value="Admin" ${
+                  settings.department === 'Admin' ? 'selected' : ''
+                }>Admin (Admin shortcuts &amp; report replies)</option>`
+              : ''
+          }
         </select>
       </div>
       <div class="form-group">
@@ -1940,6 +2019,48 @@
         )}">
         <p class="form-hint">Repairs, mods, and tow vehicle. Increase if /me lines fly by too fast (default 5).</p>
       </div>
+      <div class="form-group">
+        <label>SD Uniform/Equipment — Uniform macro</label>
+        <p class="form-hint">Duty → Uniform/Equipment Macros → Uniform (SD only). Arrows use 10ms; Enter settles longer.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Delay (ms)</label>
+            <input type="number" id="settingUniformDelayMs" min="0" max="5000" step="50" value="${Math.min(
+              5000,
+              Math.max(
+                0,
+                settings.clockInMacros?.uniform?.delayMs ?? 100,
+              ),
+            )}">
+          </div>
+        </div>
+        <div class="macro-steps" id="uniformMacroSteps"></div>
+        <div class="form-row form-wrap" style="margin-top:8px;gap:8px;">
+          <button type="button" class="btn-secondary" id="btnUniformAddStep">Add step</button>
+          <button type="button" class="btn-secondary" id="btnUniformReset">Reset to default</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>SD Uniform/Equipment — Weapons macro</label>
+        <p class="form-hint">Duty → Uniform/Equipment Macros → Weapons (SD only). Same timing as Uniform.</p>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Delay (ms)</label>
+            <input type="number" id="settingWeaponsDelayMs" min="0" max="5000" step="50" value="${Math.min(
+              5000,
+              Math.max(
+                0,
+                settings.clockInMacros?.weapons?.delayMs ?? 100,
+              ),
+            )}">
+          </div>
+        </div>
+        <div class="macro-steps" id="weaponsMacroSteps"></div>
+        <div class="form-row form-wrap" style="margin-top:8px;gap:8px;">
+          <button type="button" class="btn-secondary" id="btnWeaponsAddStep">Add step</button>
+          <button type="button" class="btn-secondary" id="btnWeaponsReset">Reset to default</button>
+        </div>
+      </div>
           </div>
           <div class="settings-tab-panel" id="panel-shortcuts">
       <div class="form-group">
@@ -2078,6 +2199,159 @@
         if (panel) panel.classList.add('active');
       });
     });
+
+    const DEFAULT_UNIFORM_MACRO = {
+      delayMs: 100,
+      steps: [
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 2 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 58 },
+        { key: 'enter', count: 1 },
+      ],
+    };
+    const DEFAULT_WEAPONS_MACRO = {
+      delayMs: 100,
+      steps: [
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+        { key: 'backspace', count: 1 },
+        { key: 'down', count: 3 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+        { key: 'backspace', count: 1 },
+        { key: 'down', count: 6 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+        { key: 'backspace', count: 1 },
+        { key: 'down', count: 16 },
+        { key: 'enter', count: 1 },
+        { key: 'down', count: 1 },
+        { key: 'enter', count: 1 },
+      ],
+    };
+    const MACRO_KEY_OPTIONS = [
+      ['enter', 'Enter'],
+      ['down', 'Down'],
+      ['up', 'Up'],
+      ['left', 'Left'],
+      ['right', 'Right'],
+      ['backspace', 'Backspace'],
+      ['escape', 'Escape'],
+      ['tab', 'Tab'],
+      ['space', 'Space'],
+    ];
+    function createMacroEditor(opts) {
+      const {
+        stepsContainerId,
+        delayInputId,
+        addBtnId,
+        resetBtnId,
+        defaults,
+        initialSteps,
+      } = opts;
+      let steps = (initialSteps || defaults.steps).map((s) => ({
+        key: s.key || 'enter',
+        count: Math.max(1, Math.min(200, parseInt(s.count, 10) || 1)),
+      }));
+      function render() {
+        const wrap = document.getElementById(stepsContainerId);
+        if (!wrap) return;
+        wrap.innerHTML = '';
+        steps.forEach((step, idx) => {
+          const row = document.createElement('div');
+          row.className = 'macro-step-row';
+          const keySel = document.createElement('select');
+          keySel.className = 'macro-step-key';
+          keySel.innerHTML = MACRO_KEY_OPTIONS.map(
+            ([val, label]) =>
+              `<option value="${val}" ${
+                step.key === val ? 'selected' : ''
+              }>${label}</option>`,
+          ).join('');
+          keySel.addEventListener('change', () => {
+            steps[idx].key = keySel.value;
+          });
+          const countInput = document.createElement('input');
+          countInput.type = 'number';
+          countInput.className = 'macro-step-count';
+          countInput.min = '1';
+          countInput.max = '200';
+          countInput.value = String(step.count);
+          countInput.title = 'Times to press';
+          countInput.addEventListener('change', () => {
+            steps[idx].count = Math.max(
+              1,
+              Math.min(200, parseInt(countInput.value, 10) || 1),
+            );
+            countInput.value = String(steps[idx].count);
+          });
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.className = 'btn-secondary macro-step-remove';
+          removeBtn.textContent = '×';
+          removeBtn.title = 'Remove step';
+          removeBtn.addEventListener('click', () => {
+            steps.splice(idx, 1);
+            render();
+          });
+          row.appendChild(keySel);
+          row.appendChild(countInput);
+          row.appendChild(removeBtn);
+          wrap.appendChild(row);
+        });
+        if (!steps.length) {
+          wrap.innerHTML =
+            '<p class="form-hint">No steps — add at least one, or reset to default.</p>';
+        }
+      }
+      render();
+      const addBtn = document.getElementById(addBtnId);
+      if (addBtn) {
+        addBtn.addEventListener('click', () => {
+          steps.push({ key: 'down', count: 1 });
+          render();
+        });
+      }
+      const resetBtn = document.getElementById(resetBtnId);
+      if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+          steps = defaults.steps.map((s) => ({ ...s }));
+          const delayEl = document.getElementById(delayInputId);
+          if (delayEl) delayEl.value = String(defaults.delayMs);
+          render();
+        });
+      }
+      return {
+        getSteps: () => steps,
+        getDefaults: () => defaults,
+      };
+    }
+    const uniformMacroEditor = createMacroEditor({
+      stepsContainerId: 'uniformMacroSteps',
+      delayInputId: 'settingUniformDelayMs',
+      addBtnId: 'btnUniformAddStep',
+      resetBtnId: 'btnUniformReset',
+      defaults: DEFAULT_UNIFORM_MACRO,
+      initialSteps: settings.clockInMacros?.uniform?.steps,
+    });
+    const weaponsMacroEditor = createMacroEditor({
+      stepsContainerId: 'weaponsMacroSteps',
+      delayInputId: 'settingWeaponsDelayMs',
+      addBtnId: 'btnWeaponsAddStep',
+      resetBtnId: 'btnWeaponsReset',
+      defaults: DEFAULT_WEAPONS_MACRO,
+      initialSteps: settings.clockInMacros?.weapons?.steps,
+    });
+
     const devModeCheck = document.getElementById('settingDevMode');
     const timedPreviewWrap = document.getElementById('devModeTimedPreviewWrap');
     if (devModeCheck && timedPreviewWrap) {
@@ -2219,6 +2493,49 @@
             ) || 5,
           ),
         ),
+        clockInMacros: {
+          ...(settings.clockInMacros || {}),
+          uniform: {
+            delayMs: Math.min(
+              5000,
+              Math.max(
+                0,
+                parseInt(
+                  document.getElementById('settingUniformDelayMs')?.value,
+                  10,
+                ) || 100,
+              ),
+            ),
+            steps: (() => {
+              const list = uniformMacroEditor.getSteps();
+              const fallback = uniformMacroEditor.getDefaults().steps;
+              return (list.length ? list : fallback).map((s) => ({
+                key: s.key || 'enter',
+                count: Math.max(1, Math.min(200, parseInt(s.count, 10) || 1)),
+              }));
+            })(),
+          },
+          weapons: {
+            delayMs: Math.min(
+              5000,
+              Math.max(
+                0,
+                parseInt(
+                  document.getElementById('settingWeaponsDelayMs')?.value,
+                  10,
+                ) || 100,
+              ),
+            ),
+            steps: (() => {
+              const list = weaponsMacroEditor.getSteps();
+              const fallback = weaponsMacroEditor.getDefaults().steps;
+              return (list.length ? list : fallback).map((s) => ({
+                key: s.key || 'enter',
+                count: Math.max(1, Math.min(200, parseInt(s.count, 10) || 1)),
+              }));
+            })(),
+          },
+        },
         devMode: document.getElementById('settingDevMode')?.checked || false,
         devModeTimedPreview: document.getElementById('settingDevModeTimedPreview')?.checked !== false,
         navUpAccel: (
@@ -2459,6 +2776,7 @@
 
   function finishStartup() {
     if (profilePickerOverlay) profilePickerOverlay.classList.add('hidden');
+    applyAdminVisibility();
     refreshMenu();
     updateCurrentUnit();
     applyTheme(settings);
@@ -2476,7 +2794,11 @@
 
   window.api.getSettings().then((s) => {
     settings = s;
+    if (settings.department === 'Admin' && settings.adminUnlocked !== true) {
+      settings = { ...settings, department: 'PD' };
+    }
     applyTheme(s);
+    applyAdminVisibility();
     if (profilePickerOverlay) {
       profilePickerOverlay
         .querySelectorAll('.profile-picker-btn')
@@ -2484,6 +2806,7 @@
           btn.onclick = () => {
             const dept = btn.getAttribute('data-department');
             if (!dept) return;
+            if (dept === 'Admin' && settings.adminUnlocked !== true) return;
             settings = { ...settings, department: dept };
             window.api.saveSettings(settings).then((updated) => {
               settings = updated;
@@ -2491,10 +2814,12 @@
             });
           };
         });
-      const dept = (s.department || '').trim();
+      const dept = (settings.department || '').trim();
       if (dept) {
         profilePickerOverlay.classList.add('hidden');
         finishStartup();
+      } else {
+        window.api.saveSettings(settings);
       }
     } else {
       finishStartup();
@@ -2557,6 +2882,10 @@
       btn.addEventListener('click', () => {
         const dept = btn.getAttribute('data-department');
         if (!dept || dept === (settings.department || 'PD')) {
+          departmentDropdown.classList.add('hidden');
+          return;
+        }
+        if (dept === 'Admin' && settings.adminUnlocked !== true) {
           departmentDropdown.classList.add('hidden');
           return;
         }
