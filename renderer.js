@@ -2938,6 +2938,10 @@
           </div>
           <div class="settings-tab-panel" id="about-panel-changelog">
             <div class="changelog-entry">
+              <h4 class="changelog-version">v1.0.2</h4>
+              <p class="changelog-desc">New app icon: a blue police shield that matches the in-app logo.</p>
+            </div>
+            <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.1</h4>
               <p class="changelog-desc">New modern look across the whole app. Automatic updates from GitHub. Faster, smoother sending to the game, your clipboard is restored after actions, and the penal code can be edited in the installed app.</p>
             </div>
