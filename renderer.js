@@ -80,19 +80,37 @@
     if (appEl) appEl.classList.toggle('compact-list', !!settings.compactList);
   }
 
-  function playActionSound() {
+  let audioCtx = null;
+
+  // 'done': rising two-note chime. 'error': low falling two-note buzz.
+  const SOUNDS = {
+    done: { type: 'triangle', notes: [[784, 0], [1175, 0.11]], length: 0.22 },
+    error: { type: 'square', notes: [[330, 0], [220, 0.14]], length: 0.2, gain: 0.35 },
+  };
+
+  function playActionSound(kind = 'done', volumeOverride) {
     try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.frequency.value = 800;
-      osc.type = 'sine';
-      gain.gain.setValueAtTime(0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
-      osc.start(ctx.currentTime);
-      osc.stop(ctx.currentTime + 0.06);
+      const sound = SOUNDS[kind] || SOUNDS.done;
+      const volume =
+        (volumeOverride != null ? volumeOverride : settings.soundVolume ?? 60) / 100;
+      if (volume <= 0) return;
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const peak = 0.5 * volume * volume * (sound.gain || 1);
+      for (const [freq, offset] of sound.notes) {
+        const t = audioCtx.currentTime + offset;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = sound.type;
+        osc.frequency.value = freq;
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        gain.gain.setValueAtTime(0.0001, t);
+        gain.gain.exponentialRampToValueAtTime(peak, t + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t + sound.length);
+        osc.start(t);
+        osc.stop(t + sound.length + 0.02);
+      }
     } catch (_) {}
   }
 
@@ -1526,6 +1544,7 @@
           result.cancelled ? 'RP cancelled' : result.error || 'Action failed',
           result.cancelled ? 'success' : 'error',
         );
+        if (!result.cancelled && settings.soundOnAction) playActionSound('error');
         if (result.preview && result.preview.length) {
           openPreviewModal(label, result.preview);
         }
@@ -2032,7 +2051,18 @@
           <input type="checkbox" id="settingSoundOnAction" ${
             settings.soundOnAction ? 'checked' : ''
           }>
-          <label for="settingSoundOnAction">Play sound when action is sent</label>
+          <label for="settingSoundOnAction">Play a sound when an RP finishes or fails</label>
+        </div>
+        <div class="form-group sound-volume-row">
+          <label>Sound volume</label>
+          <div class="form-row">
+            <input type="range" id="settingSoundVolume" min="0" max="100" step="5" value="${
+              settings.soundVolume ?? 60
+            }">
+            <span id="settingSoundVolumeValue">${settings.soundVolume ?? 60}%</span>
+            <button type="button" class="btn btn-secondary btn-small" id="btnTestSoundDone">Test</button>
+            <button type="button" class="btn btn-secondary btn-small" id="btnTestSoundError">Error</button>
+          </div>
         </div>
       </div>
           </div>
@@ -2468,6 +2498,15 @@
         ).join('');
       qbSettings.appendChild(sel);
     }
+    const soundSlider = document.getElementById('settingSoundVolume');
+    const soundValue = document.getElementById('settingSoundVolumeValue');
+    soundSlider.addEventListener('input', () => {
+      soundValue.textContent = soundSlider.value + '%';
+    });
+    document.getElementById('btnTestSoundDone').onclick = () =>
+      playActionSound('done', Number(soundSlider.value));
+    document.getElementById('btnTestSoundError').onclick = () =>
+      playActionSound('error', Number(soundSlider.value));
     const opacitySlider = document.getElementById('settingWindowOpacity');
     const opacityValue = document.getElementById('settingWindowOpacityValue');
     if (opacitySlider && opacityValue) {
@@ -2568,6 +2607,10 @@
           document.getElementById('settingAccentColor').value || '#5b7cfa',
         compactList: document.getElementById('settingCompactList').checked,
         soundOnAction: document.getElementById('settingSoundOnAction').checked,
+        soundVolume: Math.min(
+          100,
+          Math.max(0, Number(document.getElementById('settingSoundVolume').value) || 0),
+        ),
         mechanicRPDelaySeconds: Math.min(
           60,
           Math.max(
@@ -2937,6 +2980,10 @@
             </div>
           </div>
           <div class="settings-tab-panel" id="about-panel-changelog">
+            <div class="changelog-entry">
+              <h4 class="changelog-version">v1.0.3</h4>
+              <p class="changelog-desc">Sound notifications are now on by default: a chime when an RP finishes and a low buzz if it fails. New volume slider with test buttons in Settings → Appearance.</p>
+            </div>
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.2</h4>
               <p class="changelog-desc">New app icon: a blue police shield that matches the in-app logo.</p>

@@ -18,6 +18,13 @@ const store = new Store({
   name: 'kwaais-rp-desk-settings',
 });
 
+// v1.0.3: action sounds are now on by default. Saved settings from older
+// versions always contain soundOnAction: false, so turn it on once.
+if (!store.get('soundDefaultOnApplied')) {
+  store.set('soundOnAction', true);
+  store.set('soundDefaultOnApplied', true);
+}
+
 let mainWindow = null;
 let collapseTimeout = null;
 let modalOpen = false;
@@ -616,7 +623,7 @@ ipcMain.handle('importSettings', (_e, jsonString) => {
   if (data == null || typeof data !== 'object' || Array.isArray(data)) {
     throw new Error('Invalid settings');
   }
-  const NUMERIC_FIELDS = ['windowWidth', 'windowHeight', 'windowOpacity', 'sidebarCollapseSeconds', 'actionLogMax', 'mechanicRPDelaySeconds'];
+  const NUMERIC_FIELDS = ['windowWidth', 'windowHeight', 'windowOpacity', 'sidebarCollapseSeconds', 'actionLogMax', 'mechanicRPDelaySeconds', 'soundVolume'];
   const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled', 'adminUnlocked'];
   for (const key of NUMERIC_FIELDS) {
     if (key in data && (typeof data[key] !== 'number' || !isFinite(data[key]))) {

@@ -1290,6 +1290,16 @@ input[type='range']::-webkit-slider-thumb {
   background: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
 }
+.sound-volume-row .form-row {
+  align-items: center;
+}
+.sound-volume-row input[type='range'] {
+  flex: 1 1 auto;
+}
+.sound-volume-row .form-row > :not(input) {
+  flex: 0 0 auto;
+}
+#settingSoundVolumeValue,
 #settingWindowOpacityValue {
   font-family: var(--mono);
   font-size: 0.75rem;
