@@ -264,6 +264,56 @@ function buildMenu(settings) {
     ],
   };
 
+  const detectiveGsr = {
+    id: 'detective-gsr',
+    label: 'GSR',
+    children: [
+      {
+        id: 'DetectiveGsrHands',
+        label: 'GSR — Hands (.50)',
+        actionId: 'DetectiveGsrHands',
+      },
+      {
+        id: 'DetectiveGsrHeavy',
+        label: 'GSR — Heavy Weapons',
+        actionId: 'DetectiveGsrHeavy',
+      },
+    ],
+  };
+
+  const detectiveRp = {
+    id: 'detective-rp',
+    label: 'Detective RP',
+    children: [
+      {
+        id: 'DetectiveFingerprints',
+        label: 'Fingerprints',
+        actionId: 'DetectiveFingerprints',
+      },
+      {
+        id: 'DetectivePortablePrints',
+        label: 'Portable Fingerprint Scanner',
+        actionId: 'DetectivePortablePrints',
+      },
+      detectiveGsr,
+      {
+        id: 'DetectiveFieldTest',
+        label: 'Swab (Collect Fluid)',
+        actionId: 'DetectiveFieldTest',
+      },
+      {
+        id: 'DetectiveTrace',
+        label: 'Trace',
+        actionId: 'DetectiveTrace',
+      },
+      {
+        id: 'DetectiveBallistics',
+        label: 'Ballistics Comparison',
+        actionId: 'DetectiveBallistics',
+      },
+    ],
+  };
+
   const radioPrefix = dept === 'SD' ? 'SD to' : 'PD to';
   const radio = {
     id: 'radio',
@@ -680,6 +730,7 @@ function buildMenu(settings) {
           bbcodeTemplatesCategory,
           informationCategory,
           rp,
+          detectiveRp,
           radio,
           pursuit,
           animations,

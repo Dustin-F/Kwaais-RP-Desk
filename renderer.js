@@ -19,6 +19,7 @@
   const mechanicRpDelayWrap = document.getElementById('mechanicRpDelayWrap');
   const mechanicDelaySlider = document.getElementById('mechanicDelaySlider');
   const mechanicDelayValue = document.getElementById('mechanicDelayValue');
+  const uniformFlWarningEl = document.getElementById('uniformFlWarning');
 
   let settings = {};
   let stack = [];
@@ -103,9 +104,9 @@
     Uniform: 'Uniform key macro (editable in Settings → RP)',
     Weapons: 'Weapons key macro (editable in Settings → RP)',
     UniformAndWeapons:
-      'Runs Uniform, Backspace×2, then Weapons (SD Uniform/Equipment)',
+      'Uniform (/fl), Backspace×2, then Weapons keys only (no second /fl)',
     UniformWeaponsStartWatch:
-      'Uniform + Weapons, Backspace×3, then Start Watch RP',
+      'Uniform + Weapons, Backspace×2 to exit /fl, then Start Watch RP',
     ViewLicense: 'View license',
     IssueCitation: 'Issue citation (opens form)',
     HandCitation: 'Hand citation',
@@ -133,6 +134,16 @@
     Radio1015: '10-15 to DOC (opens form)',
     Radio1015HVT: '10-15 HVT to DOC (opens form)',
     RadioInjured1015: 'Injured 10-15 (opens form)',
+    DetectiveFingerprints: 'Dust, lift, and scan fingerprints on the MDC',
+    DetectivePortablePrints:
+      'Scan prints with portable scanner, upload to MDC, and search for a match',
+    DetectiveGsrHands: 'GSR kit test on hands (.50) — asks if positive',
+    DetectiveGsrHeavy:
+      'GSR kit test on shoulders/fingers (heavy weapons) — asks if positive',
+    DetectiveFieldTest: 'Swab to collect liquid/fluid, seal and label as evidence',
+    DetectiveTrace: 'Open MDC tracing software and check for an active trace',
+    DetectiveBallistics:
+      'Detailed ballistic comparison under microscope (lands, grooves, striations)',
   };
 
   function getTooltip(item) {
@@ -245,6 +256,18 @@
         if (mechanicDelayValue) mechanicDelayValue.textContent = String(delay);
       } else {
         mechanicRpDelayWrap.classList.add('hidden');
+      }
+    }
+
+    const inUniformEquipmentMenu =
+      !searchQuery.trim() &&
+      stack.length >= 1 &&
+      stack[stack.length - 1]?.breadcrumbLabel === 'Uniform/Equipment Macros';
+    if (uniformFlWarningEl) {
+      if (inUniformEquipmentMenu) {
+        uniformFlWarningEl.classList.remove('hidden');
+      } else {
+        uniformFlWarningEl.classList.add('hidden');
       }
     }
 
@@ -1917,8 +1940,9 @@
       <div class="form-group">
         <label>Target exe (game)</label>
         <input type="text" id="settingTargetExe" value="${(
-          settings.targetExe || 'GTA5.exe'
-        ).replace(/"/g, '&quot;')}" placeholder="GTA5.exe">
+          settings.targetExe || 'FiveM_GTAProcess.exe'
+        ).replace(/"/g, '&quot;')}" placeholder="FiveM_GTAProcess.exe">
+        <p class="form-hint">FiveM build names like FiveM_b3889_GTAProcess.exe are auto-detected if this exact name is not found.</p>
       </div>
       <div class="form-group">
         <label>Window</label>
@@ -2021,7 +2045,7 @@
       </div>
       <div class="form-group">
         <label>SD Uniform/Equipment — Uniform macro</label>
-        <p class="form-hint">Duty → Uniform/Equipment Macros → Uniform (SD only). Arrows use 10ms; Enter settles longer.</p>
+        <p class="form-hint">Starts with /fl, then: Clothes (Enter) → Uniform (Down×1, Enter) → Select jump2 (Down×64, Enter). Long downs are fast.</p>
         <div class="form-row">
           <div class="form-group">
             <label>Delay (ms)</label>
@@ -2042,7 +2066,7 @@
       </div>
       <div class="form-group">
         <label>SD Uniform/Equipment — Weapons macro</label>
-        <p class="form-hint">Duty → Uniform/Equipment Macros → Weapons (SD only). Same timing as Uniform.</p>
+        <p class="form-hint">Starts with /fl, then: Select weapons (Down×1, Enter) → Remove all defaults (Enter) → Stungun → Night stick → Pistol .50 → Bump shotgun.</p>
         <div class="form-row">
           <div class="form-group">
             <label>Delay (ms)</label>
@@ -2200,43 +2224,86 @@
       });
     });
 
+    const DEFAULT_UNIFORM_SEQUENCES = [
+      {
+        name: 'Clothes',
+        steps: [{ key: 'enter', count: 1 }],
+      },
+      {
+        name: 'Uniform',
+        steps: [
+          { key: 'down', count: 1 },
+          { key: 'enter', count: 1 },
+        ],
+      },
+      {
+        name: 'Select jump2',
+        steps: [
+          { key: 'down', count: 64 },
+          { key: 'enter', count: 1 },
+        ],
+      },
+    ];
     const DEFAULT_UNIFORM_MACRO = {
+      sequenceVersion: 2,
       delayMs: 100,
-      steps: [
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 2 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 58 },
-        { key: 'enter', count: 1 },
-      ],
+      sequences: DEFAULT_UNIFORM_SEQUENCES,
+      steps: DEFAULT_UNIFORM_SEQUENCES.flatMap((s) => s.steps),
     };
+    const DEFAULT_WEAPONS_SEQUENCES = [
+      {
+        name: 'Select weapons menu',
+        steps: [
+          { key: 'down', count: 1 },
+          { key: 'enter', count: 1 },
+        ],
+      },
+      {
+        name: 'Remove all default weapons',
+        steps: [{ key: 'enter', count: 1 }],
+      },
+      {
+        name: 'Select stungun',
+        steps: [
+          { key: 'down', count: 1 },
+          { key: 'enter', count: 1 },
+          { key: 'enter', count: 1 },
+          { key: 'backspace', count: 1 },
+        ],
+      },
+      {
+        name: 'Select night stick',
+        steps: [
+          { key: 'down', count: 2 },
+          { key: 'enter', count: 1 },
+          { key: 'enter', count: 1 },
+          { key: 'backspace', count: 1 },
+        ],
+      },
+      {
+        name: 'Select pistol .50',
+        steps: [
+          { key: 'down', count: 5 },
+          { key: 'enter', count: 1 },
+          { key: 'enter', count: 1 },
+          { key: 'backspace', count: 1 },
+        ],
+      },
+      {
+        name: 'Select bump shotgun',
+        steps: [
+          { key: 'down', count: 17 },
+          { key: 'enter', count: 1 },
+          { key: 'enter', count: 1 },
+          { key: 'backspace', count: 1 },
+        ],
+      },
+    ];
     const DEFAULT_WEAPONS_MACRO = {
+      sequenceVersion: 5,
       delayMs: 100,
-      steps: [
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-        { key: 'backspace', count: 1 },
-        { key: 'down', count: 3 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-        { key: 'backspace', count: 1 },
-        { key: 'down', count: 6 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-        { key: 'backspace', count: 1 },
-        { key: 'down', count: 16 },
-        { key: 'enter', count: 1 },
-        { key: 'down', count: 1 },
-        { key: 'enter', count: 1 },
-      ],
+      sequences: DEFAULT_WEAPONS_SEQUENCES,
+      steps: DEFAULT_WEAPONS_SEQUENCES.flatMap((s) => s.steps),
     };
     const MACRO_KEY_OPTIONS = [
       ['enter', 'Enter'],
@@ -2335,21 +2402,37 @@
         getDefaults: () => defaults,
       };
     }
+    const savedUniform = settings.clockInMacros?.uniform;
+    const uniformStepsInitial =
+      savedUniform &&
+      (savedUniform.sequenceVersion || 0) >= DEFAULT_UNIFORM_MACRO.sequenceVersion
+        ? savedUniform.sequences
+          ? savedUniform.sequences.flatMap((s) => s.steps || [])
+          : savedUniform.steps
+        : DEFAULT_UNIFORM_MACRO.steps;
     const uniformMacroEditor = createMacroEditor({
       stepsContainerId: 'uniformMacroSteps',
       delayInputId: 'settingUniformDelayMs',
       addBtnId: 'btnUniformAddStep',
       resetBtnId: 'btnUniformReset',
       defaults: DEFAULT_UNIFORM_MACRO,
-      initialSteps: settings.clockInMacros?.uniform?.steps,
+      initialSteps: uniformStepsInitial,
     });
+    const savedWeapons = settings.clockInMacros?.weapons;
+    const weaponsStepsInitial =
+      savedWeapons &&
+      (savedWeapons.sequenceVersion || 0) >= DEFAULT_WEAPONS_MACRO.sequenceVersion
+        ? savedWeapons.sequences
+          ? savedWeapons.sequences.flatMap((s) => s.steps || [])
+          : savedWeapons.steps
+        : DEFAULT_WEAPONS_MACRO.steps;
     const weaponsMacroEditor = createMacroEditor({
       stepsContainerId: 'weaponsMacroSteps',
       delayInputId: 'settingWeaponsDelayMs',
       addBtnId: 'btnWeaponsAddStep',
       resetBtnId: 'btnWeaponsReset',
       defaults: DEFAULT_WEAPONS_MACRO,
-      initialSteps: settings.clockInMacros?.weapons?.steps,
+      initialSteps: weaponsStepsInitial,
     });
 
     const devModeCheck = document.getElementById('settingDevMode');
@@ -2476,7 +2559,7 @@
         },
         targetExe:
           document.getElementById('settingTargetExe').value.trim() ||
-          'GTA5.exe',
+          'FiveM_GTAProcess.exe',
         menuOrder: menuOrderCurrent,
         theme: document.getElementById('settingTheme').value,
         accentColor:
@@ -2496,6 +2579,7 @@
         clockInMacros: {
           ...(settings.clockInMacros || {}),
           uniform: {
+            sequenceVersion: DEFAULT_UNIFORM_MACRO.sequenceVersion,
             delayMs: Math.min(
               5000,
               Math.max(
@@ -2516,6 +2600,7 @@
             })(),
           },
           weapons: {
+            sequenceVersion: DEFAULT_WEAPONS_MACRO.sequenceVersion,
             delayMs: Math.min(
               5000,
               Math.max(

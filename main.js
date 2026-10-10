@@ -7,7 +7,7 @@ const {
   shell,
 } = require('electron');
 const path = require('path');
-const { execFileSync } = require('child_process');
+const { execFile } = require('child_process');
 const Store = require('electron-store');
 const defaultSettings = require('./lib/defaultSettings');
 const { runAction: runActionRunner } = require('./lib/actionRunner');
@@ -273,10 +273,22 @@ ipcMain.handle('getAppVersion', () => {
 });
 
 let penalCodeData = null;
+const bundledPenalCodePath = path.join(__dirname, 'penal_code.json');
+
+// Installed builds pack penal_code.json inside app.asar (read-only), so edits
+// go to a copy in userData. In dev the repo file is edited directly.
+function getEditablePenalCodePath() {
+  if (!app.isPackaged) return bundledPenalCodePath;
+  return path.join(app.getPath('userData'), 'penal_code.json');
+}
+
 function loadPenalCode() {
   if (penalCodeData) return penalCodeData;
   const fs = require('fs');
-  const jsonPath = path.join(__dirname, 'penal_code.json');
+  const editablePath = getEditablePenalCodePath();
+  const jsonPath = fs.existsSync(editablePath)
+    ? editablePath
+    : bundledPenalCodePath;
   try {
     penalCodeData = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
     return penalCodeData;
@@ -304,9 +316,13 @@ ipcMain.handle('getPenalCodeFull', () => {
 });
 
 ipcMain.handle('openPenalCodeForEdit', () => {
+  const fs = require('fs');
   penalCodeData = null;
-  const jsonPath = path.join(__dirname, 'penal_code.json');
-  return shell.openPath(jsonPath);
+  const editablePath = getEditablePenalCodePath();
+  if (!fs.existsSync(editablePath)) {
+    fs.writeFileSync(editablePath, fs.readFileSync(bundledPenalCodePath));
+  }
+  return shell.openPath(editablePath);
 });
 
 ipcMain.handle('writeClipboard', (_e, text) => {
@@ -418,6 +434,9 @@ ipcMain.handle('runAction', async (_e, actionId, params = {}) => {
     abortController.abort();
   });
 
+  // Chat lines are sent by pasting, so put back whatever the user had copied
+  const savedClipboard = clipboard.readText();
+
   try {
     await runActionRunner(actionId, params, settings, signal);
     return { ok: true };
@@ -429,6 +448,7 @@ ipcMain.handle('runAction', async (_e, actionId, params = {}) => {
     return { ok: false, error: err.message };
   } finally {
     unregisterEscape();
+    if (savedClipboard) clipboard.writeText(savedClipboard);
   }
 });
 
@@ -476,16 +496,31 @@ ipcMain.handle('requestCollapse', () => {
   }
 });
 
-function getGameStatus() {
-  const exe = (store.store.targetExe || 'GTA5.exe').trim();
-  if (!exe) return { running: false };
+async function getGameStatus() {
+  const { resolveGameProcName } = require('./lib/keySender');
+  const configured = (store.store.targetExe || 'FiveM_GTAProcess.exe').trim();
+  if (!configured) return { running: false };
   try {
-    const out = execFileSync('tasklist', ['/FI', `IMAGENAME eq ${exe}`], {
-      encoding: 'utf8',
-      timeout: 2000,
-      windowsHide: true,
+    const resolved = await resolveGameProcName(configured);
+    const image = `${resolved}.exe`;
+    // CSV avoids tasklist truncating long names like FiveM_b3889_GTAProcess.exe
+    const out = await new Promise((resolve, reject) => {
+      execFile(
+        'tasklist',
+        ['/FI', `IMAGENAME eq ${image}`, '/FO', 'CSV', '/NH'],
+        {
+          encoding: 'utf8',
+          timeout: 2500,
+          windowsHide: true,
+        },
+        (err, stdout) => (err ? reject(err) : resolve(stdout)),
+      );
     });
-    return { running: out.includes(exe) };
+    const lower = out.toLowerCase();
+    const running =
+      lower.includes(image.toLowerCase()) ||
+      lower.includes(`"${resolved.toLowerCase()}.exe"`);
+    return { running, processName: resolved };
   } catch (_e) {
     return { running: false };
   }

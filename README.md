@@ -7,7 +7,7 @@ PD, SD & Mechanic duty overlay for law enforcement RP in GTA V (Eclipse/RAGE). S
 - **Department switch**: PD (Police Department) or SD (Sheriff's Department) in Settings
 - **Configurable badge number** and **unit/callsign** (division, letter, number; Adam/David change; special units: FLD, RED, TOM, DAVID, AIR)
 - **Pronouns** for /me and /do (e.g. he/his)
-- **Target exe**: default `GTA5.exe`; change in Settings if needed
+- **Target exe**: default `FiveM_GTAProcess.exe`; change in Settings if your FiveM build uses a different process name
 - **Navigation**: Ctrl+Up/Down move selection, Ctrl+Right enter/run, Ctrl+Left back, Enter runs selected action
 - **Modals** for actions that need input: Issue Citation, 10-15 to DOC, Injured 10-15, Custom Unit
 
@@ -30,7 +30,7 @@ PD, SD & Mechanic duty overlay for law enforcement RP in GTA V (Eclipse/RAGE). S
    npm start
    ```
 
-3. **First-time setup**: Open **Settings** (⚙), set your department (PD/SD/Mechanic), badge, callsign, and target exe (`GTA5.exe` by default).
+3. **First-time setup**: Open **Settings** (⚙), set your department (PD/SD/Mechanic), badge, callsign, and target exe (`FiveM_GTAProcess.exe` by default).
 
 4. **In-game**: Start GTA V or FiveM. Focus the game window; the app sends commands there. Use **Ctrl+Arrow keys** to navigate the menu.
 
@@ -72,7 +72,7 @@ Output in `dist/`.
 - **Callsign**: Division, Letter, Number; Adam change (partner unit A); David change (SWAT D)
 - **Special units**: FLD, RED, TOM, DAVID, AIR + TOM number, DAVID number
 - **Pronouns**: subject (he) and possessive (his) for /me and /do
-- **Target exe**: Game process name, default `GTA5.exe`
+- **Target exe**: Game process name, default `FiveM_GTAProcess.exe`
 
 ## Menu structure
 
