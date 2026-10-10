@@ -1039,6 +1039,179 @@ body.theme-light .department-badge {
 }
 
 /* --------------------------------------------------------------------------
+   Shift timer
+   -------------------------------------------------------------------------- */
+.duty-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+  margin: 0 0.75rem 0.6rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elev);
+  flex-shrink: 0;
+}
+.duty-dot {
+  flex-shrink: 0;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--text-faint);
+}
+.duty-state {
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.duty-elapsed {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.duty-since {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 0.68rem;
+  color: var(--text-faint);
+}
+.duty-bar:not(.on-duty) .duty-state {
+  flex: 1;
+}
+.duty-link {
+  flex-shrink: 0;
+  padding: 0 0.2rem;
+  border: none;
+  background: none;
+  color: var(--text-dim);
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.duty-link:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+.duty-bar.on-duty {
+  border-color: color-mix(in srgb, var(--ok) 35%, transparent);
+  background: color-mix(in srgb, var(--ok) 8%, var(--bg-elev));
+}
+.duty-bar.on-duty .duty-dot {
+  background: var(--ok);
+  animation: pulse 2s infinite;
+}
+.duty-bar.on-duty .duty-state {
+  color: var(--ok);
+}
+
+.collapsed-timer {
+  display: none;
+}
+.app.sidebar-collapsed .duty-bar {
+  display: none !important;
+}
+/* No room for toasts in the 48px strip */
+.app.sidebar-collapsed ~ .toast-container {
+  display: none;
+}
+.app.sidebar-collapsed .collapsed-timer:not(:empty) {
+  position: absolute;
+  bottom: 7.5rem;
+  left: 0;
+  right: 0;
+  display: block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  margin: 0 auto;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ok);
+  text-align: center;
+}
+
+.shift-summary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+.shift-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg) 40%, transparent);
+}
+.shift-summary-num {
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+.shift-summary-label {
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.shift-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.shift-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  grid-template-areas: 'day dept len' 'time dept len';
+  align-items: center;
+  column-gap: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg) 40%, transparent);
+}
+.shift-row-day {
+  grid-area: day;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.shift-row-time {
+  grid-area: time;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-faint);
+}
+.shift-row-dept {
+  grid-area: dept;
+  padding: 0.05rem 0.35rem;
+  border-radius: 0.25rem;
+  background: var(--bg-selected);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+.shift-row-len {
+  grid-area: len;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
    Collapsed sidebar strip
    -------------------------------------------------------------------------- */
 .app.sidebar-collapsed .quick-bar,

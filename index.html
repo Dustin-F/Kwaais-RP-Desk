@@ -69,6 +69,15 @@
         <button type="button" class="btn-icon btn-quit" id="btnQuit" title="Quit (Ctrl+Shift+Q)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
       </div>
     </header>
+    <div class="duty-bar" id="dutyBar">
+      <span class="duty-dot" aria-hidden="true"></span>
+      <span class="duty-state" id="dutyState">Off duty</span>
+      <span class="duty-elapsed" id="dutyElapsed"></span>
+      <span class="duty-since" id="dutySince"></span>
+      <button type="button" class="duty-link" id="dutyHistory" title="Shift history">History</button>
+      <button type="button" class="btn btn-secondary btn-small" id="dutyToggle" title="Start or end the shift timer (doesn't send anything in game)">Start</button>
+    </div>
+    <div class="collapsed-timer" id="collapsedTimer" aria-hidden="true"></div>
     <div class="update-banner hidden" id="updateBanner" role="status">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
       <span class="update-banner-text" id="updateBannerText">Update ready</span>

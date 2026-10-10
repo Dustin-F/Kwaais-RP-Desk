@@ -81,6 +81,8 @@
   }
 
   let audioCtx = null;
+  // Actions that clock you on (start the shift timer when they succeed)
+  const SHIFT_START_ACTIONS = ['StartWatch', 'StartWatchAdam', 'UniformWeaponsStartWatch'];
   // Step-by-step mode: true while an action is running in step mode
   let stepRunning = false;
   let stepActionLabel = '';
@@ -1577,6 +1579,10 @@
           });
         }
       }
+      if (!(result && result.preview)) {
+        if (SHIFT_START_ACTIONS.includes(actionId)) startShift();
+        else if (actionId === 'EndWatch') endShift();
+      }
       if (actionId === 'StartWatch') {
         const calls = window.getCallsigns ? window.getCallsigns(settings) : null;
         if (calls) {
@@ -2933,6 +2939,7 @@
     applyTheme(settings);
     applyCompactList();
     renderStepModeButton();
+    renderDutyBar();
     updateGameStatus();
     setInterval(updateGameStatus, 5000);
     if (actionLogWrapEl)
@@ -3002,6 +3009,10 @@
             </div>
           </div>
           <div class="settings-tab-panel" id="about-panel-changelog">
+            <div class="changelog-entry">
+              <h4 class="changelog-version">v1.0.4</h4>
+              <p class="changelog-desc">Shift timer: clocks on with Start Watch and off with End Watch (or the Start/End button), keeps running across restarts, and keeps a shift history with your last-7-days total.</p>
+            </div>
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.3</h4>
               <p class="changelog-desc">Step-by-step mode (header toggle): every line pauses so you can edit it on the fly, then Send with Ctrl+&rarr;, Skip or Stop. Edits aren't saved. Sound notifications are now on by default: a chime when an RP finishes and a low buzz if it fails. New volume slider with test buttons in Settings → Appearance.</p>
@@ -3093,6 +3104,136 @@
     window.api.installUpdate(),
   );
   window.api.onUpdateStatus(renderUpdateStatus);
+
+  // --- Shift timer ------------------------------------------------------
+  const dutyBarEl = document.getElementById('dutyBar');
+  const dutyStateEl = document.getElementById('dutyState');
+  const dutyElapsedEl = document.getElementById('dutyElapsed');
+  const dutySinceEl = document.getElementById('dutySince');
+  const dutyToggleEl = document.getElementById('dutyToggle');
+  const collapsedTimerEl = document.getElementById('collapsedTimer');
+  const SHIFT_HISTORY_MAX = 20;
+
+  function formatClock(ms) {
+    const total = Math.max(0, Math.floor(ms / 1000));
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  }
+
+  function formatDuration(ms) {
+    const mins = Math.max(0, Math.round(ms / 60000));
+    const h = Math.floor(mins / 60);
+    const m = mins % 60;
+    return h ? `${h}h ${m}m` : `${m}m`;
+  }
+
+  function formatTimeOfDay(ts) {
+    return new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  }
+
+  function renderDutyBar() {
+    const started = settings.shiftStartedAt;
+    const onDuty = typeof started === 'number' && started > 0;
+    dutyBarEl.classList.toggle('on-duty', onDuty);
+    dutyStateEl.textContent = onDuty ? 'On duty' : 'Off duty';
+    dutyElapsedEl.textContent = onDuty ? formatClock(Date.now() - started) : '';
+    dutySinceEl.textContent = onDuty ? `since ${formatTimeOfDay(started)}` : '';
+    dutyToggleEl.textContent = onDuty ? 'End' : 'Start';
+    collapsedTimerEl.textContent = onDuty
+      ? formatClock(Date.now() - started).replace(/:\d\d$/, '')
+      : '';
+  }
+
+  function startShift() {
+    if (typeof settings.shiftStartedAt === 'number' && settings.shiftStartedAt > 0) return;
+    const now = Date.now();
+    settings = { ...settings, shiftStartedAt: now };
+    renderDutyBar();
+    window.api.saveSettings({ shiftStartedAt: now }).then((updated) => {
+      settings = updated;
+      renderDutyBar();
+    });
+  }
+
+  function endShift() {
+    const started = settings.shiftStartedAt;
+    if (!(typeof started === 'number' && started > 0)) return;
+    const end = Date.now();
+    const history = [
+      { start: started, end, department: settings.department || 'PD' },
+      ...(settings.shiftHistory || []),
+    ].slice(0, SHIFT_HISTORY_MAX);
+    settings = { ...settings, shiftStartedAt: null, shiftHistory: history };
+    renderDutyBar();
+    showToast(`Shift ended — ${formatDuration(end - started)}`);
+    window.api
+      .saveSettings({ shiftStartedAt: null, shiftHistory: history })
+      .then((updated) => {
+        settings = updated;
+        renderDutyBar();
+      });
+  }
+
+  dutyToggleEl.addEventListener('click', () => {
+    if (typeof settings.shiftStartedAt === 'number' && settings.shiftStartedAt > 0) endShift();
+    else startShift();
+  });
+
+  function openShiftHistory() {
+    window.api.focusApp();
+    window.api.setIgnoreMouseEvents(false);
+    const history = settings.shiftHistory || [];
+    const weekAgo = Date.now() - 7 * 24 * 3600 * 1000;
+    const weekMs = history
+      .filter((s) => s.end >= weekAgo)
+      .reduce((acc, s) => acc + (s.end - s.start), 0);
+    const rows = history
+      .map((s) => {
+        const d = new Date(s.start);
+        const day = d.toLocaleDateString([], { weekday: 'short', day: 'numeric', month: 'short' });
+        return `<li class="shift-row">
+          <span class="shift-row-day">${escapeHtml(day)}</span>
+          <span class="shift-row-time">${escapeHtml(formatTimeOfDay(s.start))}–${escapeHtml(formatTimeOfDay(s.end))}</span>
+          <span class="shift-row-dept">${escapeHtml(s.department || '')}</span>
+          <span class="shift-row-len">${escapeHtml(formatDuration(s.end - s.start))}</span>
+        </li>`;
+      })
+      .join('');
+    modalTitle.textContent = 'Shift history';
+    modalBody.innerHTML = `
+      <div class="shift-summary">
+        <div><span class="shift-summary-num">${escapeHtml(formatDuration(weekMs))}</span><span class="shift-summary-label">Last 7 days</span></div>
+        <div><span class="shift-summary-num">${history.filter((s) => s.end >= weekAgo).length}</span><span class="shift-summary-label">Shifts</span></div>
+      </div>
+      ${
+        history.length
+          ? `<ul class="shift-list">${rows}</ul>`
+          : '<p class="manage-rp-empty">No shifts yet. Start Watch (or the Start button) begins one; End Watch ends it.</p>'
+      }
+      <div class="modal-actions">
+        ${history.length ? '<button type="button" class="btn btn-secondary" id="shiftClear">Clear history</button>' : ''}
+        <button type="button" class="btn" id="shiftDone">Done</button>
+      </div>
+    `;
+    document.getElementById('shiftDone').onclick = closeModal;
+    const clearBtn = document.getElementById('shiftClear');
+    if (clearBtn) {
+      clearBtn.onclick = () => {
+        settings = { ...settings, shiftHistory: [] };
+        window.api.saveSettings({ shiftHistory: [] }).then((updated) => {
+          settings = updated;
+          openShiftHistory();
+        });
+      };
+    }
+    window.api.setModalOpen(true);
+    modalOverlay.classList.remove('hidden');
+  }
+
+  document.getElementById('dutyHistory').addEventListener('click', openShiftHistory);
+  setInterval(renderDutyBar, 1000);
 
   // --- Step-by-step mode -------------------------------------------------
   const stepPanelEl = document.getElementById('stepPanel');
