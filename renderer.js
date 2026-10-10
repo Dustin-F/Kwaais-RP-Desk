@@ -934,10 +934,11 @@
     modalBody.appendChild(listEl);
   }
 
+  // Safe for both element text and quoted attribute values
   function escapeHtml(s) {
     const div = document.createElement('div');
     div.textContent = s;
-    return div.innerHTML;
+    return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   }
 
   function stripRpPrefix(s) {
@@ -1903,45 +1904,45 @@
       </div>
       <div class="form-group">
         <label>Department full name (e.g. for megaphone)</label>
-        <input type="text" id="settingDepartmentFullName" value="${(
-          settings.departmentFullName || ''
-        ).replace(/"/g, '&quot;')}" placeholder="LSPD or LSSD">
+        <input type="text" id="settingDepartmentFullName" value="${escapeHtml(
+          settings.departmentFullName || '',
+        )}" placeholder="LSPD or LSSD">
       </div>
       <div class="form-group">
         <label>Badge number</label>
-        <input type="text" id="settingBadge" value="${(
-          settings.badgeNumber || ''
-        ).replace(/"/g, '&quot;')}" placeholder="24195">
+        <input type="text" id="settingBadge" value="${escapeHtml(
+          settings.badgeNumber || '',
+        )}" placeholder="24195">
       </div>
       <div class="form-group">
         <label>Callsign</label>
-        <input type="text" id="settingCallsign" value="${(() => {
+        <input type="text" id="settingCallsign" value="${escapeHtml((() => {
           const c = settings.callsign;
           if (typeof c === 'string') return c;
           if (c && typeof c === 'object' && (c.division != null || c.letter != null || c.number != null)) {
             return [c.division, c.letter, c.number].filter(Boolean).join('-') || '';
           }
           return '';
-        })().replace(/"/g, '&quot;')}" placeholder="228B or 3-K-22">
+        })())}" placeholder="228B or 3-K-22">
       </div>
       <div class="form-group">
         <label>Pronouns (for /me /do)</label>
         <div class="form-row">
-          <input type="text" id="settingPronounSubject" value="${(
-            settings.pronouns?.subject || 'he'
-          ).replace(/"/g, '&quot;')}" placeholder="he">
-          <input type="text" id="settingPronounPossessive" value="${(
-            settings.pronouns?.possessive || 'his'
-          ).replace(/"/g, '&quot;')}" placeholder="his">
+          <input type="text" id="settingPronounSubject" value="${escapeHtml(
+            settings.pronouns?.subject || 'he',
+          )}" placeholder="he">
+          <input type="text" id="settingPronounPossessive" value="${escapeHtml(
+            settings.pronouns?.possessive || 'his',
+          )}" placeholder="his">
         </div>
       </div>
           </div>
           <div class="settings-tab-panel" id="panel-window">
       <div class="form-group">
         <label>Target exe (game)</label>
-        <input type="text" id="settingTargetExe" value="${(
-          settings.targetExe || 'FiveM_GTAProcess.exe'
-        ).replace(/"/g, '&quot;')}" placeholder="FiveM_GTAProcess.exe">
+        <input type="text" id="settingTargetExe" value="${escapeHtml(
+          settings.targetExe || 'FiveM_GTAProcess.exe',
+        )}" placeholder="FiveM_GTAProcess.exe">
         <p class="form-hint">FiveM build names like FiveM_b3889_GTAProcess.exe are auto-detected if this exact name is not found.</p>
       </div>
       <div class="form-group">
@@ -2093,33 +2094,33 @@
         <div class="form-row form-wrap">
           <div class="form-group keybind-row">
             <label>Nav Up</label>
-            <input type="text" id="settingNavUpAccel" value="${(
-              settings.navUpAccel || 'Control+Up'
-            ).replace(/"/g, '&quot;')}" placeholder="Control+Up">
+            <input type="text" id="settingNavUpAccel" value="${escapeHtml(
+              settings.navUpAccel || 'Control+Up',
+            )}" placeholder="Control+Up">
           </div>
           <div class="form-group keybind-row">
             <label>Nav Down</label>
-            <input type="text" id="settingNavDownAccel" value="${(
-              settings.navDownAccel || 'Control+Down'
-            ).replace(/"/g, '&quot;')}" placeholder="Control+Down">
+            <input type="text" id="settingNavDownAccel" value="${escapeHtml(
+              settings.navDownAccel || 'Control+Down',
+            )}" placeholder="Control+Down">
           </div>
           <div class="form-group keybind-row">
             <label>Nav Left</label>
-            <input type="text" id="settingNavLeftAccel" value="${(
-              settings.navLeftAccel || 'Control+Left'
-            ).replace(/"/g, '&quot;')}" placeholder="Control+Left">
+            <input type="text" id="settingNavLeftAccel" value="${escapeHtml(
+              settings.navLeftAccel || 'Control+Left',
+            )}" placeholder="Control+Left">
           </div>
           <div class="form-group keybind-row">
             <label>Nav Right</label>
-            <input type="text" id="settingNavRightAccel" value="${(
-              settings.navRightAccel || 'Control+Right'
-            ).replace(/"/g, '&quot;')}" placeholder="Control+Right">
+            <input type="text" id="settingNavRightAccel" value="${escapeHtml(
+              settings.navRightAccel || 'Control+Right',
+            )}" placeholder="Control+Right">
           </div>
           <div class="form-group keybind-row">
             <label>Expand sidebar</label>
-            <input type="text" id="settingExpandAccel" value="${(
-              settings.expandAccel || 'Control+Shift+Right'
-            ).replace(/"/g, '&quot;')}" placeholder="Control+Shift+Right">
+            <input type="text" id="settingExpandAccel" value="${escapeHtml(
+              settings.expandAccel || 'Control+Shift+Right',
+            )}" placeholder="Control+Shift+Right">
           </div>
         </div>
         <div class="form-group">
@@ -2139,9 +2140,9 @@
                   !raw || /^Control\+\d$/.test(String(raw).trim())
                     ? 'Alt+' + i
                     : raw;
-                return `<div class="form-group keybind-row"><label>Slot ${i}</label><input type="text" id="settingQuickBarKey${i}" value="${(
-                  val || 'Alt+' + i
-                ).replace(/"/g, '&quot;')}" placeholder="Alt+${i}"></div>`;
+                return `<div class="form-group keybind-row"><label>Slot ${i}</label><input type="text" id="settingQuickBarKey${i}" value="${escapeHtml(
+                  val || 'Alt+' + i,
+                )}" placeholder="Alt+${i}"></div>`;
               })
               .join('')}
           </div>
@@ -2454,16 +2455,16 @@
         '<option value="">— None —</option>' +
         flat.map(
           (f) =>
-            `<option value="${f.item.actionId}" data-label="${(
-              f.item.label || ''
-            ).replace(/"/g, '&quot;')}" ${
+            `<option value="${escapeHtml(f.item.actionId)}" data-label="${escapeHtml(
+              f.item.label || '',
+            )}" ${
               entry.actionId === f.item.actionId ? 'selected' : ''
-            }>${
+            }>${escapeHtml(
               f.path.length
                 ? f.path.join(' › ') + ' › ' + f.item.label
-                : f.item.label
-            }</option>`,
-        );
+                : f.item.label,
+            )}</option>`,
+        ).join('');
       qbSettings.appendChild(sel);
     }
     const opacitySlider = document.getElementById('settingWindowOpacity');
