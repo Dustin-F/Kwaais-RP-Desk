@@ -81,6 +81,55 @@
   }
 
   let audioCtx = null;
+  // Folder picked in Settings but not saved yet
+  let pendingScreenshotFolder = null;
+  // --- Proof screenshots -------------------------------------------------
+  // Top-level menu sections whose RPs can trigger a screenshot. 'clock' is
+  // Start/End Watch wherever it lives in the menu.
+  const SCREENSHOT_EXCLUDED_ROOTS = ['useful-links', 'bbcode-templates', 'information', 'animations', 'utility'];
+  const CLOCK_ACTIONS = ['StartWatch', 'StartWatchAdam', 'UniformWeaponsStartWatch', 'EndWatch'];
+
+  function getScreenshotSections() {
+    const roots = window.buildMenu(settings) || [];
+    return [
+      { id: 'clock', label: 'Clock on / off (Start & End Watch)' },
+      ...roots
+        .filter((r) => r.children && r.children.length && !SCREENSHOT_EXCLUDED_ROOTS.includes(r.id))
+        .map((r) => ({ id: r.id, label: r.label })),
+    ];
+  }
+
+  function rootIdsForAction(actionId) {
+    const ids = new Set();
+    const walk = (items, rootId) => {
+      for (const it of items || []) {
+        const rid = rootId || it.id;
+        if (it.actionId === actionId) ids.add(rid);
+        if (it.children) walk(it.children, rid);
+      }
+    };
+    walk(window.buildMenu(settings), null);
+    return ids;
+  }
+
+  function shouldScreenshot(actionId) {
+    if (settings.screenshotEnabled === false || settings.devMode) return false;
+    const cats = settings.screenshotCategories || [];
+    if (CLOCK_ACTIONS.includes(actionId)) return cats.includes('clock');
+    for (const id of rootIdsForAction(actionId)) {
+      if (cats.includes(id)) return true;
+    }
+    return false;
+  }
+
+  function takeProofScreenshot(label) {
+    return window.api.takeScreenshot(label).then((res) => {
+      if (res && res.ok) showToast('Proof screenshot saved');
+      else showToast(`Screenshot failed: ${res?.error || 'unknown error'}`, 'error');
+      return res;
+    });
+  }
+
   // Actions that clock you on (start the shift timer when they succeed)
   const SHIFT_START_ACTIONS = ['StartWatch', 'StartWatchAdam', 'UniformWeaponsStartWatch'];
   // Step-by-step mode: true while an action is running in step mode
@@ -1582,6 +1631,7 @@
       if (!(result && result.preview)) {
         if (SHIFT_START_ACTIONS.includes(actionId)) startShift();
         else if (actionId === 'EndWatch') endShift();
+        if (shouldScreenshot(actionId)) takeProofScreenshot(label);
       }
       if (actionId === 'StartWatch') {
         const calls = window.getCallsigns ? window.getCallsigns(settings) : null;
@@ -2094,6 +2144,43 @@
         <p class="form-hint">Edits only apply to that one send &mdash; the saved RP isn't changed. Also toggled from the header button.</p>
       </div>
       <div class="form-group">
+        <label>Proof screenshots</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="settingScreenshotEnabled" ${settings.screenshotEnabled !== false ? 'checked' : ''}>
+          <label for="settingScreenshotEnabled">Take a screenshot automatically when these RPs finish</label>
+        </div>
+        <div class="screenshot-sections" id="screenshotSections">
+          ${getScreenshotSections()
+            .map(
+              (sec) => `<label class="screenshot-section">
+            <input type="checkbox" value="${escapeHtml(sec.id)}" ${
+              (settings.screenshotCategories || []).includes(sec.id) ? 'checked' : ''
+            }>
+            <span>${escapeHtml(sec.label)}</span>
+          </label>`,
+            )
+            .join('')}
+        </div>
+        <div class="checkbox-group">
+          <input type="checkbox" id="settingScreenshotHideOverlay" ${settings.screenshotHideOverlay !== false ? 'checked' : ''}>
+          <label for="settingScreenshotHideOverlay">Hide this overlay in screenshots (brief flicker)</label>
+        </div>
+        <div class="form-group">
+          <label>Monitor</label>
+          <select id="settingScreenshotDisplay"><option value="">Primary monitor</option></select>
+        </div>
+        <div class="form-group">
+          <label>Save to</label>
+          <div class="screenshot-folder" id="screenshotFolderPath">&hellip;</div>
+          <div class="form-row">
+            <button type="button" class="btn btn-secondary btn-small" id="btnScreenshotOpen">Open folder</button>
+            <button type="button" class="btn btn-secondary btn-small" id="btnScreenshotChange">Change&hellip;</button>
+            <button type="button" class="btn btn-secondary btn-small" id="btnScreenshotTest">Test screenshot</button>
+          </div>
+          <p class="form-hint">Saved as JPG in a folder per day. If shots come out black, set GTA to Borderless or Windowed instead of exclusive Fullscreen.</p>
+        </div>
+      </div>
+      <div class="form-group">
         <label>Mechanic RP delay (seconds between /me lines)</label>
         <input type="number" id="settingMechanicRPDelaySeconds" min="1" max="60" value="${Math.min(
           60,
@@ -2524,6 +2611,36 @@
         ).join('');
       qbSettings.appendChild(sel);
     }
+    pendingScreenshotFolder = settings.screenshotFolder || null;
+    const shotFolderEl = document.getElementById('screenshotFolderPath');
+    const refreshShotFolder = () => {
+      if (pendingScreenshotFolder) shotFolderEl.textContent = pendingScreenshotFolder;
+      else window.api.getScreenshotFolder().then((f) => (shotFolderEl.textContent = f));
+    };
+    refreshShotFolder();
+    window.api.getDisplays().then((displays) => {
+      const sel = document.getElementById('settingScreenshotDisplay');
+      sel.innerHTML =
+        '<option value="">Primary monitor</option>' +
+        displays
+          .map(
+            (d) =>
+              `<option value="${escapeHtml(d.id)}" ${
+                String(settings.screenshotDisplayId) === d.id ? 'selected' : ''
+              }>${escapeHtml(d.label)}</option>`,
+          )
+          .join('');
+    });
+    document.getElementById('btnScreenshotOpen').onclick = () =>
+      window.api.openScreenshotFolder();
+    document.getElementById('btnScreenshotChange').onclick = () =>
+      window.api.chooseScreenshotFolder().then((dir) => {
+        if (dir) {
+          pendingScreenshotFolder = dir;
+          refreshShotFolder();
+        }
+      });
+    document.getElementById('btnScreenshotTest').onclick = () => takeProofScreenshot('Test');
     const soundSlider = document.getElementById('settingSoundVolume');
     const soundValue = document.getElementById('settingSoundVolumeValue');
     soundSlider.addEventListener('input', () => {
@@ -2634,6 +2751,13 @@
         compactList: document.getElementById('settingCompactList').checked,
         soundOnAction: document.getElementById('settingSoundOnAction').checked,
         stepMode: document.getElementById('settingStepMode').checked,
+        screenshotEnabled: document.getElementById('settingScreenshotEnabled').checked,
+        screenshotHideOverlay: document.getElementById('settingScreenshotHideOverlay').checked,
+        screenshotCategories: [
+          ...document.querySelectorAll('#screenshotSections input:checked'),
+        ].map((el) => el.value),
+        screenshotDisplayId: document.getElementById('settingScreenshotDisplay').value || null,
+        screenshotFolder: pendingScreenshotFolder,
         soundVolume: Math.min(
           100,
           Math.max(0, Number(document.getElementById('settingSoundVolume').value) || 0),
@@ -3011,7 +3135,7 @@
           <div class="settings-tab-panel" id="about-panel-changelog">
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.4</h4>
-              <p class="changelog-desc">Shift timer: clocks on with Start Watch and off with End Watch (or the Start/End button), keeps running across restarts, and keeps a shift history with your last-7-days total.</p>
+              <p class="changelog-desc">Proof screenshots: the screen is captured automatically after clock on/off and Detective RPs (choose more in Settings &rarr; RP), saved to Pictures in a folder per day. Shift timer: clocks on with Start Watch and off with End Watch (or the Start/End button), keeps running across restarts, and keeps a shift history with your last-7-days total.</p>
             </div>
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.3</h4>

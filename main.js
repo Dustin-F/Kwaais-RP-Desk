@@ -5,6 +5,8 @@ const {
   globalShortcut,
   clipboard,
   shell,
+  desktopCapturer,
+  dialog,
 } = require('electron');
 const path = require('path');
 const { execFile } = require('child_process');
@@ -586,6 +588,114 @@ ipcMain.handle('runAction', async (_e, actionId, params = {}) => {
   }
 });
 
+// --- Proof screenshots -------------------------------------------------
+function getScreenshotFolder() {
+  const custom = store.store.screenshotFolder;
+  if (typeof custom === 'string' && custom.trim()) return custom;
+  return path.join(app.getPath('pictures'), "KWAAI's RP DESK");
+}
+
+function pad2(n) {
+  return String(n).padStart(2, '0');
+}
+
+async function captureScreenshot(label) {
+  const fs = require('fs');
+  const { screen } = require('electron');
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+  const displays = screen.getAllDisplays();
+  const wanted = store.store.screenshotDisplayId;
+  const display =
+    displays.find((d) => String(d.id) === String(wanted)) ||
+    screen.getPrimaryDisplay();
+  const thumbnailSize = {
+    width: Math.round(display.size.width * display.scaleFactor),
+    height: Math.round(display.size.height * display.scaleFactor),
+  };
+
+  // Let the last chat line render before capturing
+  await wait(350);
+
+  const hide =
+    store.store.screenshotHideOverlay !== false &&
+    mainWindow &&
+    !mainWindow.isDestroyed();
+  const prevOpacity = hide ? mainWindow.getOpacity() : 1;
+  let sources;
+  try {
+    if (hide) {
+      mainWindow.setOpacity(0);
+      await wait(120);
+    }
+    sources = await desktopCapturer.getSources({ types: ['screen'], thumbnailSize });
+  } finally {
+    if (hide && mainWindow && !mainWindow.isDestroyed()) {
+      mainWindow.setOpacity(prevOpacity);
+    }
+  }
+  const source =
+    sources.find((s) => String(s.display_id) === String(display.id)) || sources[0];
+  if (!source || source.thumbnail.isEmpty()) {
+    throw new Error('Screen capture returned nothing');
+  }
+
+  const now = new Date();
+  const day = `${now.getFullYear()}-${pad2(now.getMonth() + 1)}-${pad2(now.getDate())}`;
+  const time = `${pad2(now.getHours())}-${pad2(now.getMinutes())}-${pad2(now.getSeconds())}`;
+  const safeLabel = String(label || 'RP')
+    .replace(/[<>:"/\\|?*\x00-\x1f]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, 60) || 'RP';
+  const dir = path.join(getScreenshotFolder(), day);
+  fs.mkdirSync(dir, { recursive: true });
+  let file = path.join(dir, `${time} ${safeLabel}.jpg`);
+  for (let i = 2; fs.existsSync(file); i++) {
+    file = path.join(dir, `${time} ${safeLabel} (${i}).jpg`);
+  }
+  fs.writeFileSync(file, source.thumbnail.toJPEG(90));
+  return file;
+}
+
+ipcMain.handle('takeScreenshot', async (_e, label) => {
+  try {
+    const file = await captureScreenshot(label);
+    return { ok: true, file };
+  } catch (err) {
+    return { ok: false, error: err?.message || String(err) };
+  }
+});
+
+ipcMain.handle('getDisplays', () => {
+  const { screen } = require('electron');
+  const primaryId = screen.getPrimaryDisplay().id;
+  return screen.getAllDisplays().map((d, i) => ({
+    id: String(d.id),
+    label: `Monitor ${i + 1} — ${Math.round(d.size.width * d.scaleFactor)}×${Math.round(
+      d.size.height * d.scaleFactor,
+    )}${d.id === primaryId ? ' (primary)' : ''}`,
+  }));
+});
+
+ipcMain.handle('getScreenshotFolder', () => getScreenshotFolder());
+
+ipcMain.handle('openScreenshotFolder', () => {
+  const fs = require('fs');
+  const dir = getScreenshotFolder();
+  fs.mkdirSync(dir, { recursive: true });
+  return shell.openPath(dir);
+});
+
+ipcMain.handle('chooseScreenshotFolder', async () => {
+  const result = await dialog.showOpenDialog(mainWindow, {
+    title: 'Choose screenshot folder',
+    defaultPath: getScreenshotFolder(),
+    properties: ['openDirectory', 'createDirectory'],
+  });
+  if (result.canceled || !result.filePaths[0]) return null;
+  return result.filePaths[0];
+});
+
 function requestStepSubmit() {
   if (mainWindow && !mainWindow.isDestroyed()) {
     mainWindow.webContents.send('stepSubmit');
@@ -696,7 +806,7 @@ ipcMain.handle('importSettings', (_e, jsonString) => {
     throw new Error('Invalid settings');
   }
   const NUMERIC_FIELDS = ['windowWidth', 'windowHeight', 'windowOpacity', 'sidebarCollapseSeconds', 'actionLogMax', 'mechanicRPDelaySeconds', 'soundVolume'];
-  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled', 'adminUnlocked', 'stepMode'];
+  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled', 'adminUnlocked', 'stepMode', 'screenshotEnabled', 'screenshotHideOverlay'];
   for (const key of NUMERIC_FIELDS) {
     if (key in data && (typeof data[key] !== 'number' || !isFinite(data[key]))) {
       throw new Error(`Invalid value for setting: ${key}`);

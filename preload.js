@@ -49,6 +49,11 @@ contextBridge.exposeInMainWorld('api', {
   windowDragMove: (screenX, screenY) =>
     ipcRenderer.send('window-drag-move', screenX, screenY),
   windowDragEnd: () => ipcRenderer.send('window-drag-end'),
+  takeScreenshot: (label) => ipcRenderer.invoke('takeScreenshot', label),
+  getDisplays: () => ipcRenderer.invoke('getDisplays'),
+  getScreenshotFolder: () => ipcRenderer.invoke('getScreenshotFolder'),
+  openScreenshotFolder: () => ipcRenderer.invoke('openScreenshotFolder'),
+  chooseScreenshotFolder: () => ipcRenderer.invoke('chooseScreenshotFolder'),
   stepAdvance: (action, text) => ipcRenderer.invoke('stepAdvance', action, text),
   onStepPrompt: (callback) => {
     ipcRenderer.on('stepPrompt', (_e, step) => callback(step));

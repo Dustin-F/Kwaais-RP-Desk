@@ -1655,6 +1655,51 @@ input[type='range']::-webkit-slider-thumb {
   gap: 0.4rem;
 }
 
+/* Proof screenshot settings */
+.screenshot-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 0.75rem;
+  margin: 0.2rem 0 0.5rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--bg) 40%, transparent);
+}
+.screenshot-section {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-width: 0;
+  font-size: 0.75rem !important;
+  font-weight: 500 !important;
+  color: var(--text) !important;
+  cursor: pointer;
+}
+.screenshot-section span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.screenshot-section input {
+  flex-shrink: 0;
+  margin: 0;
+  accent-color: var(--accent);
+}
+.screenshot-section:first-child {
+  grid-column: 1 / -1;
+}
+.screenshot-folder {
+  padding: 0.4rem 0.6rem;
+  border: 1px dashed var(--border-strong);
+  border-radius: var(--radius);
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  word-break: break-all;
+  user-select: text;
+}
+
 /* Macro editor */
 .macro-steps {
   display: flex;
