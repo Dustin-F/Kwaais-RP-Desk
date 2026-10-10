@@ -234,7 +234,7 @@
       ? breadcrumbParts.join(' › ')
       : 'Main';
     breadcrumbEl.style.display = breadcrumbParts.length ? 'block' : 'none';
-    if (btnBack) btnBack.style.display = stack.length > 0 ? 'block' : 'none';
+    if (btnBack) btnBack.style.display = stack.length > 0 ? '' : 'none';
 
     const inMechanicRpMenu =
       !searchQuery.trim() &&
@@ -333,7 +333,7 @@
       if (item.children && item.children.length) {
         const arrow = document.createElement('span');
         arrow.className = 'arrow';
-        arrow.textContent = '▶';
+        arrow.textContent = '';
         arrow.setAttribute('aria-hidden', 'true');
         li.appendChild(arrow);
       }
@@ -1800,6 +1800,7 @@
     appTitleEl.textContent = "KWAAI's RP DESK";
     const deptBadge = document.getElementById('departmentBadge');
     if (deptBadge) deptBadge.textContent = dept;
+    document.body.dataset.dept = dept;
     const devBadge = document.getElementById('devBadge');
     if (devBadge) devBadge.classList.toggle('hidden', !settings.devMode);
   }
@@ -2930,8 +2931,16 @@
             <p class="about-version">Version ${String(v).replace(/</g, '&lt;')}</p>
             <p class="about-version">Created by KWAAI</p>
             <p class="about-contact">Contact: Discord <strong>dirtyddawg</strong> — suggestions &amp; bug reports</p>
+            <div class="about-update">
+              <span class="about-update-text" id="aboutUpdateText"></span>
+              <button type="button" class="btn btn-secondary btn-small" id="aboutUpdateBtn">Check for updates</button>
+            </div>
           </div>
           <div class="settings-tab-panel" id="about-panel-changelog">
+            <div class="changelog-entry">
+              <h4 class="changelog-version">v1.0.1</h4>
+              <p class="changelog-desc">New modern look across the whole app. Automatic updates from GitHub. Faster, smoother sending to the game, your clipboard is restored after actions, and the penal code can be edited in the installed app.</p>
+            </div>
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.0</h4>
               <p class="changelog-desc">Initial release. PD, SD &amp; Mechanic duty overlay with Ctrl+Arrow navigation, radio commands, citations, pursuits, penal code, animations, quick bar, and mechanic RP.</p>
@@ -2951,11 +2960,67 @@
       });
     });
     document.getElementById('aboutDone').onclick = closeModal;
+    document.getElementById('aboutUpdateBtn').onclick = () => {
+      if (updateStatus.state === 'ready') window.api.installUpdate();
+      else window.api.checkForUpdates().then(renderUpdateStatus);
+    };
+    window.api.getUpdateStatus().then(renderUpdateStatus);
     window.api.setModalOpen(true);
     modalOverlay.classList.remove('hidden');
   }
 
   document.getElementById('btnAbout').addEventListener('click', openAbout);
+
+  // --- Auto-update status ------------------------------------------------
+  let updateStatus = { state: 'idle' };
+  const updateBannerEl = document.getElementById('updateBanner');
+  const updateBannerTextEl = document.getElementById('updateBannerText');
+
+  function describeUpdateStatus(s) {
+    switch (s.state) {
+      case 'dev':
+        return 'Updates are only checked in the installed app.';
+      case 'checking':
+        return 'Checking for updates…';
+      case 'downloading':
+        return `Downloading v${s.version || ''}… ${s.percent || 0}%`;
+      case 'ready':
+        return `Version ${s.version} is ready to install.`;
+      case 'up-to-date':
+        return 'You are on the latest version.';
+      case 'error':
+        return "Couldn't check for updates. Try again later.";
+      default:
+        return '';
+    }
+  }
+
+  function renderUpdateStatus(s) {
+    if (!s) return;
+    const wasReady = updateStatus.state === 'ready';
+    updateStatus = s;
+    const ready = s.state === 'ready';
+    updateBannerEl.classList.toggle('hidden', !ready);
+    if (ready) {
+      updateBannerTextEl.textContent = `Update v${s.version} ready`;
+      if (!wasReady) showToast(`Update v${s.version} downloaded — restart to install`);
+    }
+    const aboutText = document.getElementById('aboutUpdateText');
+    const aboutBtn = document.getElementById('aboutUpdateBtn');
+    if (aboutText) aboutText.textContent = describeUpdateStatus(s);
+    if (aboutBtn) {
+      aboutBtn.textContent = ready ? 'Restart to update' : 'Check for updates';
+      aboutBtn.classList.toggle('btn-secondary', !ready);
+      aboutBtn.disabled =
+        s.state === 'dev' || s.state === 'checking' || s.state === 'downloading';
+    }
+  }
+
+  document.getElementById('updateBannerRestart').addEventListener('click', () =>
+    window.api.installUpdate(),
+  );
+  window.api.onUpdateStatus(renderUpdateStatus);
+  window.api.getUpdateStatus().then(renderUpdateStatus);
 
   const departmentBadge = document.getElementById('departmentBadge');
   const departmentDropdown = document.getElementById('departmentDropdown');

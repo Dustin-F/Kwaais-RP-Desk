@@ -11,6 +11,7 @@ const { execFile } = require('child_process');
 const Store = require('electron-store');
 const defaultSettings = require('./lib/defaultSettings');
 const { runAction: runActionRunner } = require('./lib/actionRunner');
+const { autoUpdater } = require('electron-updater');
 
 const store = new Store({
   defaults: defaultSettings,
@@ -242,9 +243,75 @@ function unregisterGlobalShortcuts() {
   globalShortcut.unregisterAll();
 }
 
+// --- Auto-update (GitHub Releases) ---------------------------------------
+// Only runs in the installed app. New versions download in the background;
+// they install when the user clicks "Restart to update" or next time the app quits.
+const UPDATE_CHECK_INTERVAL_MS = 4 * 60 * 60 * 1000;
+let updateStatus = { state: 'idle' };
+
+function sendUpdateStatus(status) {
+  updateStatus = status;
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send('updateStatus', status);
+  }
+}
+
+function setupAutoUpdater() {
+  if (!app.isPackaged) {
+    updateStatus = { state: 'dev' };
+    return;
+  }
+  autoUpdater.autoDownload = true;
+  autoUpdater.autoInstallOnAppQuit = true;
+  autoUpdater.on('checking-for-update', () =>
+    sendUpdateStatus({ state: 'checking' }),
+  );
+  autoUpdater.on('update-available', (info) =>
+    sendUpdateStatus({ state: 'downloading', version: info.version, percent: 0 }),
+  );
+  autoUpdater.on('download-progress', (p) =>
+    sendUpdateStatus({
+      state: 'downloading',
+      version: updateStatus.version,
+      percent: Math.round(p.percent || 0),
+    }),
+  );
+  autoUpdater.on('update-not-available', () =>
+    sendUpdateStatus({ state: 'up-to-date' }),
+  );
+  autoUpdater.on('update-downloaded', (info) =>
+    sendUpdateStatus({ state: 'ready', version: info.version }),
+  );
+  autoUpdater.on('error', (err) =>
+    sendUpdateStatus({ state: 'error', message: err?.message || String(err) }),
+  );
+  const check = () => autoUpdater.checkForUpdates().catch(() => {});
+  setTimeout(check, 5000);
+  setInterval(check, UPDATE_CHECK_INTERVAL_MS);
+}
+
+ipcMain.handle('getUpdateStatus', () => updateStatus);
+
+ipcMain.handle('checkForUpdates', async () => {
+  if (!app.isPackaged) return { state: 'dev' };
+  try {
+    await autoUpdater.checkForUpdates();
+  } catch (err) {
+    sendUpdateStatus({ state: 'error', message: err?.message || String(err) });
+  }
+  return updateStatus;
+});
+
+ipcMain.handle('installUpdate', () => {
+  if (updateStatus.state !== 'ready') return;
+  unregisterGlobalShortcuts();
+  autoUpdater.quitAndInstall(true, true);
+});
+
 app.whenReady().then(() => {
   createWindow();
   registerGlobalShortcuts();
+  setupAutoUpdater();
 });
 
 app.on('window-all-closed', () => {

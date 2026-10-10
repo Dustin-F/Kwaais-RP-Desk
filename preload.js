@@ -49,4 +49,10 @@ contextBridge.exposeInMainWorld('api', {
   windowDragMove: (screenX, screenY) =>
     ipcRenderer.send('window-drag-move', screenX, screenY),
   windowDragEnd: () => ipcRenderer.send('window-drag-end'),
+  getUpdateStatus: () => ipcRenderer.invoke('getUpdateStatus'),
+  checkForUpdates: () => ipcRenderer.invoke('checkForUpdates'),
+  installUpdate: () => ipcRenderer.invoke('installUpdate'),
+  onUpdateStatus: (callback) => {
+    ipcRenderer.on('updateStatus', (_e, status) => callback(status));
+  },
 });

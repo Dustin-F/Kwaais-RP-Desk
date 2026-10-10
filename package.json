@@ -1,6 +1,6 @@
 {
   "name": "kwaais-rp-desk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "KWAAI's RP DESK - PD, SD & Mechanic RP overlay for FiveM/GTA V",
   "main": "main.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "png-to-ico": "^3.0.1"
   },
   "dependencies": {
-    "electron-store": "^8.1.0"
+    "electron-store": "^8.1.0",
+    "electron-updater": "^6.8.9"
   },
   "build": {
     "appId": "com.kwaais.rp.desk",
@@ -42,7 +43,8 @@
     "publish": {
       "provider": "github",
       "owner": "Dustin-F",
-      "repo": "Kwaais-RP-Desk"
+      "repo": "Kwaais-RP-Desk",
+      "releaseType": "release"
     }
   }
 }

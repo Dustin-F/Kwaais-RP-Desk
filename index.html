@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
   <title>KWAAI's RP DESK</title>
   <link rel="icon" type="image/png" href="icon.png">
   <link rel="stylesheet" href="renderer.css">
@@ -11,7 +11,12 @@
 <body class="theme-dark">
   <div class="profile-picker-overlay" id="profilePickerOverlay">
     <div class="profile-picker">
+      <div class="profile-picker-brand">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path class="brand-mark-star" d="m12 7 1.4 2.9 3.1.4-2.3 2.2.6 3.1L12 14.1l-2.8 1.5.6-3.1-2.3-2.2 3.1-.4L12 7Z"/></svg>
+        <span class="profile-picker-app">KWAAI's RP DESK</span>
+      </div>
       <h2 class="profile-picker-title">Select your role</h2>
+      <p class="profile-picker-sub">You can switch any time from the header.</p>
       <div class="profile-picker-buttons">
         <button type="button" class="profile-picker-btn" data-department="PD">
           <span class="profile-picker-btn-label">PD</span>
@@ -35,7 +40,9 @@
   <div class="app">
     <header class="header">
       <div class="header-top">
+        <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"/><path class="brand-mark-star" d="m12 7 1.4 2.9 3.1.4-2.3 2.2.6 3.1L12 14.1l-2.8 1.5.6-3.1-2.3-2.2 3.1-.4L12 7Z"/></svg>
         <span class="title" id="appTitle">KWAAI's RP DESK</span>
+        <span class="game-status" id="gameStatus" title="Game process">—</span>
       </div>
       <div class="header-bar">
         <div class="department-switcher">
@@ -55,19 +62,25 @@
           </div>
         </div>
         <span class="dev-badge hidden" id="devBadge" title="Development mode – actions show preview instead of sending">DEV</span>
-        <span class="game-status" id="gameStatus" title="Game process">—</span>
-        <button type="button" class="btn-icon" id="btnAbout" title="About">ℹ</button>
-        <button type="button" class="btn-icon" id="btnSettings" title="Settings">⚙</button>
-        <button type="button" class="btn-icon btn-quit" id="btnQuit" title="Quit (Ctrl+Shift+Q)">✕</button>
+        <span class="header-spacer"></span>
+        <button type="button" class="btn-icon" id="btnAbout" title="About"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></button>
+        <button type="button" class="btn-icon" id="btnSettings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
+        <button type="button" class="btn-icon btn-quit" id="btnQuit" title="Quit (Ctrl+Shift+Q)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
       </div>
     </header>
+    <div class="update-banner hidden" id="updateBanner" role="status">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4M5 20h14"/></svg>
+      <span class="update-banner-text" id="updateBannerText">Update ready</span>
+      <button type="button" class="btn btn-small" id="updateBannerRestart">Restart</button>
+    </div>
     <div class="quick-bar" id="quickBar"></div>
     <div class="search-wrap">
+      <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.3-4.3"/></svg>
       <input type="text" class="search-input" id="searchInput" placeholder="Search menu..." autocomplete="off">
     </div>
     <nav class="nav" role="navigation">
       <div class="nav-top">
-        <button type="button" class="btn-back" id="btnBack" title="Back (Ctrl+Left)">← Back</button>
+        <button type="button" class="btn-back" id="btnBack" title="Back (Ctrl+Left)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Back</button>
         <div class="breadcrumb" id="breadcrumb"></div>
       </div>
       <div class="mechanic-rp-delay-wrap hidden" id="mechanicRpDelayWrap">
@@ -90,7 +103,7 @@
     <div class="modal" id="modal">
       <div class="modal-header">
         <h2 class="modal-title" id="modalTitle">Modal</h2>
-        <button type="button" class="btn-close" id="modalClose">×</button>
+        <button type="button" class="btn-close" id="modalClose" title="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
       </div>
       <div class="modal-body" id="modalBody"></div>
     </div>
