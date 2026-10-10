@@ -63,6 +63,7 @@
         </div>
         <span class="dev-badge hidden" id="devBadge" title="Development mode – actions show preview instead of sending">DEV</span>
         <span class="header-spacer"></span>
+        <button type="button" class="btn-icon btn-step-toggle" id="btnStepMode" title="Step-by-step mode: off" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h9M5 12h6M5 18h9"/><path d="m16 9 4 3-4 3"/></svg></button>
         <button type="button" class="btn-icon" id="btnAbout" title="About"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg></button>
         <button type="button" class="btn-icon" id="btnSettings" title="Settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></button>
         <button type="button" class="btn-icon btn-quit" id="btnQuit" title="Quit (Ctrl+Shift+Q)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 7 7 17"/></svg></button>
@@ -91,6 +92,22 @@
         Make sure you are NOT in the /fl menu. Close it first if it is open.
       </div>
       <ul class="menu-list" id="menuList" role="listbox"></ul>
+      <div class="step-panel hidden" id="stepPanel" role="dialog" aria-label="Step-by-step RP">
+        <div class="step-panel-head">
+          <span class="step-panel-count" id="stepCount">Step 1 of 1</span>
+          <span class="step-panel-label" id="stepLabel"></span>
+          <span class="step-panel-edited hidden" id="stepEdited">edited</span>
+        </div>
+        <div class="step-panel-progress"><span id="stepProgress"></span></div>
+        <textarea class="step-panel-text" id="stepText" rows="3" spellcheck="false"></textarea>
+        <div class="step-panel-actions">
+          <button type="button" class="btn btn-small" id="stepSend">Send</button>
+          <button type="button" class="btn btn-secondary btn-small" id="stepSkip">Skip</button>
+          <button type="button" class="btn btn-secondary btn-small step-stop" id="stepStop">Stop</button>
+          <button type="button" class="step-reset hidden" id="stepReset">Reset</button>
+        </div>
+        <p class="step-panel-hint">Ctrl+&rarr; or Enter to send &middot; Esc to stop &middot; edits aren't saved</p>
+      </div>
       <div class="action-log-wrap" id="actionLogWrap">
         <button type="button" class="action-log-toggle" id="actionLogToggle">Action log</button>
         <ul class="action-log-list" id="actionLogList"></ul>

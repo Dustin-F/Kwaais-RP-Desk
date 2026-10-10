@@ -29,6 +29,8 @@ let mainWindow = null;
 let collapseTimeout = null;
 let modalOpen = false;
 let dragStart = null; // { screenX, screenY, winX, winY }
+// Step-by-step mode: the chat line currently waiting for Send/Skip/Stop
+let pendingStep = null; // { resolve, abort }
 const COLLAPSED_WIDTH = 48;
 
 function getPrimaryDisplay() {
@@ -183,6 +185,11 @@ function registerGlobalShortcuts() {
     if (!accel) return;
     try {
       globalShortcut.register(accel, () => {
+        // While a step is waiting, the run key sends that line instead
+        if (pendingStep && direction === 'right') {
+          requestStepSubmit();
+          return;
+        }
         const collapsed = wasSidebarCollapsed();
         onNavKey();
         if (mainWindow && !mainWindow.isDestroyed() && !collapsed)
@@ -199,6 +206,10 @@ function registerGlobalShortcuts() {
     try {
       globalShortcut.register(expand, () => {
         if (!mainWindow || mainWindow.isDestroyed()) return;
+        if (pendingStep) {
+          requestStepSubmit();
+          return;
+        }
         const collapsed = wasSidebarCollapsed();
         mainWindow.focus();
         onNavKey();
@@ -497,6 +508,48 @@ ipcMain.handle('runAction', async (_e, actionId, params = {}) => {
 
   const abortController = new AbortController();
   const signal = abortController.signal;
+  const stepMode = settings.stepMode === true;
+  let stepGate;
+  if (stepMode) {
+    const previewSteps = [];
+    try {
+      await runActionRunner(actionId, params, settings, null, {
+        preview: true,
+        previewSteps,
+      });
+    } catch (_) {}
+    const total = previewSteps.length;
+    stepGate = ({ index, text }) =>
+      new Promise((resolve, reject) => {
+        const abort = () => {
+          pendingStep = null;
+          reject(Object.assign(new Error('Cancelled'), { name: 'AbortError' }));
+        };
+        if (signal.aborted) return abort();
+        signal.addEventListener('abort', abort, { once: true });
+        pendingStep = {
+          resolve: (result) => {
+            signal.removeEventListener('abort', abort);
+            pendingStep = null;
+            resolve(result);
+          },
+          abort: () => abortController.abort(),
+        };
+        if (mainWindow && !mainWindow.isDestroyed()) {
+          if (wasSidebarCollapsed()) expandWindow();
+          if (collapseTimeout) {
+            clearTimeout(collapseTimeout);
+            collapseTimeout = null;
+          }
+          mainWindow.webContents.send('stepPrompt', {
+            index,
+            total: Math.max(total, index + 1),
+            text,
+            label: params.label || actionId,
+          });
+        }
+      });
+  }
 
   const unregisterEscape = () => {
     try {
@@ -512,7 +565,7 @@ ipcMain.handle('runAction', async (_e, actionId, params = {}) => {
   const savedClipboard = clipboard.readText();
 
   try {
-    await runActionRunner(actionId, params, settings, signal);
+    await runActionRunner(actionId, params, settings, signal, { stepGate });
     return { ok: true };
   } catch (err) {
     if (err.name === 'AbortError' || err.message === 'Cancelled') {
@@ -521,9 +574,28 @@ ipcMain.handle('runAction', async (_e, actionId, params = {}) => {
     console.error('runAction error', actionId, err);
     return { ok: false, error: err.message };
   } finally {
+    if (stepMode) {
+      pendingStep = null;
+      if (mainWindow && !mainWindow.isDestroyed()) {
+        mainWindow.webContents.send('stepDone');
+      }
+      scheduleCollapse();
+    }
     unregisterEscape();
     if (savedClipboard) clipboard.writeText(savedClipboard);
   }
+});
+
+function requestStepSubmit() {
+  if (mainWindow && !mainWindow.isDestroyed()) {
+    mainWindow.webContents.send('stepSubmit');
+  }
+}
+
+ipcMain.handle('stepAdvance', (_e, action, text) => {
+  if (!pendingStep) return;
+  if (action === 'stop') pendingStep.abort();
+  else pendingStep.resolve({ action: action === 'skip' ? 'skip' : 'next', text });
 });
 
 ipcMain.handle('focusApp', () => {
@@ -624,7 +696,7 @@ ipcMain.handle('importSettings', (_e, jsonString) => {
     throw new Error('Invalid settings');
   }
   const NUMERIC_FIELDS = ['windowWidth', 'windowHeight', 'windowOpacity', 'sidebarCollapseSeconds', 'actionLogMax', 'mechanicRPDelaySeconds', 'soundVolume'];
-  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled', 'adminUnlocked'];
+  const BOOL_FIELDS = ['mousePassThrough', 'borderless', 'sidebarAutoCollapse', 'actionLogEnabled', 'soundOnAction', 'compactList', 'devMode', 'devModeTimedPreview', 'quickBarHotkeysEnabled', 'adminUnlocked', 'stepMode'];
   for (const key of NUMERIC_FIELDS) {
     if (key in data && (typeof data[key] !== 'number' || !isFinite(data[key]))) {
       throw new Error(`Invalid value for setting: ${key}`);

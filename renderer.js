@@ -81,6 +81,9 @@
   }
 
   let audioCtx = null;
+  // Step-by-step mode: true while an action is running in step mode
+  let stepRunning = false;
+  let stepActionLabel = '';
 
   // 'done': rising two-note chime. 'error': low falling two-note buzz.
   const SOUNDS = {
@@ -1537,6 +1540,12 @@
       getFlattenedItems().find((f) => f.item.actionId === actionId)?.item
         ?.label ||
       actionId;
+    if (stepRunning) {
+      showToast('Finish or stop the current RP first', 'error');
+      return;
+    }
+    stepRunning = settings.stepMode === true && !settings.devMode;
+    stepActionLabel = label;
     try {
       const result = await window.api.runAction(actionId, params);
       if (result && !result.ok) {
@@ -1595,6 +1604,8 @@
     } catch (e) {
       console.error('runAction', e);
       showToast(e.message || 'Action failed', 'error');
+    } finally {
+      stepRunning = false;
     }
   }
 
@@ -1820,6 +1831,7 @@
     const deptBadge = document.getElementById('departmentBadge');
     if (deptBadge) deptBadge.textContent = dept;
     document.body.dataset.dept = dept;
+    renderStepModeButton();
     const devBadge = document.getElementById('devBadge');
     if (devBadge) devBadge.classList.toggle('hidden', !settings.devMode);
   }
@@ -2067,6 +2079,14 @@
       </div>
           </div>
           <div class="settings-tab-panel" id="panel-rp">
+      <div class="form-group">
+        <label>Step-by-step mode</label>
+        <div class="checkbox-group">
+          <input type="checkbox" id="settingStepMode" ${settings.stepMode ? 'checked' : ''}>
+          <label for="settingStepMode">Pause before every line so you can edit it, then Send (Ctrl+&rarr;), Skip or Stop</label>
+        </div>
+        <p class="form-hint">Edits only apply to that one send &mdash; the saved RP isn't changed. Also toggled from the header button.</p>
+      </div>
       <div class="form-group">
         <label>Mechanic RP delay (seconds between /me lines)</label>
         <input type="number" id="settingMechanicRPDelaySeconds" min="1" max="60" value="${Math.min(
@@ -2607,6 +2627,7 @@
           document.getElementById('settingAccentColor').value || '#5b7cfa',
         compactList: document.getElementById('settingCompactList').checked,
         soundOnAction: document.getElementById('settingSoundOnAction').checked,
+        stepMode: document.getElementById('settingStepMode').checked,
         soundVolume: Math.min(
           100,
           Math.max(0, Number(document.getElementById('settingSoundVolume').value) || 0),
@@ -2911,6 +2932,7 @@
     updateCurrentUnit();
     applyTheme(settings);
     applyCompactList();
+    renderStepModeButton();
     updateGameStatus();
     setInterval(updateGameStatus, 5000);
     if (actionLogWrapEl)
@@ -2982,7 +3004,7 @@
           <div class="settings-tab-panel" id="about-panel-changelog">
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.3</h4>
-              <p class="changelog-desc">Sound notifications are now on by default: a chime when an RP finishes and a low buzz if it fails. New volume slider with test buttons in Settings → Appearance.</p>
+              <p class="changelog-desc">Step-by-step mode (header toggle): every line pauses so you can edit it on the fly, then Send with Ctrl+&rarr;, Skip or Stop. Edits aren't saved. Sound notifications are now on by default: a chime when an RP finishes and a low buzz if it fails. New volume slider with test buttons in Settings → Appearance.</p>
             </div>
             <div class="changelog-entry">
               <h4 class="changelog-version">v1.0.2</h4>
@@ -3071,6 +3093,84 @@
     window.api.installUpdate(),
   );
   window.api.onUpdateStatus(renderUpdateStatus);
+
+  // --- Step-by-step mode -------------------------------------------------
+  const stepPanelEl = document.getElementById('stepPanel');
+  const stepTextEl = document.getElementById('stepText');
+  const stepCountEl = document.getElementById('stepCount');
+  const stepLabelEl = document.getElementById('stepLabel');
+  const stepEditedEl = document.getElementById('stepEdited');
+  const stepResetEl = document.getElementById('stepReset');
+  const stepProgressEl = document.getElementById('stepProgress');
+  const btnStepMode = document.getElementById('btnStepMode');
+  let stepOriginalText = '';
+  let stepWaiting = false;
+
+  function renderStepModeButton() {
+    const btnStepMode = document.getElementById('btnStepMode');
+    if (!btnStepMode) return;
+    const on = settings.stepMode === true;
+    btnStepMode.classList.toggle('active', on);
+    btnStepMode.setAttribute('aria-pressed', String(on));
+    btnStepMode.title = `Step-by-step mode: ${on ? 'on' : 'off'}`;
+  }
+
+  btnStepMode.addEventListener('click', () => {
+    settings = { ...settings, stepMode: settings.stepMode !== true };
+    renderStepModeButton();
+    showToast(`Step-by-step mode ${settings.stepMode ? 'on' : 'off'}`);
+    window.api.saveSettings({ stepMode: settings.stepMode }).then((updated) => {
+      settings = updated;
+      renderStepModeButton();
+    });
+  });
+
+  function updateStepEdited() {
+    const edited = stepTextEl.value !== stepOriginalText;
+    stepEditedEl.classList.toggle('hidden', !edited);
+    stepResetEl.classList.toggle('hidden', !edited);
+  }
+
+  function advanceStep(action) {
+    if (!stepWaiting) return;
+    stepWaiting = false;
+    window.api.stepAdvance(action, stepTextEl.value);
+  }
+
+  window.api.onStepPrompt(({ index, total, text }) => {
+    stepWaiting = true;
+    stepOriginalText = text;
+    stepTextEl.value = text;
+    stepCountEl.textContent = `Step ${index + 1} of ${total}`;
+    stepLabelEl.textContent = stepActionLabel || '';
+    stepProgressEl.style.width = `${Math.round(((index + 1) / total) * 100)}%`;
+    updateStepEdited();
+    stepPanelEl.classList.remove('hidden');
+  });
+  window.api.onStepSubmit(() => advanceStep('next'));
+  window.api.onStepDone(() => {
+    stepWaiting = false;
+    stepRunning = false;
+    stepPanelEl.classList.add('hidden');
+  });
+
+  stepTextEl.addEventListener('input', updateStepEdited);
+  stepTextEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      advanceStep('next');
+    }
+  });
+  stepTextEl.addEventListener('focus', () => window.api.setIgnoreMouseEvents(false));
+  document.getElementById('stepSend').addEventListener('click', () => advanceStep('next'));
+  document.getElementById('stepSkip').addEventListener('click', () => advanceStep('skip'));
+  document.getElementById('stepStop').addEventListener('click', () => advanceStep('stop'));
+  stepResetEl.addEventListener('click', () => {
+    stepTextEl.value = stepOriginalText;
+    updateStepEdited();
+    stepTextEl.focus();
+  });
+  renderStepModeButton();
   window.api.getUpdateStatus().then(renderUpdateStatus);
 
   const departmentBadge = document.getElementById('departmentBadge');

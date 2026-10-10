@@ -49,6 +49,16 @@ contextBridge.exposeInMainWorld('api', {
   windowDragMove: (screenX, screenY) =>
     ipcRenderer.send('window-drag-move', screenX, screenY),
   windowDragEnd: () => ipcRenderer.send('window-drag-end'),
+  stepAdvance: (action, text) => ipcRenderer.invoke('stepAdvance', action, text),
+  onStepPrompt: (callback) => {
+    ipcRenderer.on('stepPrompt', (_e, step) => callback(step));
+  },
+  onStepSubmit: (callback) => {
+    ipcRenderer.on('stepSubmit', () => callback());
+  },
+  onStepDone: (callback) => {
+    ipcRenderer.on('stepDone', () => callback());
+  },
   getUpdateStatus: () => ipcRenderer.invoke('getUpdateStatus'),
   checkForUpdates: () => ipcRenderer.invoke('checkForUpdates'),
   installUpdate: () => ipcRenderer.invoke('installUpdate'),
